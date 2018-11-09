@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../dist/videojs-plus.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="flex">
+      <div class="container">
+        <video id="example-video" class="vjs-fluid" poster="https://vjs.zencdn.net/v/oceans.png">
+          <source src="https://vjs.zencdn.net/v/oceans.mp4" />
+        </video>
+      </div>
+    </div>
+  </body>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://vjs.zencdn.net/6.10.3/video.js"></script>
+  <script src="../dist/videojs-plus.min.js"></script>
+  <script src="../dist/plugins/subtitles/videojs-plus-subtitles.min.js"></script>
+  <!-- <script type="text/babel"> -->
+  <script>
+    const player = videojs("example-video", {
+      // same as videojs config
+      aspectRatio: "16:9"
+    });
+
+    // findChild is a extension of videojs-plus
+    const SettingMenu = player.findChild("SettingMenu")[0].component;
+
+    const SettingOnOffItem = videojs.getComponent("SettingOnOffItem");
+
+    class ToggleAnnotation extends SettingOnOffItem {
+      constructor(player, options) {
+        super(player, {
+          label: "Annotation"
+        });
+
+        // enable by default
+        this.update(true);
+      }
+
+      update(active) {
+        super.update(active);
+
+        console.log(this.active);
+      }
+    }
+
+    SettingMenu.addChild(new ToggleAnnotation(player), 0, 0);
+
+    const SettingMenuItem = videojs.getComponent("SettingMenuItem");
+
+    class QualityMenuItem extends SettingMenuItem {
+      constructor(player, options) {
+        super(player, {
+          label: "Quality",
+          entries: [
+            {
+              label: "HD",
+              value: 720,
+              defalut: true
+            },
+            {
+              label: "SD",
+              value: 480
+            },
+            {
+              label: "Smooth",
+              value: 240
+            },
+            "Auto" // label & value
+          ]
+        });
+
+        this.addClass("vjs-setting-quality");
+      }
+
+      update(selectedItem) {
+        super.update(selectedItem);
+
+        var value = selectedItem.value; // 720 / 480 / 240 / Auto
+
+        console.log(value);
+      }
+    }
+
+    SettingMenu.addChild(new QualityMenuItem(player));
+  </script>
+</html>

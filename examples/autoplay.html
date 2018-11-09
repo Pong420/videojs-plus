@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../dist/videojs-plus.min.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="flex">
+      <div class="container">
+        <video id="example-video" poster="https://vjs.zencdn.net/v/oceans.png">
+          <source src="https://vjs.zencdn.net/v/oceans.mp4" />
+        </video>
+      </div>
+    </div>
+  </body>
+  <script src="https://vjs.zencdn.net/6.10.3/video.js"></script>
+  <script src="../dist/videojs-plus.min.js"></script>
+  <script src="../dist/plugins/autoplay/videojs-plus-autoplay.min.js"></script>
+  <script>
+    var player = videojs("example-video", {
+      autoplay: true,
+      aspectRatio: "16:9"
+    });
+  </script>
+</html>

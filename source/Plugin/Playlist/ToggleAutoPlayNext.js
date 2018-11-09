@@ -1,0 +1,45 @@
+import { getComponent, registerComponent } from "video.js";
+
+const SettingMenuButton = getComponent("SettingMenuButton");
+const SettingOnOffItem = getComponent("SettingOnOffItem");
+
+class ToggleAutoPlayNext extends SettingOnOffItem {
+  constructor(player, options) {
+    super(player, {
+      name: "ToggleAutoPlayNext",
+      label: "Autoplay",
+      icon: "vjs-icon-next-item"
+    });
+
+    this.menu = options.menu;
+    this.updateVisibility();
+    this.addClass("vjs-setting-autoplay");
+
+    player.on("playlist", () => {
+      this.updateVisibility();
+      this.update(player.playlist.autoPlayNext_);
+      player.trigger("settingmenu:reset");
+    });
+  }
+
+  updateVisibility() {
+    const { playlist } = this.player_;
+    if (playlist && playlist.values.length > 1) {
+      this.show();
+    } else {
+      this.hide();
+    }
+  }
+
+  update(active) {
+    super.update(active);
+
+    this.player_.playlist.autoPlayNext(this.active);
+  }
+}
+
+registerComponent("ToggleAutoPlayNext", ToggleAutoPlayNext);
+
+SettingMenuButton.prototype.options_.entries.splice(0, 0, "ToggleAutoPlayNext");
+
+export default ToggleAutoPlayNext;

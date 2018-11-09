@@ -1,0 +1,37 @@
+@import "../variable.scss";
+
+.video-js {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #000;
+
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  font-size: 16px;
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  > video {
+    display: block;
+  }
+
+  /* 
+  *   hide ios big play button 
+  *   https://stackoverflow.com/questions/8911247/hide-iphone-html5-video-play-button 
+  */
+  *::-webkit-media-controls-panel,
+  *::-webkit-media-controls-play-button,
+  *::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+  }
+}

@@ -1,0 +1,14 @@
+.vjs-error-display {
+  .vjs-modal-dialog-content {
+    &:before {
+      content: "\f125";
+      font-family: VideoJS;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 4em;
+      line-height: 1em;
+      margin-bottom: 0.2em;
+      display: block;
+    }
+  }
+}

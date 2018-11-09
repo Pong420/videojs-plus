@@ -1,0 +1,21 @@
+.vjs-modal-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: table;
+  text-align: center;
+  outline: none;
+  background-color: #000;
+  color: #fff;
+
+  .vjs-modal-dialog-content {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 1em;
+    padding: 0 5em;
+  }
+}
+
+@import "./Error.scss";
