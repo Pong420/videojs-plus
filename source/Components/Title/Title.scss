@@ -1,0 +1,27 @@
+@import "../../variable.scss";
+
+.vjs-title {
+  color: #fff;
+  position: relative;
+  padding: 0 15px 5px 15px;
+  width: 100%;
+  overflow: hidden;
+  background-image: linear-gradient(to top, rgba(23, 23, 23, 0) 0, rgba(0, 0, 0, 0.4) 100%);
+  visibility: visible;
+  opacity: 1;
+  transition: 0.3s ease opacity;
+  .vjs-title-field {
+    width: 100%;
+    height: $control-bar-height;
+    line-height: $control-bar-height;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.vjs-user-inactive.vjs-playing {
+  .vjs-title {
+    visibility: hidden;
+    opacity: 0;
+  }
+}

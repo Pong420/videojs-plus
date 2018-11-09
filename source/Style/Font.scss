@@ -1,0 +1,101 @@
+@import "../../../node_modules/videojs-plus-font/scss/videojs-icons.scss";
+
+.video-js .vjs-big-play-button .vjs-icon-placeholder,
+.video-js .vjs-play-control .vjs-icon-placeholder {
+  @extend .vjs-icon-play;
+}
+
+.video-js .vjs-play-control.vjs-playing .vjs-icon-placeholder {
+  @extend .vjs-icon-pause;
+}
+
+.video-js .vjs-mute-control {
+  .vjs-icon-placeholder {
+    &:before {
+      font-size: 0.95em;
+    }
+  }
+}
+
+.video-js .vjs-mute-control.vjs-vol-0 .vjs-icon-placeholder {
+  @extend .vjs-icon-volume-mute;
+}
+
+.video-js .vjs-mute-control.vjs-vol-1 .vjs-icon-placeholder {
+  @extend .vjs-icon-volume-low;
+}
+
+.video-js .vjs-mute-control.vjs-vol-2 .vjs-icon-placeholder {
+  @extend .vjs-icon-volume-mid;
+}
+
+.video-js .vjs-mute-control .vjs-icon-placeholder {
+  @extend .vjs-icon-volume-high;
+}
+
+.video-js .vjs-fullscreen-control .vjs-icon-placeholder {
+  @extend .vjs-icon-fullscreen-enter;
+}
+
+.video-js.vjs-fullscreen .vjs-fullscreen-control .vjs-icon-placeholder {
+  @extend .vjs-icon-fullscreen-exit;
+}
+
+.video-js .vjs-subtitles-button .vjs-icon-placeholder,
+.video-js .vjs-subs-caps-button .vjs-icon-placeholder,
+.video-js.video-js:lang(en-GB) .vjs-subs-caps-button .vjs-icon-placeholder,
+.video-js.video-js:lang(en-IE) .vjs-subs-caps-button .vjs-icon-placeholder,
+.video-js.video-js:lang(en-AU) .vjs-subs-caps-button .vjs-icon-placeholder,
+.video-js.video-js:lang(en-NZ) .vjs-subs-caps-button .vjs-icon-placeholder {
+  @extend .vjs-icon-subtitles;
+}
+
+.video-js .vjs-captions-button .vjs-icon-placeholder,
+.video-js:lang(en) .vjs-subs-caps-button .vjs-icon-placeholder,
+.video-js:lang(fr-CA) .vjs-subs-caps-button .vjs-icon-placeholder {
+  @extend .vjs-icon-captions;
+}
+
+.video-js .vjs-chapters-button .vjs-icon-placeholder {
+  @extend .vjs-icon-chapters;
+}
+
+.vjs-setting-button {
+  .vjs-icon-placeholder {
+    @extend .vjs-icon-cog;
+    &:before {
+      font-size: 0.8em;
+      transform: translateY(-0.005em);
+      display: block;
+    }
+  }
+}
+
+.video-js .vjs-play-progress,
+.video-js .vjs-volume-level {
+  @extend .vjs-icon-circle;
+}
+
+.video-js .vjs-control.vjs-close-button .vjs-icon-placeholder {
+  @extend .vjs-icon-cancel;
+}
+
+.video-js .vjs-play-control.vjs-ended .vjs-icon-placeholder {
+  @extend .vjs-icon-replay;
+}
+
+.video-js .vjs-descriptions-button .vjs-icon-placeholder {
+  @extend .vjs-icon-audio-description;
+}
+
+.video-js .vjs-audio-button .vjs-icon-placeholder {
+  @extend .vjs-icon-audio;
+}
+
+.vjs-icon-github {
+  &:before {
+    font-size: 0.8em;
+    padding: 0 0.2em;
+    display: block;
+  }
+}

@@ -1,0 +1,63 @@
+@import "../../variable.scss";
+// @media (max-width: $small-dimension) {
+.vjs-tiny {
+  &.video-js {
+    &:not(.vjs-has-started) {
+      .vjs-control-bar {
+        display: none;
+      }
+    }
+
+    .play-toggle-layer {
+      display: none;
+    }
+
+    .vjs-control-bar {
+      height: 100%;
+      padding-top: 0;
+      flex-wrap: wrap;
+      background-color: rgba(0, 0, 0, 0.6);
+      transition: visibility 0s linear 0s, opacity ease 300ms;
+      &.vjs-hidden {
+        display: block !important;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .vjs-control-separator {
+        flex-basis: 100%;
+        &.top {
+          height: $control-bar-height;
+        }
+        &.middle {
+          height: calc(100% - #{$control-bar-height * 2});
+          justify-content: center;
+          align-items: center;
+          padding-bottom: 10px;
+          > button {
+            margin: 0 3vw;
+            height: auto;
+            .vjs-control-text {
+              display: none;
+            }
+          }
+        }
+      }
+      .vjs-play-control .vjs-icon-placeholder {
+        font-size: 4.5em;
+        line-height: 1em;
+      }
+    }
+    &:not(.vjs-has-started):not(.vjs-waiting) {
+      .vjs-big-play-button {
+        display: block;
+      }
+    }
+    &#{$control-bar-hidden} {
+      .vjs-control-bar {
+        transition: visibility 0s linear 300ms, opacity ease 300ms;
+      }
+    }
+
+    @include disable-volume-level();
+  }
+}

@@ -1,0 +1,28 @@
+@import "../../variable.scss";
+
+/* Control bar is hidden */
+#{$control-bar-hidden} {
+  .vjs-text-track-display {
+    div {
+      margin-bottom: 0.5em !important;
+      > div {
+        bottom: 0 !important;
+      }
+    }
+    &:not(.vjs-iphone-11) {
+      video::-webkit-media-text-track-container {
+        margin-top: 0px !important;
+      }
+    }
+  }
+}
+
+.vjs-text-track-display {
+  > div {
+    margin: calc(#{$control-bar-height}) 1.5% !important;
+    > div {
+      top: auto !important;
+      bottom: 15px !important;
+    }
+  }
+}
