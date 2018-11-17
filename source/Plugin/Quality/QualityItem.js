@@ -2,33 +2,33 @@ import { hook, getComponent, registerComponent } from "video.js";
 
 const SettingMenuItem = getComponent("SettingMenuItem");
 
-class ResolutionItem extends SettingMenuItem {
+class QualityItem extends SettingMenuItem {
   constructor(player, options = {}) {
     super(player, {
-      name: "ResolutionItem",
-      label: "Resolution",
+      name: "QualityItem",
+      label: "Quality",
       icon: "vjs-icon-hd",
-      entries: options.resolution || []
+      entries: options.quality || []
     });
 
     if (!this.entries.length) {
       this.hide();
     }
 
-    this.addClass("vjs-setting-resolution");
+    this.addClass("vjs-setting-quality");
   }
 
   update(selectedItem) {
     super.update(selectedItem);
-    this.player_.resolution.pick(selectedItem.value);
+    this.player_.quality.pick(selectedItem.value);
   }
 }
 
-registerComponent("ResolutionItem", ResolutionItem);
+registerComponent("QualityItem", QualityItem);
 
 hook("setup", vjsPlayer => {
   const SettingMenu = vjsPlayer.findChild("SettingMenu")[0].component;
-  SettingMenu.addChild(new ResolutionItem(vjsPlayer));
+  SettingMenu.addChild(new QualityItem(vjsPlayer));
 });
 
-export default ResolutionItem;
+export default QualityItem;

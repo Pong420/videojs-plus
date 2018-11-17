@@ -78,7 +78,7 @@ videojs.getComponent("ControlBar").prototype.options_.children = [
 - [Autoplay](./guide/plugins/Autoplay.md)
 - [Playlist](./guide/plugins/Playlist.md)
 - [Subtitles](./guide/plugins/Subtitles.md)
-- [Resolution](./guide/plugins/Resolution.md)
+- [Quality](./guide/plugins/Quality.md)
 - [FullWindow Toggle](./guide/plugins/FullWindow.md)
 - [Picture In Picture](./guide/plugins/PictureInPicture.md) ( Experimental )
 
