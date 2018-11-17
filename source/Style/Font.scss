@@ -99,3 +99,9 @@
     display: block;
   }
 }
+
+.vjs-modal-dialog-content {
+  &:before {
+    @extend .vjs-icon-warning;
+  }
+}
