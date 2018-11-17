@@ -52,7 +52,7 @@ class QualityHlsItem extends SettingMenuItem {
     const entries = this.levels
       .map(({ height }) => {
         return {
-          label: `${height}p`,
+          label: this.localize(`${height}p`),
           value: height,
           defalut: false
         };
