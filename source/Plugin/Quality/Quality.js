@@ -1,9 +1,9 @@
 import { hook, registerPlugin } from "video.js";
 
 import List from "../../Utils/List";
-import "./ResolutionItem";
+import "./QualityItem";
 
-class Resolution extends List {
+class Quality extends List {
   constructor(player, array, startIndex = 0) {
     super(array, startIndex);
 
@@ -22,7 +22,7 @@ class Resolution extends List {
     this.player.src(current.sources);
 
     this.player.trigger(
-      "resolutionchange",
+      "qualitychange",
       Object.assign(current, {
         index: this.index()
       })
@@ -30,31 +30,31 @@ class Resolution extends List {
   }
 }
 
-const setResolution = function(resolution) {
+const setQuality = function(quality) {
   const player = this.player_;
-  const ResolutionItem = player.findChild("ResolutionItem")[0].component;
+  const QualityItem = player.findChild("QualityItem")[0].component;
 
-  player.resolution = new Resolution(player, resolution);
+  player.quality = new Quality(player, quality);
 
-  ResolutionItem.setEntries(
-    resolution.map(({ label, default: default_ }, index) => ({
+  QualityItem.setEntries(
+    quality.map(({ label, default: default_ }, index) => ({
       label,
       value: index,
       defalut: default_
     }))
   );
 
-  ResolutionItem.show();
+  QualityItem.show();
 
-  player.trigger("resolution");
+  player.trigger("quality");
 };
 
-registerPlugin("setResolution", setResolution);
+registerPlugin("setQuality", setQuality);
 
 hook("setup", vjsPlayer => {
-  const resolution = vjsPlayer.options_.resolution || [];
+  const quality = vjsPlayer.options_.quality || [];
 
-  if (resolution.length) {
-    vjsPlayer.setResolution(resolution);
+  if (quality.length) {
+    vjsPlayer.setQuality(quality);
   }
 });

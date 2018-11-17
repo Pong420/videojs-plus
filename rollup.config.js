@@ -76,8 +76,8 @@ const vjsPlusPlugins = () => {
       input: "source/Plugin/Subtitles/Subtitles.js"
     },
     {
-      name: "resolution",
-      input: "source/Plugin/Resolution/Resolution.js"
+      name: "quality",
+      input: "source/Plugin/Quality/Quality.js"
     },
     {
       name: "picture-in-picture",
