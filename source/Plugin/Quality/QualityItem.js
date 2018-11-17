@@ -20,6 +20,7 @@ class QualityItem extends SettingMenuItem {
 
   update(selectedItem) {
     super.update(selectedItem);
+
     this.player_.quality.pick(selectedItem.value);
   }
 }
