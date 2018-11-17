@@ -20,6 +20,7 @@ class SubtitlesMenuItem extends SettingMenuItem {
 
   update(selectedItem) {
     super.update(selectedItem);
+
     this.player_.subtitles().pick(selectedItem.value);
   }
 }
