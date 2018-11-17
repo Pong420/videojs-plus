@@ -103,7 +103,7 @@ class SettingMenuItem extends SettingItem {
       value
     };
 
-    this.settingMenuItemValue.innerHTML = label;
+    this.settingMenuItemValue.innerHTML = this.localize(label);
 
     this.subMenuItems.forEach(function(item) {
       item.update && item.update();

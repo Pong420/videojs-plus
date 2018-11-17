@@ -43,6 +43,7 @@ class subtitles extends Plugin {
       }, 10);
     });
   }
+
   load(subtitles = []) {
     const { player } = this;
 
@@ -68,11 +69,19 @@ class subtitles extends Plugin {
       const SubtitlesMenuItem = player.findChild("SubtitlesMenuItem")[0].component;
 
       SubtitlesMenuItem.setEntries(
-        subtitles.map(({ label, default: default_ }, index) => ({
-          label,
-          value: index,
-          defalut: default_
-        }))
+        subtitles
+          .map(({ label, default: default_ }, index) => ({
+            label,
+            value: index,
+            defalut: default_
+          }))
+          .concat([
+            {
+              label: "Close Subtitles",
+              value: -1,
+              defalut: false
+            }
+          ])
       );
 
       SubtitlesMenuItem.show();
@@ -94,12 +103,22 @@ class subtitles extends Plugin {
 
   pick(index) {
     const tracks = this.player.textTracks();
-    const newTrack = tracks[index];
+    const subtitles = [];
+    for (let i = 0; i < tracks.length; i++) {
+      if (tracks[i].kind === "subtitles") {
+        subtitles.push(tracks[i]);
+      }
+    }
+
+    const newTrack = subtitles[index];
 
     if (newTrack) {
-      newTrack.mode = "showing";
       this.track.mode = "disabled";
       this.track = newTrack;
+
+      newTrack.mode = "showing";
+    } else {
+      this.track.mode = "disabled";
     }
   }
 }
