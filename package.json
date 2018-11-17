@@ -12,12 +12,13 @@
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/node": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
     "clean-css": "^4.1.11",
     "express": "^4.16.3",
+    "lodash": "^4.17.10",
     "node-sass": "^4.9.4",
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^4.0.3",
@@ -26,7 +27,9 @@
     "rollup-plugin-scss": "^0.3.0",
     "rollup-plugin-uglify": "^1.0.1",
     "rollup-watch": "^4.3.1",
-    "videojs-plus-font": "git://github.com/Pong420/font#8254e0d250eeb0263c3b6269dc898a0ab1d3890b",
-    "lodash": "^4.17.10"
+    "videojs-plus-font": "git://github.com/Pong420/font#8254e0d250eeb0263c3b6269dc898a0ab1d3890b"
+  },
+  "dependencies": {
+    "videojs-contrib-quality-levels": "^2.0.9"
   }
 }

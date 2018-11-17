@@ -80,12 +80,17 @@ const vjsPlusPlugins = () => {
       input: "source/Plugin/Quality/Quality.js"
     },
     {
+      name: "quality",
+      prefix: "-hls",
+      input: "source/Plugin/Quality/Quality.Hls.js"
+    },
+    {
       name: "picture-in-picture",
       input: "source/Plugin/PictureInPicture/PictureInPicture.js"
     }
   ];
 
-  return vjsPlusPlugins_.map(({ name, input }) => {
+  return vjsPlusPlugins_.map(({ name, prefix, input }) => {
     const dir = `dist/plugins/${name}/`;
 
     if (!fs.existsSync(dir)) {
@@ -96,7 +101,7 @@ const vjsPlusPlugins = () => {
       input,
       output: [
         rollupOutput({
-          file: `${dir}/videojs-plus-${name}.min.js`,
+          file: `${dir}/videojs-plus-${name}${prefix || ""}.min.js`,
           format: "iife"
         })
       ],
