@@ -13,39 +13,44 @@ class subtitles extends Plugin {
     this.track = null;
 
     let timeout;
-    player.textTracks().on("change", function() {
+    player.textTracks().on("change", () => {
       clearTimeout(timeout);
 
-      let newFlag;
-      let subtitles = [];
-      let showing = this.tracks_.filter(track => {
-        if (track.kind === "subtitles") {
-          subtitles.push(track);
-          if (track.mode === "showing") {
-            newFlag = track.label || track.id;
-            return true;
-          }
-        }
-      })[0];
+      const subtitles = this.values();
+      const currentSubtitle = subtitles.find(t => t.mode === "showing") || {};
+      const newFlag = currentSubtitle.label || currentSubtitle.id;
 
       // multiple `change` event will reveiced when subtitles changed ( depends on number of subtitles or browser ? )
       // so that timeout is used to make sure `subtitlechange` event emit once;
       timeout = setTimeout(() => {
         if (this.flag !== newFlag) {
           this.flag = newFlag;
-          showing = showing || {};
 
           player.trigger("subtitlechange", {
-            index: subtitles.indexOf(showing),
-            label: showing.label || ""
+            index: subtitles.indexOf(currentSubtitle),
+            label: currentSubtitle.label || ""
           });
         }
       }, 10);
     });
   }
 
-  load(subtitles = []) {
+  values() {
+    const tracks = this.player.textTracks();
+    const subtitles = [];
+    for (let i = 0; i < tracks.length; i++) {
+      if (tracks[i].kind === "subtitles") {
+        subtitles.push(tracks[i]);
+      }
+    }
+
+    return subtitles;
+  }
+
+  load(subtitles_ = []) {
     const { player } = this;
+
+    const subtitles = subtitles_.map(a => Object.assign({}, a));
 
     if (subtitles && subtitles.length) {
       this.remove();
@@ -58,7 +63,7 @@ class subtitles extends Plugin {
         const manualCleanup = true;
         const trackEl = player.addRemoteTextTrack(subtitle, manualCleanup);
 
-        if (!this.flag && subtitle.default) {
+        if (subtitle.default) {
           this.flag = subtitle.label;
           this.track = trackEl.track;
 
@@ -91,25 +96,13 @@ class subtitles extends Plugin {
   }
 
   remove() {
-    const tracks = this.player.textTracks().tracks_.slice(0);
-
-    for (let i = 0; i < tracks.length; i++) {
-      const track = tracks[i];
-      if (track && track.kind === "subtitles") {
-        this.player.removeRemoteTextTrack(track);
-      }
-    }
+    this.values().forEach(track => {
+      this.player.removeRemoteTextTrack(track);
+    });
   }
 
   pick(index) {
-    const tracks = this.player.textTracks();
-    const subtitles = [];
-    for (let i = 0; i < tracks.length; i++) {
-      if (tracks[i].kind === "subtitles") {
-        subtitles.push(tracks[i]);
-      }
-    }
-
+    const subtitles = this.values();
     const newTrack = subtitles[index];
 
     if (newTrack) {
