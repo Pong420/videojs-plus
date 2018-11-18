@@ -22,22 +22,23 @@ const quality = [
 
 // set quality in options
 const player = videojs("example-video", {
-  quality
+  quality,
+  defaultQualityLevel: 0 // optiontal, default 0
 });
 
 // or
-player.setQuality(quality);
+player.setQuality(quality, defaultQualityLevel);
 
-// switch quality
+// switch quality level
 player.quality.pick(1);
 
-// get current quality
+// get current quality level
 player.quality.current();
 
-// get current quality index
+// get current quality level index
 player.quality.index();
 
-// get all quality
+// get all quality levels
 player.quality.values;
 
 // events
@@ -56,11 +57,13 @@ player.on("qualitychange", function() {
 ```js
 const player = videojs("example-video", {});
 
-// if your hls playlistis contains different sources.
 player.src({
-  src: "hls.m3u8",
+  src: "playlists.m3u8",
   type: "application/x-mpegurl"
 });
+
+// get all quality levels, for more details refer to videojs-contrib-quality-levels
+player.qualityLevels();
 
 // event
 player.on("quality", function() {
@@ -72,7 +75,7 @@ player.on("qualitychange", function() {
 });
 
 // `before-quality-setup` only trigger on HLS version
-// if your hls source do not contains `height`,
+// if your hls manifest do not contain `height`,
 // you will need to assign it your self
 player.on("before-quality-setup", function(_, { levels }) {
   // levels === `player.qualityLevels()`
