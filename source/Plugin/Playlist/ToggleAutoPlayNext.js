@@ -18,7 +18,6 @@ class ToggleAutoPlayNext extends SettingOnOffItem {
     player.on("playlist", () => {
       this.updateVisibility();
       this.update(player.playlist.autoPlayNext_);
-      player.trigger("settingmenu:reset");
     });
   }
 
