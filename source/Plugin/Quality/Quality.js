@@ -4,12 +4,12 @@ import List from "../../Utils/List";
 import "./QualityItem";
 
 class Quality extends List {
-  constructor(player, array, startIndex = 0) {
-    super(array, startIndex);
+  constructor(player, array, defaultQualityLevel = 0) {
+    super(array, defaultQualityLevel);
 
     this.player = player;
 
-    this.pick(startIndex);
+    this.pick(defaultQualityLevel);
   }
 
   pick(index) {
@@ -39,16 +39,14 @@ class Quality extends List {
         index: this.index()
       })
     );
-
-    // console.log(this.player.cache_.currentTime);
   }
 }
 
-const setQuality = function(quality) {
+const setQuality = function(quality, defaultQualityLevel = 0) {
   const player = this.player_;
   const QualityItem = player.findChild("QualityItem")[0].component;
 
-  player.quality = new Quality(player, quality);
+  player.quality = new Quality(player, quality, defaultQualityLevel);
 
   QualityItem.setEntries(
     quality.map(({ label, default: default_ }, index) => ({
@@ -66,9 +64,9 @@ const setQuality = function(quality) {
 registerPlugin("setQuality", setQuality);
 
 hook("setup", vjsPlayer => {
-  const quality = vjsPlayer.options_.quality || [];
+  const { quality, defaultQualityLevel } = vjsPlayer.options_;
 
-  if (quality.length) {
-    vjsPlayer.setQuality(quality);
+  if (quality && quality.length) {
+    vjsPlayer.setQuality(quality, defaultQualityLevel);
   }
 });
