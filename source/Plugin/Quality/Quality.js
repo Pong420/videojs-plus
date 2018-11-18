@@ -17,16 +17,30 @@ class Quality extends List {
       this.index(index);
     }
 
+    const player = this.player;
     const current = this.current();
+    const cachedCurrentTime = player.ended() ? 0 : player.currentTime();
 
-    this.player.src(current.sources);
+    if (cachedCurrentTime) {
+      player.one("loadedmetadata", () => {
+        player.one("canplaythrough", () => {
+          player.currentTime(cachedCurrentTime);
+        });
 
-    this.player.trigger(
+        player.play();
+      });
+    }
+
+    player.src(current.sources);
+
+    player.trigger(
       "qualitychange",
       Object.assign(current, {
         index: this.index()
       })
     );
+
+    // console.log(this.player.cache_.currentTime);
   }
 }
 
