@@ -87,6 +87,10 @@ const vjsPlusPlugins = () => {
     {
       name: "picture-in-picture",
       input: "source/Plugin/PictureInPicture/PictureInPicture.js"
+    },
+    {
+      name: "live",
+      input: "source/Plugin/Live/Live.js"
     }
   ];
 
