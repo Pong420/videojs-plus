@@ -13,6 +13,8 @@
   .vjs-icon-placeholder {
     &:before {
       font-size: 0.95em;
+      transform: translateY(0.05em);
+      display: block;
     }
   }
 }

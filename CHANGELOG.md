@@ -1,10 +1,17 @@
-## 1.0.3
+# 1.0.4
+
+### Update
+
+- slightly adjust the position of volume icon
+- add live handing (Beta)
+
+# 1.0.3
 
 ### Bug Fixes
 
-- fix subtitles 
+- fix subtitles
 
-## 1.0.2
+# 1.0.2
 
 ### Update
 
@@ -15,7 +22,7 @@
 
 - error message icon
 
-## 1.0.1
+# 1.0.1
 
 ### Update
 
