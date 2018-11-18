@@ -81,8 +81,7 @@ const vjsPlusPlugins = () => {
       input: "source/Plugin/Quality/Quality.js"
     },
     {
-      name: "quality",
-      prefix: "-hls",
+      name: "quality-hls",
       input: "source/Plugin/Quality/Quality.Hls.js"
     },
     {
@@ -95,14 +94,14 @@ const vjsPlusPlugins = () => {
     }
   ];
 
-  return vjsPlusPlugins_.map(({ name, prefix, input }) => {
+  return vjsPlusPlugins_.map(({ name, input }) => {
     const dir = `dist/plugins/${name}/`;
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
 
-    const jsFileName = `videojs-plus-${name}${prefix || ""}.min.js`;
+    const jsFileName = `videojs-plus-${name}.min.js`;
     const cssFileName = `videojs-plus-${name}.min.css`;
     const createIndexJS = css => {
       const content = `
