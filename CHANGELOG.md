@@ -1,3 +1,15 @@
+# 1.0.8
+
+### Update
+
+- update docs
+- new options `defaultQualityLevel` to controls the default quality level
+
+### Bug Fixes
+
+- fix incorrect order of setting menu item
+- fix video restart when quality change
+
 # 1.0.7
 
 ### Update

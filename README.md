@@ -2,7 +2,15 @@
 
 VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/video.js). <br>
 
-<img src="screenshot/preview.png" style="width: 960px">
+### Base Usage
+
+[Demo](https://pong420.github.io/videojs-plus/examples/)
+
+### Advancaed Usage
+
+#### An Electron frameless application
+
+<img src="./screenshot/electron-frameless-player.png">
 
 ### How to use
 
@@ -24,11 +32,14 @@ VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/
 </html>
 ```
 
-[Demo](https://pong420.github.io/videojs-plus/examples/)
-
-<br>
-
 ## Features
+
+- [Title](./guide/Title.md)
+- [Context Menu](./guide/ContextMenu.md)
+- [Setting Menu](./guide/SettingMenu.md)
+- [Mobile UI](./guide/Mobile.md)
+
+<img src="./screenshot/mobileui.control.small.png" width="300">
 
 - **Dimensions of controls**<br>
   You can change the dimensions of controls / menu by changing the `font-size` of `.video-js`. For example,
@@ -46,7 +57,7 @@ VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/
 ```
 
 - **FindChild** <br>
-  A function that get the VideoJS component. <br>
+  A function that get player component. <br>
   For Example, you want to insert a button before `SettingMenuButton`.
 
 ```js
@@ -66,11 +77,6 @@ videojs.getComponent("ControlBar").prototype.options_.children = [
 ];
 ```
 
-- [Title](./guide/Title.md)
-- [Context Menu](./guide/ContextMenu.md)
-- [Setting Menu](./guide/SettingMenu.md)
-- [Mobile UI](./guide/Mobile.md)
-
 <br>
 
 ## Plugins
@@ -81,6 +87,7 @@ videojs.getComponent("ControlBar").prototype.options_.children = [
 - [Quality](./guide/plugins/Quality.md)
 - [FullWindow Toggle](./guide/plugins/FullWindow.md)
 - [Picture In Picture](./guide/plugins/PictureInPicture.md) ( Experimental )
+- [Live](./guide/plugins/Live.md) ( Style plugins for live streaming )
 
 <br>
 
@@ -104,18 +111,9 @@ videojs.addLanguage(language, {
 
 <br>
 
-## Advanced Usage
-
-### Electron framelss application
-
-<img src="./screenshot/electron-frameless-player.png">
-
-<br>
-
 ## TODO
 
-- [ ] HLS Playlist
-- [ ] ...
+- webpack
 
 <br>
 
