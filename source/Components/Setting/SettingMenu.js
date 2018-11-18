@@ -64,9 +64,13 @@ class SettingMenu extends Menu {
   update(children = []) {
     const children_ = this.children().slice(0);
 
-    children_.forEach(this.removeChild.bind(this));
+    children_.forEach(child => {
+      this.removeChild(child);
+    });
 
-    children.forEach(this.addChild.bind(this));
+    children.forEach(child => {
+      this.addChild(child);
+    });
   }
 
   resize({ width, height }) {
