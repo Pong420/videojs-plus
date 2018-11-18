@@ -16,14 +16,15 @@ const rollupOutput = options => ({
   ...options
 });
 
-const scssConfig = (...args) => {
+const scssConfig = (dest, createIndexJS) => {
   return scss({
     output: function(styles) {
       const css = new CleanCSS().minify(styles);
       if (styles.length) {
-        args.forEach(dest => {
-          fs.writeFileSync(dest, css.styles);
-        });
+        fs.writeFileSync(dest, css.styles);
+        createIndexJS && createIndexJS(true);
+      } else {
+        createIndexJS && createIndexJS(false);
       }
     }
   });
@@ -101,16 +102,26 @@ const vjsPlusPlugins = () => {
       fs.mkdirSync(dir);
     }
 
+    const jsFileName = `videojs-plus-${name}${prefix || ""}.min.js`;
+    const cssFileName = `videojs-plus-${name}.min.css`;
+    const createIndexJS = css => {
+      const content = `
+      import './${jsFileName}'\n${css ? `import './${cssFileName}'` : ""}
+      `;
+
+      fs.writeFileSync(`${dir}/index.js`, content.trim());
+    };
+
     return {
       input,
       output: [
         rollupOutput({
-          file: `${dir}/videojs-plus-${name}${prefix || ""}.min.js`,
+          file: `${dir}/${jsFileName}`,
           format: "iife"
         })
       ],
       external,
-      plugins: [scssConfig(`${dir}/videojs-plus-${name}.min.css`), ...rollupPlugins]
+      plugins: [scssConfig(`${dir}/${cssFileName}`, createIndexJS), ...rollupPlugins]
     };
   });
 };
