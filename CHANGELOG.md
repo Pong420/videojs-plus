@@ -1,3 +1,10 @@
+# 1.0.5
+
+### Update
+
+- seprate hls qaulity plugin
+- remove qaulity levels depenedecy from hls qaulity plugin.
+
 # 1.0.4
 
 ### Update

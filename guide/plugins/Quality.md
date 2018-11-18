@@ -51,7 +51,7 @@ player.on("qualitychange", function() {
 ```
 
 2. `videojs-plus-quality-hls.min.js` HLS playlists. <br>
-   HLS version rely on [videojs-contrib-quality-levels](https://github.com/videojs/videojs-contrib-quality-levels)
+   if you are using videojs 6 or below, you may also include [videojs-contrib-quality-levels](https://github.com/videojs/videojs-contrib-quality-levels)
 
 ```js
 const player = videojs("example-video", {});
