@@ -1,9 +1,21 @@
-# 1.0.5
+# 1.0.7
+
+### Update
+
+- update hls quality docs
+
+# 1.0.6
 
 ### Update
 
 - seprate hls qaulity plugin
 - remove qaulity levels depenedecy from hls qaulity plugin.
+
+# 1.0.5
+
+### Update
+
+- add `index.js` to each plugins
 
 # 1.0.4
 
