@@ -1,3 +1,9 @@
+# 1.1.0
+
+### Bug Fixes
+
+- fix quality restore incorrectly when changing new qaulities
+
 # 1.0.9
 
 - add `.npmignore`
