@@ -9,10 +9,10 @@ class Quality extends List {
 
     this.player = player;
 
-    this.pick(defaultQualityLevel);
+    this.pick(defaultQualityLevel, true);
   }
 
-  pick(index) {
+  pick(index, skip) {
     if (typeof index !== "undefined") {
       this.index(index);
     }
@@ -21,7 +21,7 @@ class Quality extends List {
     const current = this.current();
     const cachedCurrentTime = player.ended() ? 0 : player.currentTime();
 
-    if (cachedCurrentTime) {
+    if (!skip && cachedCurrentTime) {
       player.one("loadedmetadata", () => {
         player.one("canplaythrough", () => {
           player.currentTime(cachedCurrentTime);
