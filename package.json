@@ -1,6 +1,6 @@
 {
   "name": "videojs-plus",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "An extension and skin for video.js",
   "scripts": {
     "bundle": "rollup -c",

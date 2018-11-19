@@ -1,3 +1,7 @@
+# 1.0.9
+
+- add `.npmignore`
+
 # 1.0.8
 
 ### Update
