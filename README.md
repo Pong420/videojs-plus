@@ -32,6 +32,8 @@ VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/
 </html>
 ```
 
+- [Vue](./guide/Vue.md)
+
 ## Features
 
 - [Title](./guide/Title.md)
