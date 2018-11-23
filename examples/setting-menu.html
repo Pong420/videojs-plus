@@ -21,23 +21,25 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://vjs.zencdn.net/6.10.3/video.js"></script>
   <script src="../dist/videojs-plus.min.js"></script>
-  <script src="../dist/plugins/subtitles/videojs-plus-subtitles.min.js"></script>
   <!-- <script type="text/babel"> -->
   <script>
-    const player = videojs("example-video", {
+    const player = videojs('example-video', {
       // same as videojs config
-      aspectRatio: "16:9"
+      aspectRatio: '16:9',
+      mobileView: false
     });
 
     // findChild is a extension of videojs-plus
-    const SettingMenu = player.findChild("SettingMenu")[0].component;
+    const SettingMenu = player.findChild('SettingMenu')[0].component;
 
-    const SettingOnOffItem = videojs.getComponent("SettingOnOffItem");
+    const SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
 
     class ToggleAnnotation extends SettingOnOffItem {
       constructor(player, options) {
         super(player, {
-          label: "Annotation"
+          name: 'ToggleAnnotation', // component name, optional
+          label: 'Annotation',
+          icon: 'vjs-icon-circle' // videojs icon classname, optional, for small screen
         });
 
         // enable by default
@@ -53,31 +55,33 @@
 
     SettingMenu.addChild(new ToggleAnnotation(player), 0, 0);
 
-    const SettingMenuItem = videojs.getComponent("SettingMenuItem");
+    const SettingMenuItem = videojs.getComponent('SettingMenuItem');
 
     class QualityMenuItem extends SettingMenuItem {
       constructor(player, options) {
         super(player, {
-          label: "Quality",
+          name: 'QualityMenuItem', // component name, optional
+          label: 'Quality',
+          icon: 'vjs-icon-hd',  // videojs icon classname, optional, for small screen
           entries: [
             {
-              label: "HD",
+              label: 'HD',
               value: 720,
               defalut: true
             },
             {
-              label: "SD",
+              label: 'SD',
               value: 480
             },
             {
-              label: "Smooth",
+              label: 'Smooth',
               value: 240
             },
-            "Auto" // label & value
+            'Auto' // label & value
           ]
         });
 
-        this.addClass("vjs-setting-quality");
+        this.addClass('vjs-setting-quality');
       }
 
       update(selectedItem) {
