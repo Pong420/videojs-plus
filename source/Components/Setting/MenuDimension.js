@@ -1,11 +1,11 @@
-import { getComponent } from "video.js";
+import { getComponent } from 'video.js';
 
-const SettingMenu = getComponent("SettingMenu");
+const SettingMenu = getComponent('SettingMenu');
 
 class SettingMenuTemp extends SettingMenu {
   constructor(player) {
     super(player, {
-      name: "SettingMenuTemp"
+      name: 'SettingMenuTemp'
     });
   }
 }

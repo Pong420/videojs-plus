@@ -1,10 +1,10 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const ClickableComponent = getComponent("ClickableComponent");
+const ClickableComponent = getComponent('ClickableComponent');
 
 class CloseSettingMenu extends ClickableComponent {
   buildCSSClass() {
-    return `vjs-close-menu-layer vjs-close-setting-menu`;
+    return 'vjs-close-menu-layer vjs-close-setting-menu';
   }
 
   handleClick() {
@@ -12,6 +12,6 @@ class CloseSettingMenu extends ClickableComponent {
   }
 }
 
-registerComponent("CloseSettingMenu", CloseSettingMenu);
+registerComponent('CloseSettingMenu', CloseSettingMenu);
 
 export default CloseSettingMenu;

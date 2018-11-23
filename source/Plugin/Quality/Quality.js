@@ -1,7 +1,7 @@
-import { hook, registerPlugin } from "video.js";
+import { hook, registerPlugin } from 'video.js';
 
-import List from "../../Utils/List";
-import "./QualityItem";
+import List from '../../Utils/List';
+import './QualityItem';
 
 class Quality extends List {
   constructor(player, array, defaultQualityLevel = 0) {
@@ -13,7 +13,7 @@ class Quality extends List {
   }
 
   pick(index, skip) {
-    if (typeof index !== "undefined") {
+    if (typeof index !== 'undefined') {
       this.index(index);
     }
 
@@ -22,8 +22,8 @@ class Quality extends List {
     const cachedCurrentTime = player.ended() ? 0 : player.currentTime();
 
     if (!skip && cachedCurrentTime) {
-      player.one("loadedmetadata", () => {
-        player.one("canplaythrough", () => {
+      player.one('loadedmetadata', () => {
+        player.one('canplaythrough', () => {
           player.currentTime(cachedCurrentTime);
         });
 
@@ -34,7 +34,7 @@ class Quality extends List {
     player.src(current.sources);
 
     player.trigger(
-      "qualitychange",
+      'qualitychange',
       Object.assign(current, {
         index: this.index()
       })
@@ -44,7 +44,7 @@ class Quality extends List {
 
 const setQuality = function(quality, defaultQualityLevel = 0) {
   const player = this.player_;
-  const QualityItem = player.findChild("QualityItem")[0].component;
+  const QualityItem = player.findChild('QualityItem')[0].component;
 
   player.quality = new Quality(player, quality, defaultQualityLevel);
 
@@ -58,12 +58,12 @@ const setQuality = function(quality, defaultQualityLevel = 0) {
 
   QualityItem.show();
 
-  player.trigger("quality");
+  player.trigger('quality');
 };
 
-registerPlugin("setQuality", setQuality);
+registerPlugin('setQuality', setQuality);
 
-hook("setup", vjsPlayer => {
+hook('setup', vjsPlayer => {
   const { quality, defaultQualityLevel } = vjsPlayer.options_;
 
   if (quality && quality.length) {

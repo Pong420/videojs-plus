@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const MenuItem = getComponent("MenuItem");
+const MenuItem = getComponent('MenuItem');
 
 class SettingItem extends MenuItem {
   constructor(player, options) {
@@ -14,6 +14,6 @@ class SettingItem extends MenuItem {
   }
 }
 
-registerComponent("SettingItem", SettingItem);
+registerComponent('SettingItem', SettingItem);
 
 export default SettingItem;

@@ -1,12 +1,12 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const ClickableComponent = getComponent("ClickableComponent");
+const ClickableComponent = getComponent('ClickableComponent');
 
 class CancelPlayNextEl extends ClickableComponent {
   constructor(player, options) {
     super(player, options);
 
-    this.el_.querySelector(".vjs-icon-placeholder").innerHTML = this.localize(options.text);
+    this.el_.querySelector('.vjs-icon-placeholder').innerHTML = this.localize(options.text);
   }
 
   buildCSSClass() {
@@ -15,14 +15,14 @@ class CancelPlayNextEl extends ClickableComponent {
 
   handleClick() {
     this.player_
-      .getChild("BeforePlayNextLayer")
+      .getChild('BeforePlayNextLayer')
       .cancel()
       .dispose();
   }
 }
 
-CancelPlayNextEl.prototype.controlText_ = "Cancel PlayNext";
+CancelPlayNextEl.prototype.controlText_ = 'Cancel PlayNext';
 
-registerComponent("CancelPlayNextEl", CancelPlayNextEl);
+registerComponent('CancelPlayNextEl', CancelPlayNextEl);
 
 export default CancelPlayNextEl;

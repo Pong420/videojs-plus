@@ -1,12 +1,12 @@
-import { hook, registerPlugin } from "video.js";
-import List from "../../Utils/List.js";
+import { hook, registerPlugin } from 'video.js';
+import List from '../../Utils/List.js';
 
-import "./BeforePlayNextLayer.js";
-import "./ToggleAutoPlayNext.js";
-import "./PrevNextButton.js";
-import "./CancelPlayNextEl.js";
+import './BeforePlayNextLayer.js';
+import './ToggleAutoPlayNext.js';
+import './PrevNextButton.js';
+import './CancelPlayNextEl.js';
 
-import "./Playlist.scss";
+import './Playlist.scss';
 
 class PlayList extends List {
   constructor(player, array, startIndex = 0) {
@@ -20,12 +20,12 @@ class PlayList extends List {
 
     this.play(startIndex);
 
-    player.off("ended", player.playNext);
-    player.on("ended", player.playNext);
+    player.off('ended', player.playNext);
+    player.on('ended', player.playNext);
   }
 
   autoPlayNext(value) {
-    if (typeof value !== "undefined") {
+    if (typeof value !== 'undefined') {
       this.autoPlayNext_ = !!value;
     } else {
       return this.autoPlayNext_;
@@ -33,7 +33,7 @@ class PlayList extends List {
   }
 
   play(index) {
-    if (typeof index !== "undefined") {
+    if (typeof index !== 'undefined') {
       this.index(index);
     }
 
@@ -41,39 +41,39 @@ class PlayList extends List {
     const { poster, sources, title } = current;
     const player = this.player;
     const addPoster = () => {
-      player.poster(poster || "");
+      player.poster(poster || '');
     };
 
-    player.title("");
-    player.poster("");
+    player.title('');
+    player.poster('');
 
     if (this.loadPoster_) {
       this.loadPoster_ = false;
 
       // For Safari, poster will not hidden when video playing
       if (player.autoplay()) {
-        player.one("autoplay-failure", addPoster);
+        player.one('autoplay-failure', addPoster);
       } else {
         addPoster();
       }
     } else {
-      player.one("loadedmetadata", () => {
+      player.one('loadedmetadata', () => {
         player.play();
       });
     }
 
-    if (player.preload() !== "none") {
-      player.addClass("vjs-waiting");
-      player.one("loadedmetadata", () => {
-        player.removeClass("vjs-waiting");
+    if (player.preload() !== 'none') {
+      player.addClass('vjs-waiting');
+      player.one('loadedmetadata', () => {
+        player.removeClass('vjs-waiting');
       });
     }
 
     player.src(sources);
-    player.title(title || "");
+    player.title(title || '');
 
     player.trigger(
-      "playlistchange",
+      'playlistchange',
       Object.assign(this.current(), {
         index: this.index()
       })
@@ -81,14 +81,14 @@ class PlayList extends List {
   }
 }
 
-registerPlugin("setPlayList", function(playlist) {
+registerPlugin('setPlayList', function(playlist) {
   const player = this.player_;
 
   player.playlist = new PlayList(player, playlist);
-  player.trigger("playlist");
+  player.trigger('playlist');
 });
 
-hook("setup", vjsPlayer => {
+hook('setup', vjsPlayer => {
   const playlist = vjsPlayer.options_.playlist || [];
 
   if (playlist.length) {

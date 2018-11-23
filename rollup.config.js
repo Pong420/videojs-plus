@@ -1,15 +1,15 @@
-import commonjs from "rollup-plugin-commonjs";
-import babel from "rollup-plugin-babel";
-import resolve from "rollup-plugin-node-resolve";
-import uglify from "rollup-plugin-uglify";
-import scss from "rollup-plugin-scss";
-import CleanCSS from "clean-css";
-import fs from "fs";
-import path from "path";
+import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
+import uglify from 'rollup-plugin-uglify';
+import scss from 'rollup-plugin-scss';
+import CleanCSS from 'clean-css';
+import fs from 'fs';
+import path from 'path';
 
-import { eslint } from "rollup-plugin-eslint";
+import { eslint } from 'rollup-plugin-eslint';
 
-const dev = process.env.NODE_ENV === "dev";
+const dev = process.env.NODE_ENV === 'dev';
 
 const mkdirp = dir =>
   path
@@ -17,53 +17,59 @@ const mkdirp = dir =>
     .split(path.sep)
     .reduce((acc, cur) => {
       const currentPath = path.normalize(acc + path.sep + cur);
+
       try {
         fs.statSync(currentPath);
       } catch (e) {
-        if (e.code === "ENOENT") {
+        if (e.code === 'ENOENT') {
           fs.mkdirSync(currentPath);
         } else {
           throw e;
         }
       }
       return currentPath;
-    }, "");
+    }, '');
 
 const createEntry = ({ input, output, css = true }) => {
   return {
     input,
     output: {
       globals: {
-        "video.js": "videojs"
+        'video.js': 'videojs'
       },
       ...output
     },
-    external: ["video.js"],
+    external: ['video.js'],
+    watch: {
+      clearScreen: false
+    },
     plugins: [
+      commonjs({
+        sourceMap: false
+      }),
       resolve({
         jsnext: true,
         main: true,
         browser: true
       }),
-      commonjs({
-        sourceMap: false
-      }),
-      eslint(),
       scss({
         output: styles => {
           if (styles.length && css) {
-            const cssOutput = output.file.replace(".min.js", ".css");
+            const cssOutput = output.file.replace('.min.js', '.css');
             const parsedCSS = new CleanCSS().minify(styles);
 
-            mkdirp(cssOutput.replace(/[^\/]*$/, ""));
+            mkdirp(cssOutput.replace(/[^\/]*$/, ''));
 
             fs.writeFileSync(cssOutput, parsedCSS.styles);
           }
         }
       }),
+      eslint({
+        exclude: ['node_modules/**', '*.scss']
+      }),
       babel({
         babelrc: true,
-        exclude: "node_modules/**",
+        exclude: 'node_modules/**',
         compact: false
       }),
       !dev && uglify()
@@ -71,30 +77,30 @@ const createEntry = ({ input, output, css = true }) => {
   };
 };
 
-const coreEntries = ["umd", "cjs"].map(format => {
-  const prefix = format === "umd" ? "" : `.${format}`;
+const coreEntries = ['umd', 'cjs'].map(format => {
+  const prefix = format === 'umd' ? '' : `.${format}`;
 
   return createEntry({
-    input: "source/index.js",
+    input: 'source/index.js',
     output: {
       file: `dist/videojs-plus${prefix}.min.js`,
       format
     },
-    css: format === "umd"
+    css: format === 'umd'
   });
 });
 
-const pluginEntries = fs.readdirSync("source/Plugin").map(pluginName => {
+const pluginEntries = fs.readdirSync('source/Plugin').map(pluginName => {
   const parsedName = pluginName
     .split(/(?=[A-Z])/)
-    .join("-")
+    .join('-')
     .toLowerCase();
 
   return createEntry({
     input: `source/Plugin/${pluginName}/${pluginName}.js`,
     output: {
       file: `dist/${parsedName}/videojs-plus.${parsedName}.min.js`,
-      format: "iife"
+      format: 'iife'
     }
   });
 });

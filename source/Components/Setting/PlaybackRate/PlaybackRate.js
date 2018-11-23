@@ -1,18 +1,18 @@
-import SettingMenuItem from "../Item/SettingMenuItem.js";
-import { registerComponent } from "video.js";
+import SettingMenuItem from '../Item/SettingMenuItem.js';
+import { registerComponent } from 'video.js';
 
 class PlaybackRateSettingMenuItem extends SettingMenuItem {
   constructor(player, options) {
     super(
       player,
       Object.assign(options, {
-        label: "Speed",
-        icon: "vjs-icon-slow-motion-video",
+        label: 'Speed',
+        icon: 'vjs-icon-slow-motion-video',
         entries: [
           0.5,
           0.75,
           {
-            label: "Normal",
+            label: 'Normal',
             value: 1,
             defalut: true
           },
@@ -23,14 +23,14 @@ class PlaybackRateSettingMenuItem extends SettingMenuItem {
       })
     );
 
-    this.addClass("vjs-setting-playback-rate");
+    this.addClass('vjs-setting-playback-rate');
 
     this.ratechangeBySettingMenu = false;
 
     const _this = this;
     const entries = this.entries;
 
-    player.on("ratechange", function() {
+    player.on('ratechange', function() {
       if (!_this.ratechangeBySettingMenu) {
         const rate = player.playbackRate();
         const currentValue =
@@ -58,6 +58,6 @@ class PlaybackRateSettingMenuItem extends SettingMenuItem {
   }
 }
 
-registerComponent("PlaybackRateSettingMenuItem", PlaybackRateSettingMenuItem);
+registerComponent('PlaybackRateSettingMenuItem', PlaybackRateSettingMenuItem);
 
 export default PlaybackRateSettingMenuItem;

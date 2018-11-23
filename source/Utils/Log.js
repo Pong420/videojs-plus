@@ -1,21 +1,21 @@
-import { browser } from "video.js";
+import { browser } from 'video.js';
 
-let logType = "";
+let logType = '';
 
 try {
-  logType = localStorage && localStorage.getItem("vjs-plus-log");
+  logType = localStorage && localStorage.getItem('vjs-plus-log');
 } catch (e) {}
 
 const log = (function() {
-  if (logType === "normal" || browser.IE_VERSION) {
+  if (logType === 'normal' || browser.IE_VERSION) {
     // log without style
-    return console.info.bind(console, "[VJS Plus]:");
+    return console.info.bind(console, '[VJS Plus]:');
   } else if (logType) {
     // log with style
-    return console.info.bind(console, "%c[VJS Plus]:", "font-weight: bold; color:#2196F3;");
-  } else {
-    return function() {};
+    return console.info.bind(console, '%c[VJS Plus]:', 'font-weight: bold; color:#2196F3;');
   }
+
+  return function() {};
 })();
 
 export default log;

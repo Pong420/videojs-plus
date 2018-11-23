@@ -1,4 +1,5 @@
-@import "../../variable";
+@import '../../variable.scss';
+
 .vjs-before-playnext {
   position: absolute;
   top: 0;
@@ -109,7 +110,7 @@
   min-width: 200px;
 }
 
-.vjs-tiny {
+.vjs-mobile-view {
   .vjs-control-bar {
     .vjs-icon-next-item,
     .vjs-icon-previous-item {

@@ -1,10 +1,10 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const ClickableComponent = getComponent("ClickableComponent");
+const ClickableComponent = getComponent('ClickableComponent');
 
 class CloseContextMenu extends ClickableComponent {
   buildCSSClass() {
-    return `vjs-close-menu-layer vjs-close-context-menu`;
+    return 'vjs-close-menu-layer vjs-close-context-menu';
   }
 
   handleClick() {
@@ -12,6 +12,6 @@ class CloseContextMenu extends ClickableComponent {
   }
 }
 
-registerComponent("CloseContextMenu", CloseContextMenu);
+registerComponent('CloseContextMenu', CloseContextMenu);
 
 export default CloseContextMenu;

@@ -6,7 +6,7 @@ class List {
   }
 
   index(value) {
-    if (typeof value !== "undefined") {
+    if (typeof value !== 'undefined') {
       this.index_ = Math.max(0, Math.min(value, this.values.length - 1));
     } else {
       return this.index_;
@@ -14,7 +14,7 @@ class List {
   }
 
   loop(value) {
-    if (typeof value !== "undefined") {
+    if (typeof value !== 'undefined') {
       this.loop_ = !!value;
     } else {
       return this.loop_;

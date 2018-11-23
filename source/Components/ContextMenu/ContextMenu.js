@@ -1,27 +1,28 @@
-import { dom, getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-import "./ContextMenu.scss";
-import "./Item/ContextMenuToggleLoop.js";
-import "./Item/AboutThisPlayer.js";
+import './ContextMenu.scss';
+import './Item/ContextMenuToggleLoop.js';
+import './Item/AboutThisPlayer.js';
 
-import CloseContextMenu from "./CloseContextMenu";
+import CloseContextMenu from './CloseContextMenu';
 
-const Menu = getComponent("Menu");
+const Menu = getComponent('Menu');
 
 class ContextMenu extends Menu {
   constructor(player, options) {
     super(player, options);
 
-    this.addClass("vjs-context-menu");
+    this.addClass('vjs-context-menu');
 
     this.hide();
 
-    this.player_.on("contextmenu", this.onContextmenu.bind(this));
+    this.player_.on('contextmenu', this.onContextmenu.bind(this));
 
     const handleClick = this.handleClick.bind(this);
-    window.addEventListener("click", handleClick);
-    this.on("dispose", () => {
-      window.removeEventListener("click", handleClick);
+
+    window.addEventListener('click', handleClick);
+    this.on('dispose', () => {
+      window.removeEventListener('click', handleClick);
     });
   }
 
@@ -40,8 +41,8 @@ class ContextMenu extends Menu {
   show(x, y) {
     super.show();
 
-    this.el_.style.top = y + "px";
-    this.el_.style.left = x + "px";
+    this.el_.style.top = y + 'px';
+    this.el_.style.left = x + 'px';
   }
 
   onContextmenu(evt) {
@@ -65,9 +66,9 @@ class ContextMenu extends Menu {
 }
 
 ContextMenu.prototype.options_ = {
-  children: ["ContextMenuToggleLoop", "AboutThisPlayer"]
+  children: ['ContextMenuToggleLoop', 'AboutThisPlayer']
 };
 
-registerComponent("ContextMenu", ContextMenu);
+registerComponent('ContextMenu', ContextMenu);
 
-getComponent("Player").prototype.options_.children.push("ContextMenu");
+getComponent('Player').prototype.options_.children.push('ContextMenu');

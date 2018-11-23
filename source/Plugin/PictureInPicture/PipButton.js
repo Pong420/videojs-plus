@@ -1,12 +1,12 @@
-import { hook, getComponent, registerComponent } from "video.js";
+import { hook, getComponent, registerComponent } from 'video.js';
 
-const Button = getComponent("Button");
+const Button = getComponent('Button');
 
 class PipButton extends Button {
   constructor(player, options) {
     super(player, options);
 
-    this.el_.querySelector(".vjs-icon-placeholder").className += " vjs-icon-picture-in-picture";
+    this.el_.querySelector('.vjs-icon-placeholder').className += ' vjs-icon-picture-in-picture';
   }
 
   buildCSSClass() {
@@ -20,11 +20,12 @@ class PipButton extends Button {
   }
 }
 
-PipButton.prototype.controlText_ = "Picture in Picture";
+PipButton.prototype.controlText_ = 'Picture in Picture';
 
-registerComponent("PipButton", PipButton);
+registerComponent('PipButton', PipButton);
 
-hook("setup", vjsPlayer => {
-  const { parent, index } = vjsPlayer.findChild("SettingMenuButton")[0];
+hook('setup', vjsPlayer => {
+  const { parent, index } = vjsPlayer.findChild('SettingMenuButton')[0];
+
   parent.addChild(new PipButton(vjsPlayer), {}, index);
 });

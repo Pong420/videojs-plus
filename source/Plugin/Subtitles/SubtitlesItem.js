@@ -1,21 +1,17 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const SettingMenuItem = getComponent("SettingMenuItem");
+const SettingMenuItem = getComponent('SettingMenuItem');
 
 class SubtitlesMenuItem extends SettingMenuItem {
   constructor(player, options = {}) {
     super(player, {
-      name: "SubtitlesMenuItem",
-      label: "Subtitles",
-      icon: "vjs-icon-subtitles",
+      name: 'SubtitlesMenuItem',
+      label: 'Subtitles',
+      icon: 'vjs-icon-subtitles',
       entries: options.subtitles || []
     });
 
-    if (!this.entries.length) {
-      this.hide();
-    }
-
-    this.addClass("vjs-setting-subtitles");
+    this.addClass('vjs-setting-subtitles');
   }
 
   update(selectedItem) {
@@ -25,9 +21,6 @@ class SubtitlesMenuItem extends SettingMenuItem {
   }
 }
 
-registerComponent("SubtitlesMenuItem", SubtitlesMenuItem);
+registerComponent('SubtitlesMenuItem', SubtitlesMenuItem);
 
-videojs.hook("setup", vjsPlayer => {
-  const SettingMenu = vjsPlayer.findChild("SettingMenu")[0].component;
-  SettingMenu.addChild(new SubtitlesMenuItem(vjsPlayer));
-});
+getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitlesMenuItem');

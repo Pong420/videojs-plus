@@ -1,16 +1,17 @@
-import log from "../../Utils/Log";
+import log from '../../Utils/Log';
+import videojs from 'video.js';
 
-const AUTOPLAY_SUCCESS = "autoplay-success";
-const AUTOPLAY_FAILURE = "autoplay-failure";
+const AUTOPLAY_SUCCESS = 'autoplay-success';
+const AUTOPLAY_FAILURE = 'autoplay-failure';
 
 const AutoplayHandler = player => {
-  const NotPreoload = player.preload() === "none";
+  const NotPreoload = player.preload() === 'none';
 
   if (!player.autoplay() || NotPreoload) {
-    player.mutedautoplay_ = "ignore";
+    player.mutedautoplay_ = 'ignore';
 
     if (NotPreoload) {
-      videojs.log.warn("Preload is none so that manual autoplay start is disabled");
+      videojs.log.warn('Preload is none so that manual autoplay start is disabled');
       player.trigger(AUTOPLAY_FAILURE);
     }
 
@@ -18,6 +19,7 @@ const AutoplayHandler = player => {
   }
 
   const pause = player.pause;
+
   player.pause = () => {};
 
   const callback = () => {
@@ -27,7 +29,7 @@ const AutoplayHandler = player => {
   };
 
   const resolved = () => {
-    log("Muted Autoplay - Promise Resolved");
+    log('Muted Autoplay - Promise Resolved');
 
     player.trigger(AUTOPLAY_SUCCESS);
 
@@ -35,7 +37,7 @@ const AutoplayHandler = player => {
   };
 
   const rejected = error => {
-    log("Muted Autoplay - Promise Rejected", error);
+    log('Muted Autoplay - Promise Rejected', error);
 
     player.muted(true);
 
@@ -43,18 +45,18 @@ const AutoplayHandler = player => {
 
     if (handlePlay) {
       handlePlay.then(resolved).catch(err => {
-        log("Seems autoplay is not allowed even player is muted", err);
+        log('Seems autoplay is not allowed even player is muted', err);
         player.trigger(AUTOPLAY_FAILURE);
         player.hasStarted(false);
         callback();
       });
     } else {
-      log("Second Play Promise is undefined");
+      log('Second Play Promise is undefined');
       callback();
     }
   };
 
-  player.one("loadedmetadata", function handleMutedAutoplay() {
+  player.one('loadedmetadata', function handleMutedAutoplay() {
     // without readym, `player.play()` may retutn `undefined` as `this.changingSrc_` is true
     player.ready(() => {
       const playPromise = player.play();
@@ -62,7 +64,7 @@ const AutoplayHandler = player => {
       if (playPromise !== undefined && playPromise !== null) {
         playPromise.then(resolved).catch(rejected);
       } else {
-        log("Browser not support play promise");
+        log('Browser not support play promise');
 
         setTimeout(callback, 1000);
       }
@@ -70,8 +72,8 @@ const AutoplayHandler = player => {
   });
 };
 
-videojs.hook("setup", vjsPlayer => {
-  vjsPlayer.one("loadstart", () => {
+videojs.hook('setup', vjsPlayer => {
+  vjsPlayer.one('loadstart', () => {
     AutoplayHandler(vjsPlayer);
   });
 });

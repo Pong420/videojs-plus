@@ -8,14 +8,14 @@
     "start": "node server.js",
     "build": "export NODE_ENV=build && rollup -c"
   },
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/node": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^8.0.1",
     "clean-css": "^4.1.11",
     "express": "^4.16.3",
     "lodash": "^4.17.10",

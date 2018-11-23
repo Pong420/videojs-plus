@@ -1,6 +1,7 @@
-@import "../../variable.scss";
+@import '../../variable.scss';
+
 // @media (max-width: $small-dimension) {
-.vjs-tiny {
+.vjs-mobile-view {
   &.video-js {
     &:not(.vjs-has-started) {
       .vjs-control-bar {

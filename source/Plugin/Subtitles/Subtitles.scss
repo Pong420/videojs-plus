@@ -1,4 +1,4 @@
-@import "../../variable.scss";
+@import '../../variable.scss';
 
 /* Control bar is hidden */
 #{$control-bar-hidden} {
@@ -9,7 +9,8 @@
         bottom: 0 !important;
       }
     }
-    &:not(.vjs-iphone-11) {
+
+    .vjs-iphone-below-11 {
       video::-webkit-media-text-track-container {
         margin-top: 0px !important;
       }
