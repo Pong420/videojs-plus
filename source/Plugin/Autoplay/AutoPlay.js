@@ -1,4 +1,4 @@
-import log from "../Utils/Log";
+import log from "../../Utils/Log";
 
 const AUTOPLAY_SUCCESS = "autoplay-success";
 const AUTOPLAY_FAILURE = "autoplay-failure";
