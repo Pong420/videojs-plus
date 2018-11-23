@@ -26,7 +26,9 @@
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-scss": "^0.3.0",
     "rollup-plugin-uglify": "^1.0.1",
-    "rollup-watch": "^4.3.1",
+    "rollup-watch": "^4.3.1"
+  },
+  "dependencies": {
     "videojs-plus-font": "git://github.com/Pong420/font#8254e0d250eeb0263c3b6269dc898a0ab1d3890b",
     "videojs-contrib-quality-levels": "^2.0.9"
   }
