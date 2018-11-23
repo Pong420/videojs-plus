@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const MenuItem = getComponent("MenuItem");
+const MenuItem = getComponent('MenuItem');
 
 class ContextMenuItem extends MenuItem {
   constructor(player, options) {
@@ -9,7 +9,7 @@ class ContextMenuItem extends MenuItem {
       selectable: true
     });
 
-    this.addClass("vjs-context-menu-item");
+    this.addClass('vjs-context-menu-item');
 
     this.controlText(options.label);
   }
@@ -18,20 +18,20 @@ class ContextMenuItem extends MenuItem {
     const el = super.createEl(...args);
 
     el.insertAdjacentHTML(
-      "afterbegin",
-      `<span aria-hidden="true" class="vjs-icon-placeholder ${this.options_.icon || ""}"></span>`
+      'afterbegin',
+      `<span aria-hidden="true" class="vjs-icon-placeholder ${this.options_.icon || ''}"></span>`
     );
 
     return el;
   }
 
   handleClick() {
-    const { component: ContextMenu } = this.player_.findChild("ContextMenu")[0];
+    const { component: ContextMenu } = this.player_.findChild('ContextMenu')[0];
 
     ContextMenu.hide();
   }
 }
 
-registerComponent("ContextMenuItem", ContextMenuItem);
+registerComponent('ContextMenuItem', ContextMenuItem);
 
 export default ContextMenuItem;

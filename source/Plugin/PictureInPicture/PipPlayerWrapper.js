@@ -1,15 +1,22 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
+import ExitPipButton from './ExitPipButton';
 
-const Component = getComponent("Component");
+const Component = getComponent('Component');
 
 class PipPlayerWrapper extends Component {
   constructor(player, options) {
     super(player, options);
 
-    this.el_.appendChild(player.el());
+    player.addChild(
+      new ExitPipButton(player, {
+        parentPlayer: options.parentPlayer
+      })
+    );
+
+    this.addChild(player);
 
     if (!options.wrapper) {
-      this.addClass("vjs-pip-player-wrapper");
+      this.addClass('vjs-pip-player-wrapper');
       document.body.appendChild(this.el_);
     }
   }
@@ -23,6 +30,6 @@ class PipPlayerWrapper extends Component {
   }
 }
 
-registerComponent("PipPlayerWrapper", PipPlayerWrapper);
+registerComponent('PipPlayerWrapper', PipPlayerWrapper);
 
 export default PipPlayerWrapper;

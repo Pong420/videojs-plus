@@ -1,25 +1,24 @@
-import { dom, registerPlugin, getPlugin } from "video.js";
+import videojs, { dom, registerPlugin, getPlugin } from 'video.js';
 
-import "./PictureInPicture.scss";
-import "./PipButton";
-import PipPlayerWrapper from "./PipPlayerWrapper";
+import './PictureInPicture.scss';
+import './PipButton';
+import PipPlayerWrapper from './PipPlayerWrapper';
 
-const Plugin = getPlugin("plugin");
+const Plugin = getPlugin('plugin');
 
 class pictureInPicture extends Plugin {
   constructor(player, options = {}) {
     super(player, options);
 
-    console.log("HI");
-
     this.cache_ = {};
     this.pipPlayer = null;
     this.options_ = options;
+    this.parentPlayer = player;
   }
 
   toggle() {
     if (this.pipPlayer) {
-      this.dispose();
+      this.exit();
     } else {
       this.init();
     }
@@ -33,31 +32,35 @@ class pictureInPicture extends Plugin {
   }
 
   createPipPlayer() {
-    const { player, options_ } = this;
-    const id = player.id_ + "-pip-player";
-    const videoEl = dom.createEl("video", {
+    const { parentPlayer, options_ } = this;
+    const id = parentPlayer.id_ + '-pip-player';
+    const videoEl = dom.createEl('video', {
       id: id,
-      className: "vjs-pip-player"
+      className: 'vjs-pip-player'
     });
 
     document.body.appendChild(videoEl);
 
-    const playerOptions = Object.assign(player.options_, {
+    const pipPlayerOptions = Object.assign(parentPlayer.options_, parentPlayer.cache_, {
       autoplay: true,
-      muted: player.muted()
+      muted: parentPlayer.muted()
     });
 
-    const pipPlayer = (this.pipPlayer = videojs(videoEl, playerOptions));
+    const pipPlayer = (this.pipPlayer = videojs(videoEl, pipPlayerOptions));
 
-    console.log(this.pipPlayer);
+    this.wrapper = new PipPlayerWrapper(
+      pipPlayer,
+      Object.assign(options_, {
+        parentPlayer
+      })
+    );
 
-    this.wrapper = new PipPlayerWrapper(pipPlayer, options_);
-    this.dragzone = pipPlayer.getChild("PlayToggleLayer");
+    this.dragzone = pipPlayer.getChild('PlayToggleLayer');
 
     this.updatePosition(Object.assign({}, this.cache_, options_));
 
     pipPlayer.ready(() => {
-      pipPlayer.currentTime(player.currentTime());
+      pipPlayer.currentTime(parentPlayer.currentTime());
       pipPlayer.play();
     });
 
@@ -67,40 +70,49 @@ class pictureInPicture extends Plugin {
   }
 
   handleOriginPlayer() {
-    const { player } = this;
+    const { parentPlayer } = this;
 
-    player.pause();
-    player.hasStarted(false);
-    player.controls(false);
-    player.addClass("vjs-pip-player-enabled");
+    parentPlayer.pause();
+    parentPlayer.hasStarted(false);
+    parentPlayer.controls(false);
+    parentPlayer.addClass('vjs-pip-player-enabled');
 
-    player.one("play", () => {
-      this.dispose();
-      this.wrapper.dispose();
+    parentPlayer.one('play', () => {
+      this.exit();
     });
   }
 
-  dispose() {
-    const { player, pipPlayer } = this;
+  exit() {
+    const { parentPlayer, pipPlayer, wrapper } = this;
+
+    if (parentPlayer) {
+      parentPlayer.controls(true);
+      parentPlayer.removeClass('vjs-pip-player-enabled');
+      parentPlayer.paused() && parentPlayer.play();
+
+      if (pipPlayer) {
+        if (!pipPlayer.ended()) {
+          parentPlayer.currentTime(pipPlayer.currentTime());
+        }
+      }
+    }
 
     if (pipPlayer) {
-      player.controls(true);
-      player.removeClass("vjs-pip-player-enabled");
-
-      player.paused() && player.play();
-
-      !pipPlayer.ended() && player.currentTime(pipPlayer.currentTime());
-
       pipPlayer.dispose();
-
-      this.pipPlayer = null;
+      wrapper.dispose();
     }
+
+    this.pipPlayer = null;
+  }
+
+  dispose() {
+    this.parentPlayer = null;
   }
 
   updatePosition({ x, y }) {
-    if (typeof x !== "undefined" && typeof y !== "undefined") {
-      this.wrapper.el_.style.bottom = y + "px";
-      this.wrapper.el_.style.left = x + "px";
+    if (typeof x !== 'undefined' && typeof y !== 'undefined') {
+      this.wrapper.el_.style.bottom = y + 'px';
+      this.wrapper.el_.style.left = x + 'px';
     }
   }
 
@@ -120,24 +132,24 @@ class pictureInPicture extends Plugin {
       this.updatePosition(this.cache_);
     };
 
-    el.addEventListener("mousedown", evt => {
+    el.addEventListener('mousedown', evt => {
       evt.preventDefault();
 
       x = evt.offsetX;
       y = evt.offsetY;
 
       const disableClick = () => {
-        window.removeEventListener("mousemove", disableClick);
+        window.removeEventListener('mousemove', disableClick);
         _this.dragzone.disable();
       };
 
-      window.addEventListener("mousemove", move);
-      window.addEventListener("mousemove", disableClick);
+      window.addEventListener('mousemove', move);
+      window.addEventListener('mousemove', disableClick);
 
-      window.addEventListener("mouseup", function mouseup(evt) {
-        window.removeEventListener("mouseup", mouseup);
-        window.removeEventListener("mousemove", move);
-        window.removeEventListener("mousemove", disableClick);
+      window.addEventListener('mouseup', function mouseup(evt) {
+        window.removeEventListener('mouseup', mouseup);
+        window.removeEventListener('mousemove', move);
+        window.removeEventListener('mousemove', disableClick);
 
         setTimeout(() => {
           _this.dragzone.enable();
@@ -154,12 +166,12 @@ class pictureInPicture extends Plugin {
       });
     };
 
-    window.addEventListener("resize", onResize);
+    window.addEventListener('resize', onResize);
 
-    this.pipPlayer.on("dispose", () => {
-      window.removeEventListener("resize", onResize);
+    this.pipPlayer.on('dispose', () => {
+      window.removeEventListener('resize', onResize);
     });
   }
 }
 
-registerPlugin("pictureInPicture", pictureInPicture);
+registerPlugin('pictureInPicture', pictureInPicture);

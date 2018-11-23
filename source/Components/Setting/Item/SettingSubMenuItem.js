@@ -1,6 +1,6 @@
-import { registerComponent } from "video.js";
+import { registerComponent } from 'video.js';
 
-import SettingItem from "./SettingItem.js";
+import SettingItem from './SettingItem.js';
 
 class SettingSubMenuItem extends SettingItem {
   constructor(player, options) {
@@ -10,9 +10,9 @@ class SettingSubMenuItem extends SettingItem {
 
     Object.assign(this, options);
 
-    this.addChild("Component", {}, 0);
-    this.addClass("vjs-settings-sub-menu-item");
-    this.addClass("vjs-settings-sub-menu-option");
+    this.addChild('Component', {}, 0);
+    this.addClass('vjs-settings-sub-menu-item');
+    this.addClass('vjs-settings-sub-menu-option');
 
     this.update();
   }
@@ -26,6 +26,6 @@ class SettingSubMenuItem extends SettingItem {
   }
 }
 
-registerComponent("SettingSubMenuItem", SettingSubMenuItem);
+registerComponent('SettingSubMenuItem', SettingSubMenuItem);
 
 export default SettingSubMenuItem;

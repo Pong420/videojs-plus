@@ -1,4 +1,4 @@
-@import "../../variable";
+@import '../../variable.scss';
 
 .vjs-setting-button {
   .vjs-icon-placeholder {
@@ -6,7 +6,7 @@
     transform: rotate(0deg);
     transition: 0.2s transform;
   }
-  &[aria-expanded="true"] {
+  &[aria-expanded='true'] {
     .vjs-icon-placeholder {
       transform: rotate(30deg);
     }
@@ -14,7 +14,7 @@
 }
 
 .vjs-setting-menu {
-  @include visibility-transition-menu-style(".vjs-lock-showing");
+  @include visibility-transition-menu-style('.vjs-lock-showing');
 
   border-radius: 3px;
 
@@ -54,7 +54,7 @@
 
 .vjs-setting-menu-item {
   &:after {
-    content: "";
+    content: '';
     width: 0.65em;
     height: 0.65em;
     display: inline-block;
@@ -80,7 +80,7 @@
     width: 1em;
     margin-right: 0.5em;
     &:before {
-      content: "";
+      content: '';
       display: block;
       margin: auto;
       // position: absolute;
@@ -94,7 +94,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   padding: 0.6em 1em;
   &:after {
-    content: "Hi, i am padding";
+    content: 'Hi, i am padding';
     visibility: hidden;
     display: block;
     height: 6px;
@@ -132,7 +132,7 @@
     border-radius: 50px;
     position: relative;
     &:before {
-      content: "";
+      content: '';
       border-radius: 50%;
       height: 0;
       width: $dotSize;

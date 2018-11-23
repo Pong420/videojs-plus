@@ -1,9 +1,9 @@
-import { hook, registerPlugin, getPlugin } from "video.js";
+import { hook, registerPlugin, getPlugin } from 'video.js';
 
-import "./SubtitlesItem";
-import "./Subtitles.scss";
+import './SubtitlesItem';
+import './Subtitles.scss';
 
-const Plugin = getPlugin("plugin");
+const Plugin = getPlugin('plugin');
 
 class subtitles extends Plugin {
   constructor(player, options) {
@@ -13,11 +13,12 @@ class subtitles extends Plugin {
     this.track = null;
 
     let timeout;
-    player.textTracks().on("change", () => {
+
+    player.textTracks().on('change', () => {
       clearTimeout(timeout);
 
       const subtitles = this.values();
-      const currentSubtitle = subtitles.find(t => t.mode === "showing") || {};
+      const currentSubtitle = subtitles.find(t => t.mode === 'showing') || {};
       const newFlag = currentSubtitle.label || currentSubtitle.id;
 
       // multiple `change` event will reveiced when subtitles changed ( depends on number of subtitles or browser ? )
@@ -26,9 +27,9 @@ class subtitles extends Plugin {
         if (this.flag !== newFlag) {
           this.flag = newFlag;
 
-          player.trigger("subtitlechange", {
+          player.trigger('subtitlechange', {
             index: subtitles.indexOf(currentSubtitle),
-            label: currentSubtitle.label || ""
+            label: currentSubtitle.label || ''
           });
         }
       }, 10);
@@ -38,8 +39,9 @@ class subtitles extends Plugin {
   values() {
     const tracks = this.player.textTracks();
     const subtitles = [];
+
     for (let i = 0; i < tracks.length; i++) {
-      if (tracks[i].kind === "subtitles") {
+      if (tracks[i].kind === 'subtitles') {
         subtitles.push(tracks[i]);
       }
     }
@@ -67,11 +69,11 @@ class subtitles extends Plugin {
           this.flag = subtitle.label;
           this.track = trackEl.track;
 
-          trackEl.track.mode = "showing";
+          trackEl.track.mode = 'showing';
         }
       });
 
-      const SubtitlesMenuItem = player.findChild("SubtitlesMenuItem")[0].component;
+      const SubtitlesMenuItem = player.findChild('SubtitlesMenuItem')[0].component;
 
       SubtitlesMenuItem.setEntries(
         subtitles
@@ -82,7 +84,7 @@ class subtitles extends Plugin {
           }))
           .concat([
             {
-              label: "Close Subtitles",
+              label: 'Close Subtitles',
               value: -1,
               defalut: false
             }
@@ -91,7 +93,7 @@ class subtitles extends Plugin {
 
       SubtitlesMenuItem.show();
 
-      player.trigger("subtitles", subtitles);
+      player.trigger('subtitles', subtitles);
     }
   }
 
@@ -106,20 +108,20 @@ class subtitles extends Plugin {
     const newTrack = subtitles[index];
 
     if (newTrack) {
-      this.track.mode = "disabled";
+      this.track.mode = 'disabled';
       this.track = newTrack;
 
-      newTrack.mode = "showing";
+      newTrack.mode = 'showing';
     } else {
-      this.track.mode = "disabled";
+      this.track.mode = 'disabled';
     }
   }
 }
 
-hook("setup", vjsPlayer => {
+hook('setup', vjsPlayer => {
   vjsPlayer.ready(() => {
     vjsPlayer.subtitles().load(vjsPlayer.options_.subtitles);
   });
 });
 
-registerPlugin("subtitles", subtitles);
+registerPlugin('subtitles', subtitles);

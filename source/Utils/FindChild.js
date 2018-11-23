@@ -1,4 +1,4 @@
-import { getComponent } from "video.js";
+import { getComponent } from 'video.js';
 
 function findChild(parent, name, result) {
   const children = [];
@@ -27,7 +27,7 @@ function findChild(parent, name, result) {
   };
 }
 
-getComponent("Component").prototype.findChild = function(name) {
+getComponent('Component').prototype.findChild = function(name) {
   const result = [];
 
   findChild(this, name, result);

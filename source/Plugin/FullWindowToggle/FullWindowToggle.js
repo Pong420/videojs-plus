@@ -1,8 +1,8 @@
-import { getComponent, registerComponent, hook } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-import "./FullWindowToggle.scss";
+import './FullWindowToggle.scss';
 
-class FullWindowToggle extends getComponent("FullscreenToggle") {
+class FullWindowToggle extends getComponent('FullscreenToggle') {
   constructor(player, options) {
     super(player, options);
 
@@ -14,12 +14,12 @@ class FullWindowToggle extends getComponent("FullscreenToggle") {
       return !!player.isFullWindow;
     };
 
-    player.on("enterFullWindow", function() {
-      player.trigger("fullscreenchange");
+    player.on('enterFullWindow', function() {
+      player.trigger('fullscreenchange');
     });
 
-    player.on("exitFullWindow", function() {
-      player.trigger("fullscreenchange");
+    player.on('exitFullWindow', function() {
+      player.trigger('fullscreenchange');
     });
   }
 
@@ -32,13 +32,9 @@ class FullWindowToggle extends getComponent("FullscreenToggle") {
   }
 }
 
-registerComponent("FullWindowToggle", FullWindowToggle);
+registerComponent('FullWindowToggle', FullWindowToggle);
 
-hook("setup", vjsPlayer => {
-  if (vjsPlayer.options_.fullwindow === true) {
-    const { parent, component } = vjsPlayer.findChild("FullscreenToggle")[0];
+const controlBarChildren = getComponent('ControlBar').prototype.options_.children;
+const fullScreenButtonIndex = controlBarChildren.indexOf('FullscreenToggle');
 
-    parent.removeChild(component);
-    parent.addChild(new FullWindowToggle(vjsPlayer));
-  }
-});
+controlBarChildren[fullScreenButtonIndex] = 'FullWindowToggle';

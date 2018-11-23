@@ -1,4 +1,6 @@
-@import "../../variable.scss";
+@import '../../variable.scss';
+@import '../../variable.scss';
+
 .vjs-loading-spinner {
   display: none;
   @include square(50px);
@@ -13,7 +15,7 @@
   background-clip: padding-box;
   border-radius: 50%;
   &:after {
-    content: "";
+    content: '';
     display: block;
     width: 100%;
     height: 100%;

@@ -1,14 +1,14 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const ClickableComponent = getComponent("ClickableComponent");
+const ClickableComponent = getComponent('ClickableComponent');
 
 class PlayNextSpinner extends ClickableComponent {
   buildCSSClass() {
-    return "vjs-playnext-spinner";
+    return 'vjs-playnext-spinner';
   }
 
   createEl() {
-    const el = super.createEl("div", {
+    const el = super.createEl('div', {
       innerHTML: `
         <div class="vjs-icon-placeholder vjs-icon-play"></div>
         <svg width="60" height="60" viewbox="0 0 60 60">
@@ -19,18 +19,18 @@ class PlayNextSpinner extends ClickableComponent {
       `
     });
 
-    this.path = el.querySelector("path");
+    this.path = el.querySelector('path');
 
     return el;
   }
 
   handleClick() {
-    this.player_.getChild("BeforePlayNextLayer").timeup();
+    this.player_.getChild('BeforePlayNextLayer').timeup();
   }
 }
 
-PlayNextSpinner.prototype.controlText_ = "PlayNext";
+PlayNextSpinner.prototype.controlText_ = 'PlayNext';
 
-registerComponent("PlayNextSpinner", PlayNextSpinner);
+registerComponent('PlayNextSpinner', PlayNextSpinner);
 
 export default PlayNextSpinner;

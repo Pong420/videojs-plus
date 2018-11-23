@@ -1,4 +1,5 @@
-@import "../../variable.scss";
+@import '../../variable.scss';
+
 .vjs-control-bar {
   display: flex;
   visibility: visible;
@@ -163,7 +164,7 @@
     }
   }
 
-  &.vjs-tiny {
+  &.vjs-mobile-view {
     .vjs-control-separator {
       > * {
         &:first-child {
@@ -247,7 +248,7 @@ $dotSize: 0.8125em;
   .vjs-volume-bar {
     height: 100%;
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;

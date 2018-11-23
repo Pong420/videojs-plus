@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const Button = getComponent("Button");
+const Button = getComponent('Button');
 
 class PrevNextButton extends Button {
   constructor(player, options) {
@@ -9,7 +9,7 @@ class PrevNextButton extends Button {
     this.updateVisibility();
     this.controlText(options.controlText);
 
-    player.on("playlist", this.updateVisibility.bind(this));
+    player.on('playlist', this.updateVisibility.bind(this));
   }
 
   buildCSSClass() {
@@ -18,6 +18,7 @@ class PrevNextButton extends Button {
 
   updateVisibility() {
     const playlist = this.player_.playlist;
+
     if (playlist && playlist.values.length > 1) {
       this.show();
     } else {
@@ -44,26 +45,26 @@ class PrevNextButton extends Button {
   }
 }
 
-const ControlBar = getComponent("ControlBar");
+const ControlBar = getComponent('ControlBar');
 const children = ControlBar.prototype.options_.children;
-const indexOfPlayToggle = children.indexOf("PlayToggle");
+const indexOfPlayToggle = children.indexOf('PlayToggle');
 
 if (indexOfPlayToggle !== -1) {
   children.splice(0, 0, {
-    name: "PrevNextButton",
-    className: "vjs-prev-control",
-    icon: "vjs-icon-previous-item",
-    controlText: "Prev"
+    name: 'PrevNextButton',
+    className: 'vjs-prev-control',
+    icon: 'vjs-icon-previous-item',
+    controlText: 'Prev'
   });
 
   children.splice(indexOfPlayToggle + 2, 0, {
-    name: "PrevNextButton",
-    className: "vjs-next-control",
-    icon: "vjs-icon-next-item",
-    controlText: "Next"
+    name: 'PrevNextButton',
+    className: 'vjs-next-control',
+    icon: 'vjs-icon-next-item',
+    controlText: 'Next'
   });
 }
 
-registerComponent("PrevNextButton", PrevNextButton);
+registerComponent('PrevNextButton', PrevNextButton);
 
 export default PrevNextButton;

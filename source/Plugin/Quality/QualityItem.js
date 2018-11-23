@@ -1,21 +1,17 @@
-import { hook, getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-const SettingMenuItem = getComponent("SettingMenuItem");
+const SettingMenuItem = getComponent('SettingMenuItem');
 
 class QualityItem extends SettingMenuItem {
   constructor(player, options = {}) {
     super(player, {
-      name: "QualityItem",
-      label: "Quality",
-      icon: "vjs-icon-hd",
+      name: 'QualityItem',
+      label: 'Quality',
+      icon: 'vjs-icon-hd',
       entries: options.quality || []
     });
 
-    if (!this.entries.length) {
-      this.hide();
-    }
-
-    this.addClass("vjs-setting-quality");
+    this.addClass('vjs-setting-quality');
   }
 
   update(selectedItem) {
@@ -25,11 +21,8 @@ class QualityItem extends SettingMenuItem {
   }
 }
 
-registerComponent("QualityItem", QualityItem);
+registerComponent('QualityItem', QualityItem);
 
-hook("setup", vjsPlayer => {
-  const SettingMenu = vjsPlayer.findChild("SettingMenu")[0].component;
-  SettingMenu.addChild(new QualityItem(vjsPlayer));
-});
+getComponent('SettingMenuButton').prototype.options_.entries.push('QualityItem');
 
 export default QualityItem;

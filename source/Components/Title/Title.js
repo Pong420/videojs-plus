@@ -1,23 +1,23 @@
-import { dom, getComponent, registerComponent, registerPlugin } from "video.js";
+import { getComponent, registerComponent, dom, registerPlugin } from 'video.js';
 
-import "./Title.scss";
+import './Title.scss';
 
-class Title extends getComponent("Component") {
+class Title extends getComponent('Component') {
   constructor(player, options) {
     super(player, options);
 
-    this.title_ = options.playerOptions.title || "";
+    this.title_ = options.playerOptions.title || '';
 
     this.update(this.title_);
   }
 
   createEl() {
-    const el = super.createEl("div", {
-      className: "vjs-title"
+    const el = super.createEl('div', {
+      className: 'vjs-title'
     });
 
-    this.contentEl_ = dom.createEl("div", {
-      className: `vjs-title-field`
+    this.contentEl_ = dom.createEl('div', {
+      className: 'vjs-title-field'
     });
 
     el.appendChild(this.contentEl_);
@@ -40,16 +40,16 @@ class Title extends getComponent("Component") {
 }
 
 const title = function(title_) {
-  const videoTitle = this.player_.getChild("VideoTitle");
+  const videoTitle = this.player_.getChild('VideoTitle');
 
-  if (typeof title_ === "undefined") {
+  if (typeof title_ === 'undefined') {
     return videoTitle.title_;
   }
 
   videoTitle.update(title_);
 };
 
-registerPlugin("title", title);
-registerComponent("VideoTitle", Title);
+registerPlugin('title', title);
+registerComponent('VideoTitle', Title);
 
-getComponent("Player").prototype.options_.children.splice(2, 0, "VideoTitle");
+getComponent('Player').prototype.options_.children.splice(2, 0, 'VideoTitle');

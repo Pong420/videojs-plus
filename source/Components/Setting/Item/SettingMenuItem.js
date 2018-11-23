@@ -1,18 +1,18 @@
-import { dom, registerComponent } from "video.js";
+import { registerComponent, dom } from 'video.js';
 
-import SettingItem from "./SettingItem.js";
-import SettingSubMenuTitle from "./SettingSubMenuTitle.js";
-import SettingSubMenuItem from "./SettingSubMenuItem.js";
-import getMenuDimension from "../MenuDimension";
+import SettingItem from './SettingItem.js';
+import SettingSubMenuTitle from './SettingSubMenuTitle.js';
+import SettingSubMenuItem from './SettingSubMenuItem.js';
+import getMenuDimension from '../MenuDimension';
 
 function parseEntries(entries) {
   let currentValue;
 
   entries = entries.map(data => {
-    const isDefault = typeof data.defalut !== "undefined" ? data.defalut : false;
+    const isDefault = typeof data.defalut !== 'undefined' ? data.defalut : false;
     const entry = {
-      label: typeof data.label !== "undefined" ? data.label : data,
-      value: typeof data.value !== "undefined" ? data.value : data,
+      label: typeof data.label !== 'undefined' ? data.label : data,
+      value: typeof data.value !== 'undefined' ? data.value : data,
       defalut: isDefault
     };
 
@@ -38,22 +38,26 @@ class SettingMenuItem extends SettingItem {
     super(player, Object.assign(options, parseEntries(options.entries)));
 
     this.setEntries(this.options_.entries);
+
+    if (!this.entries.length) {
+      this.hide();
+    }
   }
 
   createEl() {
     const { icon, label, currentValue } = this.options_;
-    const el = dom.createEl("li", {
-      className: "vjs-menu-item vjs-setting-menu-item",
+    const el = dom.createEl('li', {
+      className: 'vjs-menu-item vjs-setting-menu-item',
       innerHTML: `
-        <div class="vjs-icon-placeholder ${icon || ""}"></div>
+        <div class="vjs-icon-placeholder ${icon || ''}"></div>
         <div class="vjs-setting-menu-label">${this.localize(label)}</div>
         <div class="vjs-spacer"></div>
       `
     });
 
-    this.settingMenuItemValue = dom.createEl("div", {
-      className: "vjs-setting-menu-value",
-      innerHTML: this.localize(currentValue ? currentValue.label : "")
+    this.settingMenuItemValue = dom.createEl('div', {
+      className: 'vjs-setting-menu-value',
+      innerHTML: this.localize(currentValue ? currentValue.label : '')
     });
 
     el.appendChild(this.settingMenuItemValue);
@@ -119,6 +123,6 @@ class SettingMenuItem extends SettingItem {
   }
 }
 
-registerComponent("SettingMenuItem", SettingMenuItem);
+registerComponent('SettingMenuItem', SettingMenuItem);
 
 export default SettingMenuItem;

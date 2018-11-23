@@ -1,21 +1,21 @@
-import { getComponent, registerComponent } from "video.js";
+import { getComponent, registerComponent } from 'video.js';
 
-import CloseSettingMenu from "./CloseSettingMenu";
+import CloseSettingMenu from './CloseSettingMenu';
 
-const Menu = getComponent("Menu");
+const Menu = getComponent('Menu');
 
 class SettingMenu extends Menu {
   constructor(player, options) {
     super(player, {
       ...options,
-      name: "SettingMenu"
+      name: 'SettingMenu'
     });
 
     if (!player.SettingMenu) {
       player.SettingMenu = this;
     }
 
-    this.addClass("vjs-setting-menu");
+    this.addClass('vjs-setting-menu');
 
     setTimeout(this.reset.bind(this), 0);
   }
@@ -47,7 +47,7 @@ class SettingMenu extends Menu {
      *  A class `vjs-setting-menu-ready` as a condition for css on small screen,
      *  therefore the origin width will not be affected.
      */
-    this.addClass("vjs-setting-menu-ready");
+    this.addClass('vjs-setting-menu-ready');
   }
 
   createEl() {
@@ -74,8 +74,8 @@ class SettingMenu extends Menu {
   }
 
   resize({ width, height }) {
-    this.contentEl_.style.width = width + "px";
-    this.contentEl_.style.height = height + "px";
+    this.contentEl_.style.width = width + 'px';
+    this.contentEl_.style.height = height + 'px';
   }
 
   restore() {
@@ -85,10 +85,10 @@ class SettingMenu extends Menu {
   }
 
   removeStyle() {
-    this.contentEl_.removeAttribute("style");
+    this.contentEl_.removeAttribute('style');
   }
 }
 
-registerComponent("SettingMenu", SettingMenu);
+registerComponent('SettingMenu', SettingMenu);
 
 export default SettingMenu;

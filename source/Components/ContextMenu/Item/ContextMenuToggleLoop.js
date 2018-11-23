@@ -1,17 +1,17 @@
-import { registerComponent } from "video.js";
-import ContextMenuItem from "./ContextMenuItem.js";
+import { registerComponent } from 'video.js';
+import ContextMenuItem from './ContextMenuItem.js';
 
 class ContextMenuToggleLoop extends ContextMenuItem {
   constructor(player) {
     super(player, {
-      name: "ContextMenuToggleLoop",
-      label: "Loop",
-      icon: "vjs-icon-loop"
+      name: 'ContextMenuToggleLoop',
+      label: 'Loop',
+      icon: 'vjs-icon-loop'
     });
 
-    this.addClass("vjs-checkbox");
+    this.addClass('vjs-checkbox');
 
-    player.on("loadstart", this.update.bind(this));
+    player.on('loadstart', this.update.bind(this));
   }
 
   update() {
@@ -27,6 +27,6 @@ class ContextMenuToggleLoop extends ContextMenuItem {
   }
 }
 
-registerComponent("ContextMenuToggleLoop", ContextMenuToggleLoop);
+registerComponent('ContextMenuToggleLoop', ContextMenuToggleLoop);
 
 export default ContextMenuToggleLoop;
