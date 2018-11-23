@@ -1,11 +1,11 @@
-import { getComponent, registerComponent } from "video.js";
-import SettingMenu from "./SettingMenu.js";
-import "./Item/SettingMenuItem.js";
-import "./Item/SettingOnOffItem";
-import "./PlaybackRate/PlaybackRate.js";
-import "./Setting.scss";
+import { getComponent, registerComponent } from 'video.js';
+import SettingMenu from './SettingMenu.js';
+import './Item/SettingMenuItem.js';
+import './Item/SettingOnOffItem';
+import './PlaybackRate/PlaybackRate.js';
+import './Setting.scss';
 
-const MenuButton = getComponent("MenuButton");
+const MenuButton = getComponent('MenuButton');
 
 class SettingMenuButton extends MenuButton {
   constructor(player, options) {
@@ -16,7 +16,7 @@ class SettingMenuButton extends MenuButton {
     // remove videojs parent child relationship between button and menu
     this.removeChild(this.menu);
 
-    player.on("playerresize", () => {
+    player.on('playerresize', () => {
       this.menu.reset();
     });
   }
@@ -50,13 +50,13 @@ class SettingMenuButton extends MenuButton {
   unpressButton() {
     super.unpressButton();
 
-    this.player_.removeClass("vjs-keep-control-showing");
+    this.player_.removeClass('vjs-keep-control-showing');
 
     this.menu.restore();
   }
 
   handleClick() {
-    this.player_.addClass("vjs-keep-control-showing");
+    this.player_.addClass('vjs-keep-control-showing');
 
     if (this.buttonPressed_) {
       this.unpressButton();
@@ -64,21 +64,21 @@ class SettingMenuButton extends MenuButton {
       this.pressButton();
     }
 
-    this.off(document.body, "click", this.hideMenu);
-    this.off(document.body, "touchend", this.hideMenu);
+    this.off(document.body, 'click', this.hideMenu);
+    this.off(document.body, 'touchend', this.hideMenu);
 
     setTimeout(() => {
-      this.one(document.body, "click", this.hideMenu);
+      this.one(document.body, 'click', this.hideMenu);
       // _this.buttonPressed_ && _this.one(document.body, 'touchend', _this.hideMenu);
     }, 0);
   }
 }
 
-SettingMenuButton.prototype.controlText_ = "Settings";
+SettingMenuButton.prototype.controlText_ = 'Settings';
 SettingMenuButton.prototype.options_ = {
-  entries: ["PlaybackRateSettingMenuItem"]
+  entries: ['PlaybackRateSettingMenuItem']
 };
 
-registerComponent("SettingMenuButton", SettingMenuButton);
+registerComponent('SettingMenuButton', SettingMenuButton);
 
 export default SettingMenuButton;
