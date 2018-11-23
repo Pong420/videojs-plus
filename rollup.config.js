@@ -7,6 +7,8 @@ import CleanCSS from "clean-css";
 import fs from "fs";
 import path from "path";
 
+import { eslint } from "rollup-plugin-eslint";
+
 const dev = process.env.NODE_ENV === "dev";
 
 const mkdirp = dir =>
@@ -46,6 +48,7 @@ const createEntry = ({ input, output, css = true }) => {
       commonjs({
         sourceMap: false
       }),
+      eslint(),
       scss({
         output: styles => {
           if (styles.length && css) {
