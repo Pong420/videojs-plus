@@ -1,3 +1,13 @@
+# 1.2.0
+
+### Update
+
+- plugin file name changed
+- rename mobile view class name and add an options to disable mobile view
+- update docs
+- make rollup config better
+- add eslint
+
 # 1.1.0
 
 ### Bug Fixes
