@@ -36,7 +36,9 @@ class SettingMenuButton extends MenuButton {
     const entries = this.options_.entries || [];
 
     entries.forEach(component => {
-      menu.addChild(component);
+      menu.addChild(component, {
+        menu: menu
+      });
     });
 
     return menu;

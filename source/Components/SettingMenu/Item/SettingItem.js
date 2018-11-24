@@ -1,16 +1,20 @@
-import { getComponent, registerComponent } from 'video.js';
+import { getComponent, registerComponent, mergeOptions } from 'video.js';
 
 const MenuItem = getComponent('MenuItem');
 
 class SettingItem extends MenuItem {
   constructor(player, options) {
-    options = options || {
-      selectable: false
-    };
+    super(
+      player,
+      mergeOptions(
+        {
+          selectable: false
+        },
+        options
+      )
+    );
 
-    super(player, options);
-
-    this.menu = options.menu || player.SettingMenu;
+    this.menu = options.menu;
   }
 }
 

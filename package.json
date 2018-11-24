@@ -5,9 +5,9 @@
   "scripts": {
     "clean": "rimraf ./dist/*",
     "bundle": "rollup -c",
-    "dev": "NODE_ENV=dev && node server.js | rollup -c -w",
+    "dev": "export NODE_ENV=dev && node server.js | rollup -c -w",
     "start": "node server.js",
-    "build": "yarn clean && NODE_ENV=build && rollup -c"
+    "build": "yarn clean && export NODE_ENV=build && rollup -c"
   },
   "license": "Apache-2.0",
   "devDependencies": {

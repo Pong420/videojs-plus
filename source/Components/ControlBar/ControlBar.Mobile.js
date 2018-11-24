@@ -17,9 +17,9 @@ registerComponent('ControlSeparator', ControlSeparator);
 
 hook('beforesetup', (_, options) => {
   const children = ControlBar.prototype.options_.children.slice(0);
-  const index = children.indexOf('CustomControlSpacer') + 1;
+  const index = children.indexOf('CustomControlSpacer');
 
-  if (index > 0) {
+  if (index > -1) {
     ControlBar.prototype.options_.children = [
       {
         name: 'ControlSeparator',
@@ -29,7 +29,7 @@ hook('beforesetup', (_, options) => {
       {
         name: 'ControlSeparator',
         className: 'middle',
-        children: children.splice(0, index)
+        children: children.splice(0, index + 1)
       },
       {
         name: 'ControlSeparator',
