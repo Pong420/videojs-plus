@@ -7,7 +7,7 @@
 #### Usage
 
 ```html
-<link rel="stylesheet" href="videojs-plus-picture-in-picture.min.css">
+<link rel="stylesheet" href="videojs-plus-picture-in-picture.min.css" />
 
 <script src="videojs-plus.min.js"></script>
 <script src="videojs-plus-picture-in-picture.min.js"></script>
@@ -16,16 +16,16 @@
 #### API
 
 ```js
-// show Mini player
+// show mini player
 player.pictureInPicture().init();
 
-// dispose Mini player
-player.pictureInPicture().dispose();
+// dispose mini player
+player.pictureInPicture().exit();
 
-// toggle Mini player
+// toggle mini player
 player.pictureInPicture().toggle();
 
-// update position of Mini player
+// update position of mini player
 player.pictureInPicture().updatePosition({
   x: 20, // css style left
   y: 20 // css style bottom
@@ -41,12 +41,12 @@ player.pictureInPicture().updatePosition({
 
 ```js
 player.pictureInPicture({
-  wrapper: document.querySelector(".custom-pip-player-wrapper")
+  wrapper: document.querySelector('.custom-pip-player-wrapper')
 });
 ```
 
 - draggable <br>
-  You can disable draggable of MiniPlayer
+  You can disable the draggable function of MiniPlayer
 
 ```js
 player.pictureInPicture({

@@ -12,7 +12,17 @@ VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/
 
 <img src="./screenshot/electron-frameless-player.png">
 
-### How to use
+### Installation
+
+```bash
+npm install videojs-plus
+# or
+yarn add videojs-plus
+```
+
+### Usage
+
+- Basic
 
 ```html
 <html>
@@ -27,12 +37,14 @@ VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/
   <script src="http://vjs.zencdn.net/6.10.3/video.js"></script>
   <script src="videojs-plus.min.js"></script>
   <script>
-    var player = videojs("example-video");
+    var player = videojs('example-video');
   </script>
 </html>
 ```
 
 - [Vue](./guide/Vue.md)
+
+<br>
 
 ## Features
 
@@ -63,19 +75,19 @@ VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/
   For Example, you want to insert a button before `SettingMenuButton`.
 
 ```js
-const { parent, component, index } = player.findChild("SettingMenuButton")[0];
+const { parent, component, index } = player.findChild('SettingMenuButton')[0];
 parent.addChild(new Button(player), {}, index);
 
 // whithou findChild
-const ControlBar = player.getChild("ControlBar");
-const index = ControlBar.children_.indexOf("SettingMenuButton");
+const ControlBar = player.getChild('ControlBar');
+const index = ControlBar.children_.indexOf('SettingMenuButton');
 ControlBar.addChild(new Button(player), {}, index);
 
 // or
-videojs.getComponent("ControlBar").prototype.options_.children = [
+videojs.getComponent('ControlBar').prototype.options_.children = [
   //...
-  "Button",
-  "SettingMenuButton"
+  'Button',
+  'SettingMenuButton'
 ];
 ```
 
@@ -110,12 +122,6 @@ videojs.addLanguage(language, {
   Normal: "正常"
 });
 ```
-
-<br>
-
-## TODO
-
-- webpack
 
 <br>
 
