@@ -1,3 +1,4 @@
-./screenshot
-./gudie
-./examples
+# Exclude everything but the contents of the dist directory.
+**/*
+!dist/**
+!src/**

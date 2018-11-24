@@ -1,12 +1,13 @@
 {
   "name": "videojs-plus",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "An extension and skin for video.js",
   "scripts": {
+    "clean": "rimraf ./dist/*",
     "bundle": "rollup -c",
-    "dev": "export NODE_ENV=dev && node server.js | rollup -c -w",
+    "dev": "NODE_ENV=dev && node server.js | rollup -c -w",
     "start": "node server.js",
-    "build": "export NODE_ENV=build && rollup -c"
+    "build": "yarn clean && NODE_ENV=build && rollup -c"
   },
   "license": "Apache-2.0",
   "devDependencies": {
@@ -20,6 +21,7 @@
     "express": "^4.16.3",
     "lodash": "^4.17.10",
     "node-sass": "^4.9.4",
+    "rimraf": "^2.6.2",
     "rollup": "^0.67.3",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.1.0",

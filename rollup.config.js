@@ -55,7 +55,7 @@ const createEntry = ({ input, output, css = true }) => {
       scss({
         output: styles => {
           if (styles.length && css) {
-            const cssOutput = output.file.replace('.min.js', '.css');
+            const cssOutput = output.file.replace('.js', '.css');
             const parsedCSS = new CleanCSS().minify(styles);
 
             mkdirp(cssOutput.replace(/[^\/]*$/, ''));
