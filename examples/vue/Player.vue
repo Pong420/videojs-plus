@@ -16,8 +16,8 @@ require('videojs-plus/dist/videojs-plus.min.css');
 
 // require plugin here
 require('videojs-contrib-quality-levels');
-require('videojs-plus/dist/plugins/subtitles/');
-require('videojs-plus/dist/plugins/quality-hls/');
+require('videojs-plus/dist//subtitles/');
+require('videojs-plus/dist//quality-hls/');
 
 export default {
   name: 'Player',
