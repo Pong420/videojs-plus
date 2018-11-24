@@ -7,7 +7,7 @@ Just a simple plugin that create a live streaming notice on control bar and hide
 #### Usage
 
 ```js
-// remember to import the css file
+// remember to include the css file
 
 // initialize
 player.live();

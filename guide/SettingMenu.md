@@ -7,17 +7,17 @@
 #### Create an on off menu item
 
 ```js
-const SettingOnOffItem = videojs.getComponent("SettingOnOffItem");
+const SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
 
 class ToggleAnnotation extends SettingOnOffItem {
   constructor(player, options) {
     super(player, {
-      name: "ToggleAnnotation", // component name, optional
-      label: "Annotation",
-      icon: "vjs-icon-xxxx" // videojs icon classname, optional
+      name: 'ToggleAnnotation', // component name, optional
+      label: 'Annotation',
+      icon: 'vjs-icon-circle' // videojs icon classname, optional, for small screen
     });
 
-    this.addClass("vjs-setting-annotation");
+    this.addClass('vjs-setting-annotation');
 
     // enable by default
     this.update(true);
@@ -31,7 +31,7 @@ class ToggleAnnotation extends SettingOnOffItem {
 }
 
 // findChild is a extension of videojs-plus
-const SettingMenu = player.findChild("SettingMenu")[0].component;
+const SettingMenu = player.findChild('SettingMenu')[0].component;
 SettingMenu.addChild(new ToggleAnnotation(player), 0, 0);
 ```
 
@@ -45,7 +45,7 @@ class QualityMenuItem extends SettingMenuItem {
     super(player, {
       name: "QualityMenuItem", // component name, optional
       label: "Quality",
-      icon: "vjs-icon-xxxx" // videojs icon classname, optional
+      icon: "vjs-icon-hd"  // videojs icon classname, optional, for small screen
       values: [
         {
           label: "HD",
