@@ -12,4 +12,4 @@ import './Components/Menu/Menu.js';
 import './Components/PlayToggleLayer/PlayToggleLayer';
 import './Components/LoadingSpinner/LoadingSpinner.scss';
 import './Components/ContextMenu/ContextMenu';
-import './Components/Setting/SettingMenuButton';
+import './Components/SettingMenu/SettingMenuButton';

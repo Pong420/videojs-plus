@@ -11,10 +11,6 @@ class SettingMenu extends Menu {
       name: 'SettingMenu'
     });
 
-    if (!player.SettingMenu) {
-      player.SettingMenu = this;
-    }
-
     this.addClass('vjs-setting-menu');
 
     setTimeout(this.reset.bind(this), 0);
