@@ -11,11 +11,14 @@ const SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
 
 class ToggleAnnotation extends SettingOnOffItem {
   constructor(player, options) {
-    super(player, {
-      name: 'ToggleAnnotation', // component name, optional
-      label: 'Annotation',
-      icon: 'vjs-icon-circle' // videojs icon classname, optional, for small screen
-    });
+    super(
+      player,
+      Object.assign(options, {
+        name: 'ToggleAnnotation', // component name, optional
+        label: 'Annotation',
+        icon: 'vjs-icon-circle' // videojs icon classname, optional, for small screen
+      })
+    );
 
     this.addClass('vjs-setting-annotation');
 
@@ -30,41 +33,43 @@ class ToggleAnnotation extends SettingOnOffItem {
   }
 }
 
-// findChild is a extension of videojs-plus
-const SettingMenu = player.findChild('SettingMenu')[0].component;
-SettingMenu.addChild(new ToggleAnnotation(player), 0, 0);
+videojs.getComponent('SettingMenuButton').prototype.options_.entries.splice(0, 0, 'ToggleAnnotation');
+videojs.registerComponent('ToggleAnnotation', ToggleAnnotation);
 ```
 
 #### Create an optional menu item
 
 ```js
-const SettingMenuItem = videojs.getComponent("SettingMenuItem");
+const SettingMenuItem = videojs.getComponent('SettingMenuItem');
 
 class QualityMenuItem extends SettingMenuItem {
   constructor(player, options) {
-    super(player, {
-      name: "QualityMenuItem", // component name, optional
-      label: "Quality",
-      icon: "vjs-icon-hd"  // videojs icon classname, optional, for small screen
-      values: [
-        {
-          label: "HD",
-          value: 720,
-          defalut: true
-        },
-        {
-          label: "SD",
-          value: 480
-        },
-        {
-          label: "Smooth",
-          value: 240
-        },
-        "Auto" // label & value
-      ]
-    });
+    super(
+      player,
+      Object.assign(options, {
+        name: 'QualityMenuItem', // component name, optional
+        label: 'Quality',
+        icon: 'vjs-icon-hd', // videojs icon classname, optional, for small screen
+        entries: [
+          {
+            label: 'HD',
+            value: 720,
+            defalut: true
+          },
+          {
+            label: 'SD',
+            value: 480
+          },
+          {
+            label: 'Smooth',
+            value: 240
+          },
+          'Auto' // label & value
+        ]
+      })
+    );
 
-    this.addClass("vjs-setting-quality");
+    this.addClass('vjs-setting-quality');
   }
 
   update(selectedItem) {
@@ -76,12 +81,25 @@ class QualityMenuItem extends SettingMenuItem {
   }
 }
 
-// findChild is a extension of videojs-plus
-const SettingMenu = player.findChild("SettingMenu")[0].component;
-SettingMenu.addChild(new QualityMenuItem(player));
+videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityMenuItem');
+videojs.registerComponent('QualityMenuItem', QualityMenuItem);
 ```
 
-If your new menu item is wider then default, you should override the default width
+#### Note
+
+- above example script should load before initialize player, otherwise you should assgin `menu` your self. For example
+
+```js
+const { component: SettingMenu } = player.findChild('SettingMenu')[0];
+SettingMenu.addChild(
+  new CustomMenuItem(player, {
+    menu: SettingMenu
+    // optionsSettingMenu
+  })
+);
+```
+
+- If your new menu item is wider then default, you should override the default width
 
 ```css
 .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-setting-menu-item {
