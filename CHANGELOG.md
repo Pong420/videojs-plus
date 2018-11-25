@@ -1,3 +1,14 @@
+# 1.3.0
+
+### Update
+
+- update setting menu docs
+
+### Bug Fixes
+
+- fix setting menu
+- fix hls quality item
+
 # 1.2.0
 
 ### Update
