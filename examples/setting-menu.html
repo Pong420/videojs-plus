@@ -21,26 +21,21 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script src="https://vjs.zencdn.net/6.10.3/video.js"></script>
   <script src="../dist/videojs-plus.min.js"></script>
-  <!-- <script type="text/babel"> -->
-  <script>
-    const player = videojs('example-video', {
-      // same as videojs config
-      aspectRatio: '16:9',
-      mobileView: false
-    });
-
-    // findChild is a extension of videojs-plus
-    const SettingMenu = player.findChild('SettingMenu')[0].component;
-
+  <script type="text/babel">
     const SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
 
     class ToggleAnnotation extends SettingOnOffItem {
       constructor(player, options) {
-        super(player, {
-          name: 'ToggleAnnotation', // component name, optional
-          label: 'Annotation',
-          icon: 'vjs-icon-circle' // videojs icon classname, optional, for small screen
-        });
+        super(
+          player,
+          Object.assign(options, {
+            name: 'ToggleAnnotation', // component name, optional
+            label: 'Annotation',
+            icon: 'vjs-icon-circle' // videojs icon classname, optional, for small screen
+          })
+        );
+
+        this.addClass('vjs-setting-annotation');
 
         // enable by default
         this.update(true);
@@ -53,33 +48,37 @@
       }
     }
 
-    SettingMenu.addChild(new ToggleAnnotation(player), 0, 0);
+    videojs.getComponent('SettingMenuButton').prototype.options_.entries.splice(0, 0, 'ToggleAnnotation');
+    videojs.registerComponent('ToggleAnnotation', ToggleAnnotation);
 
     const SettingMenuItem = videojs.getComponent('SettingMenuItem');
 
     class QualityMenuItem extends SettingMenuItem {
       constructor(player, options) {
-        super(player, {
-          name: 'QualityMenuItem', // component name, optional
-          label: 'Quality',
-          icon: 'vjs-icon-hd',  // videojs icon classname, optional, for small screen
-          entries: [
-            {
-              label: 'HD',
-              value: 720,
-              defalut: true
-            },
-            {
-              label: 'SD',
-              value: 480
-            },
-            {
-              label: 'Smooth',
-              value: 240
-            },
-            'Auto' // label & value
-          ]
-        });
+        super(
+          player,
+          Object.assign(options, {
+            name: 'QualityMenuItem', // component name, optional
+            label: 'Quality',
+            icon: 'vjs-icon-hd', // videojs icon classname, optional, for small screen
+            entries: [
+              {
+                label: 'HD',
+                value: 720,
+                defalut: true
+              },
+              {
+                label: 'SD',
+                value: 480
+              },
+              {
+                label: 'Smooth',
+                value: 240
+              },
+              'Auto' // label & value
+            ]
+          })
+        );
 
         this.addClass('vjs-setting-quality');
       }
@@ -93,6 +92,12 @@
       }
     }
 
-    SettingMenu.addChild(new QualityMenuItem(player));
+    videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityMenuItem');
+    videojs.registerComponent('QualityMenuItem', QualityMenuItem);
+
+    const player = videojs('example-video', {
+      // same as videojs config
+      aspectRatio: '16:9'
+    });
   </script>
 </html>
