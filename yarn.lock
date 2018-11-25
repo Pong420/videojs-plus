@@ -3844,9 +3844,9 @@ videojs-font@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/videojs-font/-/videojs-font-3.1.0.tgz#ac33be9b517fe19299f61cccd2b3c7d75a1c6960"
 
-"videojs-plus-font@git://github.com/Pong420/font#8254e0d250eeb0263c3b6269dc898a0ab1d3890b":
+"videojs-plus-font@git://github.com/Pong420/font#af50d0ec9e9a604d0ae37043d6d1d9678e62314c":
   version "3.1.0"
-  resolved "git://github.com/Pong420/font#8254e0d250eeb0263c3b6269dc898a0ab1d3890b"
+  resolved "git://github.com/Pong420/font#af50d0ec9e9a604d0ae37043d6d1d9678e62314c"
 
 videojs-vtt.js@0.14.1:
   version "0.14.1"

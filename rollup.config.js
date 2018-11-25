@@ -96,6 +96,14 @@ const pluginEntries = fs.readdirSync('source/Plugin').map(pluginName => {
     .join('-')
     .toLowerCase();
 
+  console.log({
+    input: `source/Plugin/${pluginName}/${pluginName}.js`,
+    output: {
+      file: `dist/${parsedName}/videojs-plus.${parsedName}.min.js`,
+      format: 'iife'
+    }
+  });
+
   return createEntry({
     input: `source/Plugin/${pluginName}/${pluginName}.js`,
     output: {
