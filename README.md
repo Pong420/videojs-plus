@@ -1,8 +1,8 @@
+:warning: This project is under development and not ready for proudction.
+
 ## VideoJS Plus
 
 VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/video.js). <br>
-
-:warning: This project is under development and not ready for proudction.
 
 ### Base Usage
 
@@ -102,7 +102,8 @@ videojs.getComponent('ControlBar').prototype.options_.children = [
 - [Playlist](./guide/plugins/Playlist.md)
 - [Subtitles](./guide/plugins/Subtitles.md)
 - [Quality](./guide/plugins/Quality.md)
-- [Audio](./guide/plugins/Audio.md)
+- [Quality (HLS)](./guide/plugins/QualityHls.md)
+- [Audio (HLS)](./guide/plugins/Audio.md)
 - [FullWindow Toggle](./guide/plugins/FullWindow.md)
 - [Picture In Picture](./guide/plugins/PictureInPicture.md) ( Experimental )
 - [Live](./guide/plugins/Live.md) ( Style plugins for live streaming )
@@ -131,8 +132,9 @@ videojs.addLanguage(language, {
 
 ## TODO
 
-- review setting menu
-- update setting menu related docs
+- Review setting menu
+- Update setting menu related docs
+- Limit Hls quality options
 
 <br>
 
