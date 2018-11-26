@@ -1,19 +1,17 @@
 ## Quality
 
-There are two type of quality picker
-
-1. `videojs-plus-quality.min.js`, use different video source
+This is a plugin for switch between different video quality by different video source
 
 #### Usage
 
 ```js
 const quality = [
   {
-    label: "1080p",
+    label: '1080p',
     sources: [
       {
-        type: "video/mp4",
-        src: "video-hd.mp4"
+        type: 'video/mp4',
+        src: 'video-hd.mp4'
       }
     ]
   }
@@ -21,7 +19,7 @@ const quality = [
 ];
 
 // set quality in options
-const player = videojs("example-video", {
+const player = videojs('example-video', {
   quality,
   defaultQualityLevel: 0 // optiontal, default 0
 });
@@ -42,51 +40,11 @@ player.quality.index();
 player.quality.values;
 
 // events
-player.on("quality", function() {
-  console.log("quality setup");
+player.on('quality', () => {
+  console.log('quality setup');
 });
 
-player.on("qualitychange", function() {
-  console.log("quality changed");
-});
-```
-
-2. `videojs-plus-quality-hls.min.js` HLS playlists. <br>
-   You also need to include [videojs-contrib-quality-levels](https://github.com/videojs/videojs-contrib-quality-levels)
-
-```js
-const player = videojs("example-video", {});
-
-player.src({
-  src: "playlists.m3u8",
-  type: "application/x-mpegurl"
-});
-
-// get all quality levels, for more details refer to videojs-contrib-quality-levels
-player.qualityLevels();
-
-// event
-player.on("quality", function() {
-  console.log("quality setup");
-});
-
-player.on("qualitychange", function() {
-  console.log("quality changed");
-});
-
-// `before-quality-setup` only trigger on HLS version
-// if your hls manifest do not contain `height`,
-// you will need to assign it your self
-player.on("before-quality-setup", function(_, { levels }) {
-  // levels === `player.qualityLevels()`
-  levels.forEach((lv, index) => {
-    const values = [360, 480, 720, 1080];
-    lv.height = values[index];
-  });
-});
-
-// To change the label of HLS verison, you could
-videojs.addLanguage("zh-hk", {
-  "720p": "HD"
+player.on('qualitychange', () => {
+  console.log('quality changed');
 });
 ```
