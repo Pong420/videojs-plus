@@ -1,6 +1,6 @@
 ## Live Streaming
 
-Just a simple plugin that create a live streaming notice on control bar and hide the progress bar
+Just a simple style plugin that create a live streaming notice on control bar and hide the progress bar
 
 <img src="../../screenshot/live-streaming.png">
 

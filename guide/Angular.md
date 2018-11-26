@@ -16,7 +16,7 @@ resolve: {
 
 2. Then, create a player component and you could refer to files in `examples/angular`
 
-3. Finally, you could use it in other components
+3. Finally, use it in other components
 
 ```html
 <app-player (playerInit)="onPlayerInit($event)" [options]="playerOptions">
@@ -44,6 +44,10 @@ export class VideoComponent {
     player.src({
       src: '...',
       type: 'video/mp4'
+    });
+
+    player.on('play', () => {
+      console.log('player play');
     });
   }
 }

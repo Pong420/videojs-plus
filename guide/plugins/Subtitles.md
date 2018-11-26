@@ -1,12 +1,8 @@
 ## Subtitles
 
-This plugin is wrapper of [VideoJS TextTrack API](https://docs.videojs.com/docs/guides/text-tracks.html).<br>
+This plugin is a wrapper of [VideoJS TextTrack API](https://docs.videojs.com/docs/guides/text-tracks.html).<br>
 Also create a [setting menu item](../SettingMenu.md) for subtitles selection. <br>
 Currently, only support kind `subtitles`, not sure `caption` should also included or not
-
-#### Note
-
-VideoJS only support textrack with `vtt` format, to load `srt`
 
 #### Usage
 
@@ -30,11 +26,14 @@ const player = videojs('example-video', {
 // or
 player.subtitles().load(subtitles);
 
-// remove subtitles
+// remove all subtitles
 player.subtitles().remove();
 
 // switch subtitle
 player.subtitles().pick(2);
+
+// close subtitle
+player.subtitles().pick(-1);
 
 // get current subtitles
 player.subtitles().track;
@@ -42,13 +41,39 @@ player.subtitles().track;
 // get all subtitles
 player.subtitles().values();
 
-// events
-player.on('subtitles', function() {
+player.on('subtitles', () => {
   console.log('subtitles setup');
 });
 
 // subtitlechange no "s"
-player.on('subtitlechange', function() {
+player.on('subtitlechange', () => {
   console.log('subtitles changed');
 });
+```
+
+#### Note
+
+- HLS In-Manifest WebVTT subtitles may not supported since i have not resources for testing
+
+- VideoJS only support textrack with `vtt` format. To load `srt` in videojs would be to convert the SRT to VTT. Then create a blob URL with `URL.createObjectURL()`. Inspired by this [comment](https://github.com/videojs/video.js/issues/4822#issuecomment-351939054) and here is a working example with [imshaikot/srt-webvtt
+  ](https://github.com/imshaikot/srt-webvtt).
+
+```js
+import WebVTTConverter from 'srt-webvtt/index';
+
+const getSubtitle = async () => {
+  const srt_url = 'https://www.example.com/srt_file.srt';
+  const response = await axios.get(url, {
+    responseType: 'blob'
+  });
+  const vttURL = await new WebVTTConverter(response.data).getURL();
+
+  return {
+    default: true,
+    kind: 'subtitles',
+    srclang: 'zh-HK',
+    label: '繁體中文',
+    src: vttURL
+  };
+};
 ```
