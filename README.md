@@ -2,6 +2,8 @@
 
 VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/video.js). <br>
 
+:warning: This project is under development and not ready for proudction.
+
 ### Base Usage
 
 [Demo](https://pong420.github.io/videojs-plus/examples/)
@@ -124,6 +126,13 @@ videojs.addLanguage(language, {
   Normal: "正常"
 });
 ```
+
+<br>
+
+## TODO
+
+- review setting menu
+- update setting menu related docs
 
 <br>
 
