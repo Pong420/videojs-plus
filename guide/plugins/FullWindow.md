@@ -1,6 +1,6 @@
 ## Full Window
 
-Since iOS native fullscreen cannot be overrided, you my want to use full window instead. <br>
+Since iOS native fullscreen cannot be overrided and you may want to use full window instead. <br>
 Just include the plugin and the fullscreen button will be replaced by full window button.
 
 `player.isFullscreen()` and `fullscreenchange` event will also work
@@ -12,7 +12,7 @@ Just include the plugin and the fullscreen button will be replaced by full windo
 ```js
 // remember to import the css file
 
-const player = videojs("example-video", {
+const player = videojs('example-video', {
   fullwindow: true
 });
 ```
