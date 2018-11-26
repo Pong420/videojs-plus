@@ -99,6 +99,7 @@ videojs.getComponent('ControlBar').prototype.options_.children = [
 - [Playlist](./guide/plugins/Playlist.md)
 - [Subtitles](./guide/plugins/Subtitles.md)
 - [Quality](./guide/plugins/Quality.md)
+- [Audio](./guide/plugins/Audio.md)
 - [FullWindow Toggle](./guide/plugins/FullWindow.md)
 - [Picture In Picture](./guide/plugins/PictureInPicture.md) ( Experimental )
 - [Live](./guide/plugins/Live.md) ( Style plugins for live streaming )
