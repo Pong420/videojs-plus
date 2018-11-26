@@ -34,6 +34,6 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0",
     "videojs-contrib-quality-levels": "^2.0.9",
-    "videojs-plus-font": "git://github.com/Pong420/font#8254e0d250eeb0263c3b6269dc898a0ab1d3890b"
+    "videojs-plus-font": "git://github.com/Pong420/font#af50d0ec9e9a604d0ae37043d6d1d9678e62314c"
   }
 }
