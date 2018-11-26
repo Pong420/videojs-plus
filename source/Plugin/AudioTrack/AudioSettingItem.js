@@ -60,7 +60,8 @@ class AudioSettingItem extends SettingMenuItem {
         kind,
         label,
         language,
-        index
+        index,
+        track
       };
     });
 
