@@ -43,6 +43,7 @@ yarn add videojs-plus
 ```
 
 - [Vue](./guide/Vue.md)
+- [Angular](./guide/Angular.md)
 
 <br>
 
