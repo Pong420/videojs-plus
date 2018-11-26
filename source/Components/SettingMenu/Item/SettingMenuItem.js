@@ -8,12 +8,14 @@ import getMenuDimension from '../MenuDimension';
 function parseEntries(entries) {
   let currentValue;
 
-  entries = entries.map(data => {
+  entries = entries.map((data, index) => {
     const isDefault = typeof data.defalut !== 'undefined' ? data.defalut : false;
     const entry = {
+      ...data,
       label: typeof data.label !== 'undefined' ? data.label : data,
       value: typeof data.value !== 'undefined' ? data.value : data,
-      defalut: isDefault
+      defalut: isDefault,
+      index
     };
 
     if (isDefault) {
