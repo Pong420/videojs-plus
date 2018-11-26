@@ -1,8 +1,5 @@
 <template>
   <div class="player">
-    <player-header>
-      <slot name="header" />
-    </player-header>
     <video></video>
     <slot />
   </div>
@@ -16,8 +13,9 @@ require('videojs-plus/dist/videojs-plus.min.css');
 
 // require plugin here
 require('videojs-contrib-quality-levels');
-require('videojs-plus/dist//subtitles/');
-require('videojs-plus/dist//quality-hls/');
+require('videojs-plus/dist/subtitles/videojs-plus.subtitles.min.js');
+require('videojs-plus/dist/subtitles/videojs-plus.subtitles.min.css');
+require('videojs-plus/dist/quality-hls/videojs-plus.quality-hls.min.js');
 
 export default {
   name: 'Player',
@@ -32,6 +30,7 @@ export default {
     };
   },
   watch: {
+    // daynamic change video source
     'options.videoSource': {
       handler(videoSource, oldVideoSource) {
         if (videoSource && this.player) {
@@ -42,6 +41,7 @@ export default {
       },
       immediate: true
     },
+    // daynamic change subtitles
     'options.subtitles'(subtitles) {
       if (subtitles && this.player) {
         this.player.subtitles().load(subtitles);
@@ -89,21 +89,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.player,
-.video-js {
-  width: 100%;
-  height: 100%;
-}
-
-.video-js {
-  @media (min-width: 1440px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 1680px) {
-    font-size: 20px;
-  }
-}
-</style>
