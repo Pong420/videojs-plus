@@ -1,8 +1,8 @@
 ## Vue
 
-Copy the [Player.vue](../examples/vue/Player.vue);
+Refer to [Player.vue](../examples/vue/Player.vue);
 
-#### Usage
+## Usage
 
 ```html
 <template>
@@ -23,15 +23,14 @@ export default {
   computed: {
     videoSource() {
       return {
-        src: "video source url",
+        src: "video/source/url.mp4",
         type: "video/mp4"
       }
     },
     playerOptions() {
       return {
-        // player options
         // ...
-        videoSource: this.videoSource();
+        videoSource: this.videoSource;
       };
     }
   },
