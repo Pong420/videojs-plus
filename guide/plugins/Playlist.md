@@ -10,7 +10,7 @@ The playlist UI at the right hand side need to created by yourself
 #### Usage
 
 ```html
-<link rel="stylesheet" href="videojs-plus-playlist.min.css">
+<link rel="stylesheet" href="videojs-plus-playlist.min.css" />
 
 <script src="videojs-plus.min.js"></script>
 <script src="videojs-plus-playlist.min.js"></script>
@@ -21,18 +21,18 @@ const videos = [
   {
     source: [
       {
-        src: "some.mp4",
-        type: "video/mp4"
+        src: 'some.mp4',
+        type: 'video/mp4'
       }
     ],
-    title: "some title",
-    poster: "some poster"
+    title: 'some title',
+    poster: 'some poster'
   }
   //....
 ];
 
 // set playlist in options
-const player = videojs("example-video", {
+const player = videojs('example-video', {
   playlist: videos
 });
 
@@ -55,11 +55,11 @@ player.playlist.values;
 player.playlist.loop(false);
 
 // events
-player.on("playlist", function() {
-  console.log("playlist setup");
+player.on('playlist', () => {
+  console.log('playlist setup');
 });
 
-player.on("playlistchange", function() {
-  console.log("playlist changed");
+player.on('playlistchange', () => {
+  console.log('playlist changed');
 });
 ```
