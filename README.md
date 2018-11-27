@@ -132,9 +132,7 @@ videojs.addLanguage(language, {
 
 ## TODO
 
-- Review setting menu
-- Update setting menu related docs
-- Limit Hls quality options
+- Allow user easier to handle the click action if `SettingSubMenuitem`
 
 <br>
 

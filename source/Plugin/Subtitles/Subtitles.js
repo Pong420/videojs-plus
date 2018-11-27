@@ -12,7 +12,7 @@ class subtitles extends getPlugin('plugin') {
 
     let timeout;
 
-    player.textTracks().on('change', () => {
+    const handleSubtitleChangeEvent = () => {
       clearTimeout(timeout);
 
       const subtitles = this.values();
@@ -31,6 +31,11 @@ class subtitles extends getPlugin('plugin') {
           });
         }
       }, 10);
+    };
+
+    player.textTracks().on('change', handleSubtitleChangeEvent);
+    player.on('dispose', () => {
+      player.textTracks().off('change', handleSubtitleChangeEvent);
     });
   }
 
@@ -70,26 +75,6 @@ class subtitles extends getPlugin('plugin') {
           trackEl.track.mode = 'showing';
         }
       });
-
-      const SubtitlesMenuItem = player.findChild('SubtitlesMenuItem')[0].component;
-
-      SubtitlesMenuItem.setEntries(
-        subtitles
-          .map(({ label, default: default_ }, index) => ({
-            label,
-            value: index,
-            defalut: default_
-          }))
-          .concat([
-            {
-              label: 'Close Subtitles',
-              value: -1,
-              defalut: false
-            }
-          ])
-      );
-
-      SubtitlesMenuItem.show();
 
       player.trigger('subtitles', subtitles);
     }

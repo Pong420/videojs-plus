@@ -6,21 +6,19 @@
 
 :warning: below example script could be outdated, visit the source code of above demo will be better
 
-#### Create an on off menu it
+#### Create an on off menu item
 
 ```js
 const SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
 
 class ToggleAnnotation extends SettingOnOffItem {
   constructor(player, options) {
-    super(
-      player,
-      Object.assign(options, {
-        name: 'ToggleAnnotation', // component name, optional
-        label: 'Annotation',
-        icon: 'vjs-icon-circle' // videojs icon classname, optional, for small screen
-      })
-    );
+    super(player, {
+      ...options, // you must assgin the options
+      name: 'ToggleAnnotation', // component name, optional
+      label: 'Annotation',
+      icon: 'vjs-icon-circle' // videojs icon classname, optional, for small screen
+    });
 
     this.addClass('vjs-setting-annotation');
 
@@ -49,36 +47,34 @@ const SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
 class QualityMenuItem extends SettingOptionItem {
   constructor(player, options) {
-    super(
-      player,
-      Object.assign(options, {
-        name: 'QualityMenuItem', // component name, optional
-        label: 'Quality',
-        icon: 'vjs-icon-hd', // videojs icon classname, optional, for small screen
-        entries: [
-          {
-            label: 'HD',
-            value: 720,
-            defalut: true
-          },
-          {
-            label: 'SD',
-            value: 480
-          },
-          {
-            label: 'Smooth',
-            value: 240
-          },
-          'Auto' // label & value
-        ]
-      })
-    );
+    super(player, {
+      ...options, // you must assgin the options
+      name: 'QualityMenuItem', // component name, optional
+      label: 'Quality',
+      icon: 'vjs-icon-hd', // videojs icon classname, optional, for small screen
+      entries: [
+        {
+          label: 'HD',
+          value: 720,
+          defalut: true
+        },
+        {
+          label: 'SD',
+          value: 480
+        },
+        {
+          label: 'Smooth',
+          value: 240
+        },
+        'Auto' // label & value
+      ]
+    });
 
     this.addClass('vjs-setting-quality');
   }
 
   /**
-   *  @param {Object} selectedItem - an object must contains label and value attributes
+   *  @param {Object} selectedItem - an object that must contains label and value attributes
    *                                 default return an videojs component {SettingSubMenuItem}
    */
   update(selectedItem) {

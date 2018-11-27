@@ -4,17 +4,35 @@ const SettingOptionItem = getComponent('SettingOptionItem');
 
 class SubtitleSettingMenuItem extends SettingOptionItem {
   constructor(player, options) {
-    super(
-      player,
-      Object.assign(options, {
-        name: 'SubtitleSettingMenuItem',
-        label: 'Subtitles',
-        icon: 'vjs-icon-subtitles',
-        entries: options.subtitles || []
-      })
-    );
+    super(player, {
+      ...options,
+      name: 'SubtitleSettingMenuItem',
+      label: 'Subtitles',
+      icon: 'vjs-icon-subtitles',
+      entries: player.options_.subtitles || []
+    });
 
     this.addClass('vjs-setting-subtitles');
+
+    player.on('subtitles', (_, subtitles) => {
+      this.setEntries(
+        subtitles
+          .map(({ label, default: default_ }, index) => ({
+            label,
+            value: index,
+            defalut: default_
+          }))
+          .concat([
+            {
+              label: 'Close Subtitles',
+              value: -1,
+              defalut: false
+            }
+          ])
+      );
+
+      this.show();
+    });
   }
 
   update(selectedItem) {

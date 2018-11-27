@@ -4,15 +4,12 @@ const SettingOptionItem = getComponent('SettingOptionItem');
 
 class QualityHlsSettingItem extends SettingOptionItem {
   constructor(player, options) {
-    super(
-      player,
-      Object.assign(options, {
-        name: 'QualityHlsSettingItem',
-        label: 'Quality',
-        icon: 'vjs-icon-hd',
-        entries: options.quality || []
-      })
-    );
+    super(player, {
+      ...options,
+      name: 'QualityHlsSettingItem',
+      label: 'Quality',
+      icon: 'vjs-icon-hd'
+    });
 
     this.addClass('vjs-setting-quality');
 
@@ -74,9 +71,10 @@ class QualityHlsSettingItem extends SettingOptionItem {
       });
 
     this.setEntries(entries);
+
     this.show();
 
-    this.player_.trigger('quality');
+    this.player_.trigger('qualities', this.levels);
   }
 
   update(selectedItem) {
@@ -92,9 +90,12 @@ class QualityHlsSettingItem extends SettingOptionItem {
       'qualitychange',
       this.entries.reduce((acc, entry, index) => {
         if (entry.value === value) {
-          return {
+          const level = this.levels.find(v => v.height === value) || {};
+
+          acc = {
             index,
-            ...entry
+            ...entry,
+            ...level
           };
         }
 

@@ -25,7 +25,11 @@ const player = videojs('example-video', {
 
 // or
 player.subtitles().load(subtitles);
+```
 
+#### API and Event
+
+```js
 // remove all subtitles
 player.subtitles().remove();
 
@@ -41,12 +45,16 @@ player.subtitles().track;
 // get all subtitles
 player.subtitles().values();
 
-player.on('subtitles', () => {
-  console.log('subtitles setup');
+player.on('subtitles', subtitles => {
+  console.log('subtitles setup', subtitles);
 });
 
-// subtitlechange no "s"
-player.on('subtitlechange', () => {
+/**
+ * @param {Object} selected - {label, index}
+ *
+ * subtitlechange no "s"
+ */
+player.on('subtitlechange', selected => {
   console.log('subtitles changed');
 });
 ```
@@ -55,7 +63,7 @@ player.on('subtitlechange', () => {
 
 - HLS In-Manifest WebVTT subtitles may not supported since i have not resources for testing
 
-- VideoJS only support textrack with `vtt` format. To load `srt` in videojs would be to convert the SRT to VTT. Then create a blob URL with `URL.createObjectURL()`. Inspired by this [comment](https://github.com/videojs/video.js/issues/4822#issuecomment-351939054) and here is a working example with [imshaikot/srt-webvtt
+- VideoJS only support `vtt` format. Here is one of the method to load `srt` in videojs. Inspired by this [comment](https://github.com/videojs/video.js/issues/4822#issuecomment-351939054) and here is a working example with [imshaikot/srt-webvtt
   ](https://github.com/imshaikot/srt-webvtt).
 
 ```js
