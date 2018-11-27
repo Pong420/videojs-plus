@@ -6,38 +6,39 @@ import SettingSubOptionItem from './SettingSubOptionItem.js';
 import getMenuDimension from '../MenuDimension';
 
 function parseEntries(entries) {
-  let currentValue;
+  let selected;
 
   entries = entries.map((data, index) => {
-    const isDefault = typeof data.defalut !== 'undefined' ? data.defalut : false;
-    const entry = {
-      ...data,
-      label: typeof data.label !== 'undefined' ? data.label : data,
-      value: typeof data.value !== 'undefined' ? data.value : data,
-      defalut: isDefault,
+    const { defalut: isDefault, label, value } = data;
+    const parsed = {
+      defalut: typeof isDefault !== 'undefined' ? isDefault : false,
+      label: typeof label !== 'undefined' ? label : data,
+      value: typeof value !== 'undefined' ? value : data,
       index
     };
 
+    const entry = Object.assign(data, parsed);
+
     if (isDefault) {
-      currentValue = entry;
+      selected = entry;
     }
 
     return entry;
   });
 
-  if (!currentValue) {
-    currentValue = entries[0];
+  if (!selected) {
+    selected = entries[0];
   }
 
   return {
     entries,
-    currentValue
+    selected
   };
 }
 
 class SettingOptionItem extends SettingMenuItem {
   constructor(player, options = {}) {
-    super(player, Object.assign(options, parseEntries(options.entries)));
+    super(player, options);
 
     this.setEntries(this.options_.entries);
 
@@ -47,7 +48,7 @@ class SettingOptionItem extends SettingMenuItem {
   }
 
   createEl() {
-    const { icon, label, currentValue } = this.options_;
+    const { icon, label } = this.options_;
     const el = dom.createEl('li', {
       className: 'vjs-menu-item vjs-setting-menu-item',
       innerHTML: `
@@ -57,25 +58,19 @@ class SettingOptionItem extends SettingMenuItem {
       `
     });
 
-    this.currentValueEl = dom.createEl('div', {
-      className: 'vjs-setting-menu-value',
-      innerHTML: this.localize(currentValue ? currentValue.label : '')
+    this.selectedValueEl = dom.createEl('div', {
+      className: 'vjs-setting-menu-value'
     });
 
-    el.appendChild(this.currentValueEl);
+    el.appendChild(this.selectedValueEl);
 
     return el;
   }
 
   setEntries(entries_) {
-    const { entries, currentValue } = parseEntries(entries_);
+    Object.assign(this, parseEntries(entries_));
 
-    this.entries = entries;
-    this.currentValue = currentValue;
-
-    if (currentValue) {
-      this.currentValueEl.innerHTML = this.localize(currentValue.label);
-    }
+    this.updateSelectedValue();
 
     this.subMenuItems = this.entries.map(({ label, value }) => {
       return new SettingSubOptionItem(this.player_, {
@@ -104,12 +99,12 @@ class SettingOptionItem extends SettingMenuItem {
   }
 
   update({ label, value }) {
-    this.currentValue = {
+    this.selected = {
       label,
       value
     };
 
-    this.currentValueEl.innerHTML = this.localize(label);
+    this.updateSelectedValue();
 
     this.subMenuItems.forEach(function(item) {
       item.update && item.update();
@@ -117,6 +112,10 @@ class SettingOptionItem extends SettingMenuItem {
 
     // this.menu.menuButton_.unpressButton()
     this.menu.restore();
+  }
+
+  updateSelectedValue() {
+    this.selectedValueEl.innerHTML = this.localize(this.selected.label);
   }
 
   show() {
