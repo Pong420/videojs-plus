@@ -1,13 +1,13 @@
 import { getComponent, registerComponent } from 'video.js';
 
-const SettingMenuItem = getComponent('SettingMenuItem');
+const SettingOptionalItem = getComponent('SettingOptionalItem');
 
-class SubtitlesMenuItem extends SettingMenuItem {
+class SubtitleSettingMenuItem extends SettingOptionalItem {
   constructor(player, options) {
     super(
       player,
       Object.assign(options, {
-        name: 'SubtitlesMenuItem',
+        name: 'SubtitleSettingMenuItem',
         label: 'Subtitles',
         icon: 'vjs-icon-subtitles',
         entries: options.subtitles || []
@@ -24,8 +24,8 @@ class SubtitlesMenuItem extends SettingMenuItem {
   }
 }
 
-getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitlesMenuItem');
+getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
 
-registerComponent('SubtitlesMenuItem', SubtitlesMenuItem);
+registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
 
-export default SubtitlesMenuItem;
+export default SubtitleSettingMenuItem;

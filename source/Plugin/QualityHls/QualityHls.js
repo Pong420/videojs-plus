@@ -1,1 +1,1 @@
-import './QualityHlsItem';
+import './QualityHlsSettingItem';
