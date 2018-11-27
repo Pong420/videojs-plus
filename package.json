@@ -1,6 +1,6 @@
 {
   "name": "videojs-plus",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "An extension and skin for video.js",
   "scripts": {
     "clean": "rimraf ./dist/*",
