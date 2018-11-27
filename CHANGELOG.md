@@ -1,3 +1,18 @@
+# 1.4.0
+
+### Update
+
+- Add Hls audio plugin
+- Sync naming of all setting menu item
+
+### Bug Fixes
+
+- Fix the life cylce of setting menu item related plugin
+
+### Documentation
+
+- Review all markdown docs
+
 # 1.3.0
 
 ### Update
