@@ -11,13 +11,16 @@ class ToggleAutoPlayNext extends SettingOnOffItem {
       icon: 'vjs-icon-next-item'
     });
 
-    this.menu = options.menu;
     this.updateVisibility();
     this.addClass('vjs-setting-autoplay');
 
     player.on('playlist', () => {
       this.updateVisibility();
       this.update(player.playlist.autoPlayNext_);
+    });
+
+    player.on('autoplaynext', (_, active) => {
+      this.update(active);
     });
   }
 
@@ -34,7 +37,11 @@ class ToggleAutoPlayNext extends SettingOnOffItem {
   update(active) {
     super.update(active);
 
-    this.player_.playlist.autoPlayNext(this.active);
+    const { playlist } = this.player_;
+
+    if (playlist.autoPlayNext_ !== this.active) {
+      this.player_.playlist.autoPlayNext(this.active);
+    }
   }
 }
 

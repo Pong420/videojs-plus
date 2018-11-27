@@ -1,13 +1,13 @@
 import { hook, registerPlugin } from 'video.js';
-
 import List from '../../Utils/List';
-import './QualityItem';
+
+import './QualitySettingItem';
 
 class Quality extends List {
   constructor(player, array, defaultQualityLevel = 0) {
     super(array, defaultQualityLevel);
 
-    this.player = player;
+    this.player_ = player;
 
     this.pick(defaultQualityLevel, true);
   }
@@ -17,7 +17,7 @@ class Quality extends List {
       this.index(index);
     }
 
-    const player = this.player;
+    const player = this.player_;
     const current = this.current();
     const cachedCurrentTime = player.ended() ? 0 : player.currentTime();
 
@@ -33,40 +33,29 @@ class Quality extends List {
 
     player.src(current.sources);
 
-    player.trigger(
-      'qualitychange',
-      Object.assign(current, {
-        index: this.index()
-      })
-    );
+    player.trigger('qualitychange', {
+      ...current,
+      index: this.index()
+    });
   }
 }
 
-const setQuality = function(quality, defaultQualityLevel = 0) {
+const setQualities = function(qualities, defaultQualityLevel) {
   const player = this.player_;
-  const QualityItem = player.findChild('QualityItem')[0].component;
 
-  player.quality = new Quality(player, quality, defaultQualityLevel);
+  player.qualities = new Quality(player, qualities, defaultQualityLevel);
 
-  QualityItem.setEntries(
-    quality.map(({ label, default: default_ }, index) => ({
-      label,
-      value: index,
-      defalut: default_
-    }))
-  );
-
-  QualityItem.show();
-
-  player.trigger('quality');
+  player.trigger('quality', qualities);
 };
 
-registerPlugin('setQuality', setQuality);
+registerPlugin('setQualities', setQualities);
 
 hook('setup', vjsPlayer => {
-  const { quality, defaultQualityLevel } = vjsPlayer.options_;
+  const { qualities } = vjsPlayer.options_;
 
-  if (quality && quality.length) {
-    vjsPlayer.setQuality(quality, defaultQualityLevel);
+  if (qualities && qualities.length) {
+    const defaultQualityLevel = qualities.findIndex(v => v.default);
+
+    vjsPlayer.setQualities(qualities, defaultQualityLevel);
   }
 });

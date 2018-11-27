@@ -12,7 +12,7 @@ class PlayList extends List {
   constructor(player, array, startIndex = 0) {
     super(array, startIndex);
 
-    this.player = player;
+    this.player_ = player;
 
     this.loadPoster_ = true;
 
@@ -30,6 +30,8 @@ class PlayList extends List {
     } else {
       return this.autoPlayNext_;
     }
+
+    this.player_.trigger('autoplaynext', this.autoPlayNext_);
   }
 
   play(index) {
@@ -39,7 +41,7 @@ class PlayList extends List {
 
     const current = this.current();
     const { poster, sources, title } = current;
-    const player = this.player;
+    const player = this.player_;
     const addPoster = () => {
       player.poster(poster || '');
     };
@@ -72,26 +74,27 @@ class PlayList extends List {
     player.src(sources);
     player.title(title || '');
 
-    player.trigger(
-      'playlistchange',
-      Object.assign(this.current(), {
-        index: this.index()
-      })
-    );
+    player.trigger('playlistchange', {
+      ...current,
+      index: this.index()
+    });
   }
 }
 
-registerPlugin('setPlayList', function(playlist) {
+registerPlugin('setPlayList', function(playlist, startIndex) {
   const player = this.player_;
 
-  player.playlist = new PlayList(player, playlist);
-  player.trigger('playlist');
+  player.playlist = new PlayList(player, playlist, startIndex);
+
+  player.trigger('playlist', playlist);
 });
 
 hook('setup', vjsPlayer => {
-  const playlist = vjsPlayer.options_.playlist || [];
+  const { playlist } = vjsPlayer.options_;
 
-  if (playlist.length) {
-    vjsPlayer.setPlayList(playlist);
+  if (playlist && playlist.length) {
+    const startIndex = playlist.findIndex(v => v.default);
+
+    vjsPlayer.setPlayList(playlist, startIndex);
   }
 });

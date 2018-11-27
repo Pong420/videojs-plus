@@ -1,8 +1,8 @@
 import { registerComponent } from 'video.js';
 
-import SettingItem from './SettingItem.js';
+import SettingMenuItem from './SettingMenuItem.js';
 
-class SettingSubMenuTitle extends SettingItem {
+class SettingSubOptionTitle extends SettingMenuItem {
   constructor(player, options) {
     super(player, options);
 
@@ -16,6 +16,6 @@ class SettingSubMenuTitle extends SettingItem {
   }
 }
 
-registerComponent('SettingSubMenuTitle', SettingSubMenuTitle);
+registerComponent('SettingSubOptionTitle', SettingSubOptionTitle);
 
-export default SettingSubMenuTitle;
+export default SettingSubOptionTitle;

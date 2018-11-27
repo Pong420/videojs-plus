@@ -1,5 +1,5 @@
 import { getPlugin, registerPlugin } from 'video.js';
-import './AudioSettingItem';
+import './AudioTrackSettingItem';
 
 class audio extends getPlugin('plugin') {
   constructor(player, options = {}) {

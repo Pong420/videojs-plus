@@ -1,18 +1,15 @@
 import { getComponent, registerComponent } from 'video.js';
 
-const SettingMenuItem = getComponent('SettingMenuItem');
+const SettingOptionItem = getComponent('SettingOptionItem');
 
-class AudioSettingItem extends SettingMenuItem {
+class AudioTrackSettingItem extends SettingOptionItem {
   constructor(player, options) {
-    super(
-      player,
-      Object.assign(options, {
-        name: 'AudioSettingItem',
-        label: 'Audio',
-        icon: 'vjs-icon-audiotrack',
-        entries: options.quality || []
-      })
-    );
+    super(player, {
+      ...options,
+      name: 'AudioTrackSettingItem',
+      label: 'Audio',
+      icon: 'vjs-icon-audiotrack'
+    });
 
     this.addClass('vjs-setting-audio');
 
@@ -28,11 +25,11 @@ class AudioSettingItem extends SettingMenuItem {
     };
 
     // show when alternate audio detected
-    player.tech().on('usage', onHlsUsageEvent);
+    player.tech_.on('usage', onHlsUsageEvent);
 
     // unbind the callback on player dispose
     player.on('dispose', () => {
-      player.tech().off('usage', onHlsUsageEvent);
+      player.tech_.off('usage', onHlsUsageEvent);
     });
 
     // hide when new source set
@@ -44,7 +41,7 @@ class AudioSettingItem extends SettingMenuItem {
   update(selectedItem) {
     super.update(selectedItem);
 
-    this.player_.audio().pick(selectedItem.value.index);
+    this.player_.audio().pick(selectedItem.value);
   }
 
   onAlternateAudio() {
@@ -53,12 +50,12 @@ class AudioSettingItem extends SettingMenuItem {
     const audioEntries = audioTracks.map((track, index) => {
       const { id, kind, label, language } = track;
 
-      // Since track is an `AudioTrack` instead of a normal "Object",
-      // so i redistribute the value
+      // label and value are necessary attributes
       return {
+        label,
+        value: index,
         id,
         kind,
-        label,
         language,
         index,
         track
@@ -88,8 +85,8 @@ class AudioSettingItem extends SettingMenuItem {
   }
 }
 
-getComponent('SettingMenuButton').prototype.options_.entries.push('AudioSettingItem');
+getComponent('SettingMenuButton').prototype.options_.entries.push('AudioTrackSettingItem');
 
-registerComponent('AudioSettingItem', AudioSettingItem);
+registerComponent('AudioTrackSettingItem', AudioTrackSettingItem);
 
-export default AudioSettingItem;
+export default AudioTrackSettingItem;

@@ -5,13 +5,23 @@ This is a plugin for switch between different video quality by different video s
 #### Usage
 
 ```js
-const quality = [
+const qualities = [
   {
     label: '1080p',
     sources: [
       {
+        src: 'video-1080p.mp4'
         type: 'video/mp4',
-        src: 'video-hd.mp4'
+      }
+    ]
+  },
+  {
+    default: true
+    label: '720p',
+    sources: [
+      {
+        src: 'video-720p.mp4'
+        type: 'video/mp4',
       }
     ]
   }
@@ -20,31 +30,47 @@ const quality = [
 
 // set quality in options
 const player = videojs('example-video', {
-  quality,
-  defaultQualityLevel: 0 // optiontal, default 0
+  qualities
 });
 
 // or
-player.setQuality(quality, defaultQualityLevel);
 
-// switch quality level
-player.quality.pick(1);
+/**
+ *  @params {Array} qualities
+ *  @params {Number|String} defaultQualityLevel - index of the default quality
+*/
+player.setQualities(qualities, defaultQualityLevel);
 
-// get current quality level
-player.quality.current();
+```
 
-// get current quality level index
-player.quality.index();
+#### API and Event
 
-// get all quality levels
-player.quality.values;
+```js
+// switch quality
+player.qualities.pick(1);
 
-// events
-player.on('quality', () => {
-  console.log('quality setup');
+// get current quality
+player.qualities.current();
+
+// get current quality index
+player.qualities.index();
+
+// get all qualities
+player.qualities.values;
+
+/**
+ *  Fire when `setQualities` called.
+ *  But if you set qualities in options and listen after player initialized,
+ *  the `setQualities` function will called before you listen *
+ */
+player.on('qualities', qualities => {
+  console.log('qualities setup', qualities);
 });
 
-player.on('qualitychange', () => {
-  console.log('quality changed');
+/**
+ *  @params {Object} selected `player.qualities.current()` but contains index;
+ */
+player.on('qualitychange', selected => {
+  console.log('quality changed', selected);
 });
 ```
