@@ -1,8 +1,8 @@
 import { getComponent, registerComponent } from 'video.js';
 
-const SettingOptionalItem = getComponent('SettingOptionalItem');
+const SettingOptionItem = getComponent('SettingOptionItem');
 
-class SubtitleSettingMenuItem extends SettingOptionalItem {
+class SubtitleSettingMenuItem extends SettingOptionItem {
   constructor(player, options) {
     super(
       player,
