@@ -4,7 +4,9 @@
 
 [Demo](https://pong420.github.io/videojs-plus/examples/setting-menu.html)
 
-#### Create an on off menu item
+:warning: below example script could be outdated, visit the source code of above demo will be better
+
+#### Create an on off menu it
 
 ```js
 const SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
@@ -26,6 +28,9 @@ class ToggleAnnotation extends SettingOnOffItem {
     this.update(true);
   }
 
+  /**
+   *  @param {Boolean} active
+   */
   update(active) {
     super.update(active);
 
@@ -72,12 +77,16 @@ class QualityMenuItem extends SettingOptionalItem {
     this.addClass('vjs-setting-quality');
   }
 
+  /**
+   *  @param {Object} selectedItem - an object must contains label and value attributes
+   *                                 default return an videojs component {SettingSubMenuItem}
+   */
   update(selectedItem) {
     super.update(selectedItem);
 
-    var value = selectedItem.value; // 720 / 480 / 240 / Auto
+    const { label, value } = selectedItem;
 
-    console.log(value);
+    console.log(label, value);
   }
 }
 
