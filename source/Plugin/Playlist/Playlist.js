@@ -12,7 +12,7 @@ class PlayList extends List {
   constructor(player, array, startIndex = 0) {
     super(array, startIndex);
 
-    this.player = player;
+    this.player_ = player;
 
     this.loadPoster_ = true;
 
@@ -30,6 +30,8 @@ class PlayList extends List {
     } else {
       return this.autoPlayNext_;
     }
+
+    this.player_.trigger('autoplaynext', this.autoPlayNext_);
   }
 
   play(index) {
@@ -39,7 +41,7 @@ class PlayList extends List {
 
     const current = this.current();
     const { poster, sources, title } = current;
-    const player = this.player;
+    const player = this.player_;
     const addPoster = () => {
       player.poster(poster || '');
     };
