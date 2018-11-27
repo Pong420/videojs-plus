@@ -1,6 +1,6 @@
 import { hook, registerPlugin } from 'video.js';
-
 import List from '../../Utils/List';
+
 import './QualitySettingItem';
 
 class Quality extends List {
@@ -40,22 +40,22 @@ class Quality extends List {
   }
 }
 
-const setQualities = function(qualites, defaultQualityLevel) {
+const setQualities = function(qualities, defaultQualityLevel) {
   const player = this.player_;
 
-  player.qualites = new Quality(player, qualites, defaultQualityLevel);
+  player.qualities = new Quality(player, qualities, defaultQualityLevel);
 
-  player.trigger('quality', qualites);
+  player.trigger('quality', qualities);
 };
 
 registerPlugin('setQualities', setQualities);
 
 hook('setup', vjsPlayer => {
-  const { qualites } = vjsPlayer.options_;
+  const { qualities } = vjsPlayer.options_;
 
-  if (qualites && qualites.length) {
-    const defaultQualityLevel = qualites.findIndex(v => v.default);
+  if (qualities && qualities.length) {
+    const defaultQualityLevel = qualities.findIndex(v => v.default);
 
-    vjsPlayer.setQuality(qualites, defaultQualityLevel);
+    vjsPlayer.setQualities(qualities, defaultQualityLevel);
   }
 });

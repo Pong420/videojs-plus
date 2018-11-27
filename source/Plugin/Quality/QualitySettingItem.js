@@ -4,22 +4,22 @@ const SettingOptionItem = getComponent('SettingOptionItem');
 
 class QualitySettingItem extends SettingOptionItem {
   constructor(player, options) {
-    super(
-      player,
-      Object.assign(options, {
-        name: 'QualitySettingItem',
-        label: 'Quality',
-        icon: 'vjs-icon-hd',
-        entries: options.quality || []
-      })
-    );
+    super(player, {
+      ...options,
+      name: 'QualitySettingItem',
+      label: 'Quality',
+      icon: 'vjs-icon-hd',
+      entries: player.options_.quality || []
+    });
 
     this.addClass('vjs-setting-quality');
 
-    player.on('quality', (_, qualites) => {
+    player.on('quality', (_, qualities) => {
       this.setEntries(
-        qualites.map((quality, index) => {
+        qualities.map((quality, index) => {
           quality.value = index;
+
+          return quality;
         })
       );
 
@@ -30,12 +30,12 @@ class QualitySettingItem extends SettingOptionItem {
   update(selectedItem) {
     super.update(selectedItem);
 
-    this.player_.quality.pick(selectedItem.value);
+    this.player_.qualities.pick(selectedItem.value);
   }
 }
 
 getComponent('SettingMenuButton').prototype.options_.entries.push('QualitySettingItem');
 
-registerComponent('QualityItem', QualitySettingItem);
+registerComponent('QualitySettingItem', QualitySettingItem);
 
 export default QualitySettingItem;

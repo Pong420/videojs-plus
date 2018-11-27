@@ -39,23 +39,26 @@ class pictureInPicture extends getPlugin('plugin') {
 
     document.body.appendChild(videoEl);
 
-    const pipPlayerOptions = Object.assign(parentPlayer.options_, parentPlayer.cache_, {
+    const pipPlayerOptions = {
+      ...parentPlayer.options_,
+      ...parentPlayer.cache_,
       autoplay: true,
       muted: parentPlayer.muted()
-    });
+    };
 
     const pipPlayer = (this.pipPlayer = videojs(videoEl, pipPlayerOptions));
 
-    this.wrapper = new PipPlayerWrapper(
-      pipPlayer,
-      Object.assign(options_, {
-        parentPlayer
-      })
-    );
+    this.wrapper = new PipPlayerWrapper(pipPlayer, {
+      ...options_,
+      parentPlayer
+    });
 
     this.dragzone = pipPlayer.getChild('PlayToggleLayer');
 
-    this.updatePosition(Object.assign({}, this.cache_, options_));
+    this.updatePosition({
+      ...this.cache_,
+      ...options_
+    });
 
     pipPlayer.ready(() => {
       pipPlayer.currentTime(parentPlayer.currentTime());
