@@ -54,6 +54,9 @@ player.playlist.values;
 // loop playlist, default true
 player.playlist.loop(false);
 
+// control player list should autoplay next or not
+player.playlist.autoplayNext(false);
+
 // events
 player.on('playlist', () => {
   console.log('playlist setup');
@@ -61,5 +64,9 @@ player.on('playlist', () => {
 
 player.on('playlistchange', () => {
   console.log('playlist changed');
+});
+
+player.on('autoplaynext', (_, autoplayNext) => {
+  console.log('autoplay next behaviour changed', autoplayNext);
 });
 ```
