@@ -1,7 +1,7 @@
 import { hook, registerPlugin } from 'video.js';
 
 import List from '../../Utils/List';
-import './QualityItem';
+import './QualitySettingItem';
 
 class Quality extends List {
   constructor(player, array, defaultQualityLevel = 0) {
