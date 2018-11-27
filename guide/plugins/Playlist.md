@@ -17,7 +17,7 @@ The playlist UI at the right hand side need to created by yourself
 ```
 
 ```js
-const videos = [
+const playlist = [
   {
     source: [
       {
@@ -27,20 +27,36 @@ const videos = [
     ],
     title: 'some title',
     poster: 'some poster'
+  },
+  {
+    source: [
+      {
+        src: 'demo.mp4',
+        type: 'video/mp4'
+      }
+    ],
+    title: 'demo title',
+    poster: 'demo poster',
+    default: true // you could set the start index of playlist
   }
   //....
 ];
 
 // set playlist in options
 const player = videojs('example-video', {
-  playlist: videos
+  playlist
 });
 
 // or
-player.setPlayList(videos);
+
+/**
+ *  @params {Array} playlist
+ *  @params {Number|String} startIndex - index of the default video in the playlist
+ */
+player.setPlayList(playlist, startIndex);
 
 // switch video
-player.playlist.pick(1);
+player.playlist.play(1);
 
 // get current video
 player.playlist.current();
@@ -57,15 +73,23 @@ player.playlist.loop(false);
 // control player list should autoplay next or not
 player.playlist.autoplayNext(false);
 
-// events
-player.on('playlist', () => {
-  console.log('playlist setup');
+/**
+ *  Fire when `setPlayList` called.
+ *  But if you set playlist in options and listen after player initialized,
+ *  the `setPlayList` function will called before you listen
+ */
+player.on('playlist', playlist => {
+  console.log('playlist setup', playlist);
 });
 
-player.on('playlistchange', () => {
-  console.log('playlist changed');
+/*
+ *  @params {Object} selected `player.playlist.current()` but contains index;
+ */
+player.on('playlistchange', selected => {
+  console.log('playlist changed', selected);
 });
 
+// fire when autoplay next options changed
 player.on('autoplaynext', (_, autoplayNext) => {
   console.log('autoplay next behaviour changed', autoplayNext);
 });
