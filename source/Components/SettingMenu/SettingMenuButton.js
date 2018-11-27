@@ -1,7 +1,7 @@
 import { getComponent, registerComponent } from 'video.js';
 import SettingMenu from './SettingMenu.js';
-import './Item/SettingOptionalItem.js';
 import './Item/SettingOnOffItem';
+import './Item/SettingOptionItem.js';
 import './PlaybackRate/PlaybackRate.js';
 import './Setting.scss';
 

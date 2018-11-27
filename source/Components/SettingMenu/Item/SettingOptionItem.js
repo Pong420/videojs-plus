@@ -1,8 +1,8 @@
 import { registerComponent, dom } from 'video.js';
 
 import SettingMenuItem from './SettingMenuItem.js';
-import SettingSubMenuTitle from './SettingSubMenuTitle.js';
-import SettingSubMenuItem from './SettingSubMenuItem.js';
+import SettingSubOptionTitle from './SettingSubOptionTitle.js';
+import SettingSubOptionItem from './SettingSubOptionItem.js';
 import getMenuDimension from '../MenuDimension';
 
 function parseEntries(entries) {
@@ -35,7 +35,7 @@ function parseEntries(entries) {
   };
 }
 
-class SettingOptionalItem extends SettingMenuItem {
+class SettingOptionItem extends SettingMenuItem {
   constructor(player, options = {}) {
     super(player, Object.assign(options, parseEntries(options.entries)));
 
@@ -78,7 +78,7 @@ class SettingOptionalItem extends SettingMenuItem {
     }
 
     this.subMenuItems = this.entries.map(({ label, value }) => {
-      return new SettingSubMenuItem(this.player_, {
+      return new SettingSubOptionItem(this.player_, {
         label,
         value,
         parent: this,
@@ -89,7 +89,7 @@ class SettingOptionalItem extends SettingMenuItem {
     this.subMenuItems.splice(
       0,
       0,
-      new SettingSubMenuTitle(this.player_, {
+      new SettingSubOptionTitle(this.player_, {
         label: this.options_.label,
         menu: this.menu
       })
@@ -125,6 +125,6 @@ class SettingOptionalItem extends SettingMenuItem {
   }
 }
 
-registerComponent('SettingOptionalItem', SettingOptionalItem);
+registerComponent('SettingOptionItem', SettingOptionItem);
 
-export default SettingOptionalItem;
+export default SettingOptionItem;

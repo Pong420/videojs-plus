@@ -45,9 +45,9 @@ videojs.registerComponent('ToggleAnnotation', ToggleAnnotation);
 #### Create an optional menu item
 
 ```js
-const SettingOptionalItem = videojs.getComponent('SettingOptionalItem');
+const SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-class QualityMenuItem extends SettingOptionalItem {
+class QualityMenuItem extends SettingOptionItem {
   constructor(player, options) {
     super(
       player,

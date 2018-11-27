@@ -1,7 +1,7 @@
-import SettingOptionalItem from '../Item/SettingOptionalItem.js';
+import SettingOptionItem from '../Item/SettingOptionItem.js';
 import { registerComponent } from 'video.js';
 
-class PlaybackRateSettingOptionalItem extends SettingOptionalItem {
+class PlaybackRateSettingOptionalItem extends SettingOptionItem {
   constructor(player, options) {
     super(
       player,
