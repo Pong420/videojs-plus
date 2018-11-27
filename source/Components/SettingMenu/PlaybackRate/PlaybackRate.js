@@ -1,7 +1,7 @@
-import SettingMenuItem from '../Item/SettingMenuItem.js';
+import SettingOptionalItem from '../Item/SettingOptionalItem.js';
 import { registerComponent } from 'video.js';
 
-class PlaybackRateSettingMenuItem extends SettingMenuItem {
+class PlaybackRateSettingOptionalItem extends SettingOptionalItem {
   constructor(player, options) {
     super(
       player,
@@ -25,39 +25,25 @@ class PlaybackRateSettingMenuItem extends SettingMenuItem {
 
     this.addClass('vjs-setting-playback-rate');
 
-    this.ratechangeBySettingMenu = false;
+    // Since playback rate will be reset to noraml when video source changed
+    // So we need to listen on `ratechange`
+    player.on('ratechange', () => {
+      const rate = player.playbackRate();
+      const currentEntry = this.entries.find(({ value }) => rate === value);
 
-    const _this = this;
-    const entries = this.entries;
-
-    player.on('ratechange', function() {
-      if (!_this.ratechangeBySettingMenu) {
-        const rate = player.playbackRate();
-        const currentValue =
-          entries.filter(value => {
-            return rate === value;
-          })[0] || entries[2];
-
-        _this.update(currentValue);
-      }
-
-      _this.ratechangeBySettingMenu = false;
+      this.update(currentEntry);
     });
   }
 
-  handleClick() {
-    this.ratechangeBySettingMenu = true;
+  update(entry) {
+    super.update(entry);
 
-    super.handleClick();
-  }
-
-  update(selectedItem) {
-    super.update(selectedItem);
-
-    this.player_.playbackRate(selectedItem.value);
+    if (this.player_.playbackRate() !== entry.value) {
+      this.player_.playbackRate(entry.value);
+    }
   }
 }
 
-registerComponent('PlaybackRateSettingMenuItem', PlaybackRateSettingMenuItem);
+registerComponent('PlaybackRateSettingOptionalItem', PlaybackRateSettingOptionalItem);
 
-export default PlaybackRateSettingMenuItem;
+export default PlaybackRateSettingOptionalItem;
