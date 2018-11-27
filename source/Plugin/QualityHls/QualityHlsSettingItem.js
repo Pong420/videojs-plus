@@ -1,18 +1,15 @@
 import videojs, { getComponent, registerComponent } from 'video.js';
 
-const SettingMenuItem = getComponent('SettingMenuItem');
+const SettingOptionItem = getComponent('SettingOptionItem');
 
-class QualityHlsItem extends SettingMenuItem {
+class QualityHlsSettingItem extends SettingOptionItem {
   constructor(player, options) {
-    super(
-      player,
-      Object.assign(options, {
-        name: 'QualityItem',
-        label: 'Quality',
-        icon: 'vjs-icon-hd',
-        entries: options.quality || []
-      })
-    );
+    super(player, {
+      ...options,
+      name: 'QualityHlsSettingItem',
+      label: 'Quality',
+      icon: 'vjs-icon-hd'
+    });
 
     this.addClass('vjs-setting-quality');
 
@@ -74,9 +71,10 @@ class QualityHlsItem extends SettingMenuItem {
       });
 
     this.setEntries(entries);
+
     this.show();
 
-    this.player_.trigger('quality');
+    this.player_.trigger('qualities', this.levels);
   }
 
   update(selectedItem) {
@@ -92,9 +90,12 @@ class QualityHlsItem extends SettingMenuItem {
       'qualitychange',
       this.entries.reduce((acc, entry, index) => {
         if (entry.value === value) {
-          return {
+          const level = this.levels.find(v => v.height === value) || {};
+
+          acc = {
             index,
-            ...entry
+            ...entry,
+            ...level
           };
         }
 
@@ -104,8 +105,8 @@ class QualityHlsItem extends SettingMenuItem {
   }
 }
 
-getComponent('SettingMenuButton').prototype.options_.entries.push('QualityHlsItem');
+getComponent('SettingMenuButton').prototype.options_.entries.push('QualityHlsSettingItem');
 
-registerComponent('QualityHlsItem', QualityHlsItem);
+registerComponent('QualityHlsSettingItem', QualityHlsSettingItem);
 
-export default QualityHlsItem;
+export default QualityHlsSettingItem;

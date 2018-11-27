@@ -23,8 +23,8 @@ export default {
   computed: {
     videoSource() {
       return {
-        src: "video/source/url.mp4",
-        type: "video/mp4"
+        src: "demo.mp4",
+        type: "video.mp4"
       }
     },
     playerOptions() {
