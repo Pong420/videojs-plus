@@ -18,7 +18,7 @@ class SettingSubOptionItem extends SettingMenuItem {
   }
 
   update() {
-    this.selected(this.value === this.parent.currentValue.value);
+    this.selected(this.value === this.parent.selected.value);
   }
 
   handleClick() {
