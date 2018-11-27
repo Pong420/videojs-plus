@@ -41,6 +41,9 @@
         this.update(true);
       }
 
+      /**
+       *  @param {Boolean} active
+       */
       update(active) {
         super.update(active);
 
@@ -83,12 +86,16 @@
         this.addClass('vjs-setting-quality');
       }
 
+      /**
+       *  @param {Object} selectedItem - an object must contains label and value attributes
+       *                                 default return an videojs component {SettingSubMenuItem}
+       */
       update(selectedItem) {
         super.update(selectedItem);
 
-        var value = selectedItem.value; // 720 / 480 / 240 / Auto
+        const { label, value } = selectedItem;
 
-        console.log(value);
+        console.log(label, value);
       }
     }
 
