@@ -54,9 +54,9 @@
     videojs.getComponent('SettingMenuButton').prototype.options_.entries.splice(0, 0, 'ToggleAnnotation');
     videojs.registerComponent('ToggleAnnotation', ToggleAnnotation);
 
-    const SettingOptionalItem = videojs.getComponent('SettingOptionalItem');
+    const SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
-    class QualityMenuItem extends SettingOptionalItem {
+    class QualityMenuItem extends SettingOptionItem {
       constructor(player, options) {
         super(
           player,
