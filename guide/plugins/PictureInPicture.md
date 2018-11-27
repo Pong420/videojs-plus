@@ -4,15 +4,6 @@
 
 [Demo](https://pong420.github.io/videojs-plus/examples/picture-in-picture.html)
 
-#### Usage
-
-```html
-<link rel="stylesheet" href="videojs-plus-picture-in-picture.min.css" />
-
-<script src="videojs-plus.min.js"></script>
-<script src="videojs-plus-picture-in-picture.min.js"></script>
-```
-
 #### API
 
 ```js

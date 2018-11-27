@@ -57,7 +57,7 @@ const AutoplayHandler = player => {
   };
 
   player.one('loadedmetadata', function handleMutedAutoplay() {
-    // without readym, `player.play()` may retutn `undefined` as `this.changingSrc_` is true
+    // without ready, `player.play()` may retutn `undefined` as `this.changingSrc_` is true
     player.ready(() => {
       const playPromise = player.play();
 

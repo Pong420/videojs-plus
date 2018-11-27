@@ -290,11 +290,10 @@
       var $div = document.createElement('div');
 
       $div.innerHTML += `
-              <div class="list-item">
-                  <div class="thumbnail" style="background-image:url(${item.poster})"></div>
-                  <div class="title">${item.title}</div>
-              </div>
-          `;
+        <div class="list-item">
+            <div class="thumbnail" style="background-image:url(${item.poster})"></div>
+            <div class="title">${item.title}</div>
+        </div>`;
 
       var $el = $div.children[0];
 
@@ -310,9 +309,9 @@
       $list.appendChild($el);
     });
 
-    player.on('playlistchange', function(evt, data) {
+    player.on('playlistchange', function(_, selected) {
       videojs.dom.removeClass($selected, 'selected');
-      $selected = $list.children[data.index];
+      $selected = $list.children[selected.index];
       videojs.dom.addClass($selected, 'selected');
       $wrapper.scrollTo(0, $selected.offsetTop - ($wrapper.offsetHeight - $selected.offsetHeight) / 2);
     });

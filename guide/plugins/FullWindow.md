@@ -9,9 +9,9 @@ Just include the plugin and the fullscreen button will be replaced by full windo
 
 #### Usage
 
-```js
-// remember to import the css file
+Remember to include css file
 
+```js
 const player = videojs('example-video', {
   fullwindow: true
 });

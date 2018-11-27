@@ -1,8 +1,8 @@
 import { registerComponent } from 'video.js';
 
-import SettingItem from './SettingItem.js';
+import SettingMenuItem from './SettingMenuItem.js';
 
-class SettingSubMenuItem extends SettingItem {
+class SettingSubOptionItem extends SettingMenuItem {
   constructor(player, options) {
     super(player, options);
 
@@ -18,7 +18,7 @@ class SettingSubMenuItem extends SettingItem {
   }
 
   update() {
-    this.selected(this.value === this.parent.currentValue.value);
+    this.selected(this.value === this.parent.selected.value);
   }
 
   handleClick() {
@@ -26,6 +26,6 @@ class SettingSubMenuItem extends SettingItem {
   }
 }
 
-registerComponent('SettingSubMenuItem', SettingSubMenuItem);
+registerComponent('SettingSubOptionItem', SettingSubOptionItem);
 
-export default SettingSubMenuItem;
+export default SettingSubOptionItem;

@@ -4,11 +4,9 @@ Just a simple style plugin that create a live streaming notice on control bar an
 
 <img src="../../screenshot/live-streaming.png">
 
-#### Usage
+#### API
 
 ```js
-// remember to include the css file
-
 // initialize
 player.live();
 

@@ -1,7 +1,7 @@
-import SettingItem from './SettingItem.js';
+import SettingMenuItem from './SettingMenuItem.js';
 import { dom, registerComponent } from 'video.js';
 
-class SettingOnOffItem extends SettingItem {
+class SettingOnOffItem extends SettingMenuItem {
   createEl() {
     const options = this.options_;
     const el = dom.createEl('li', {

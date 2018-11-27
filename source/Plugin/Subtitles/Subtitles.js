@@ -1,11 +1,9 @@
 import { hook, registerPlugin, getPlugin } from 'video.js';
 
-import './SubtitlesItem';
+import './SubtitleSettingMenuItem';
 import './Subtitles.scss';
 
-const Plugin = getPlugin('plugin');
-
-class subtitles extends Plugin {
+class subtitles extends getPlugin('plugin') {
   constructor(player, options) {
     super(player, options);
 
@@ -14,7 +12,7 @@ class subtitles extends Plugin {
 
     let timeout;
 
-    player.textTracks().on('change', () => {
+    const handleSubtitleChangeEvent = () => {
       clearTimeout(timeout);
 
       const subtitles = this.values();
@@ -33,6 +31,11 @@ class subtitles extends Plugin {
           });
         }
       }, 10);
+    };
+
+    player.textTracks().on('change', handleSubtitleChangeEvent);
+    player.on('dispose', () => {
+      player.textTracks().off('change', handleSubtitleChangeEvent);
     });
   }
 
@@ -72,26 +75,6 @@ class subtitles extends Plugin {
           trackEl.track.mode = 'showing';
         }
       });
-
-      const SubtitlesMenuItem = player.findChild('SubtitlesMenuItem')[0].component;
-
-      SubtitlesMenuItem.setEntries(
-        subtitles
-          .map(({ label, default: default_ }, index) => ({
-            label,
-            value: index,
-            defalut: default_
-          }))
-          .concat([
-            {
-              label: 'Close Subtitles',
-              value: -1,
-              defalut: false
-            }
-          ])
-      );
-
-      SubtitlesMenuItem.show();
 
       player.trigger('subtitles', subtitles);
     }
