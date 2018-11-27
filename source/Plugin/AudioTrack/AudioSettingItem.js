@@ -1,13 +1,13 @@
 import { getComponent, registerComponent } from 'video.js';
 
-const SettingMenuItem = getComponent('SettingMenuItem');
+const SettingOptionalItem = getComponent('SettingOptionalItem');
 
-class AudioSettingItem extends SettingMenuItem {
+class AudioSettingMenuItem extends SettingOptionalItem {
   constructor(player, options) {
     super(
       player,
       Object.assign(options, {
-        name: 'AudioSettingItem',
+        name: 'AudioSettingMenuItem',
         label: 'Audio',
         icon: 'vjs-icon-audiotrack',
         entries: options.quality || []
@@ -88,8 +88,8 @@ class AudioSettingItem extends SettingMenuItem {
   }
 }
 
-getComponent('SettingMenuButton').prototype.options_.entries.push('AudioSettingItem');
+getComponent('SettingMenuButton').prototype.options_.entries.push('AudioSettingMenuItem');
 
-registerComponent('AudioSettingItem', AudioSettingItem);
+registerComponent('AudioSettingMenuItem', AudioSettingMenuItem);
 
-export default AudioSettingItem;
+export default AudioSettingMenuItem;

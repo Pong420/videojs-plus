@@ -1,11 +1,9 @@
 import { hook, registerPlugin, getPlugin } from 'video.js';
 
-import './SubtitlesItem';
+import './SubtitleSettingMenuItem';
 import './Subtitles.scss';
 
-const Plugin = getPlugin('plugin');
-
-class subtitles extends Plugin {
+class subtitles extends getPlugin('plugin') {
   constructor(player, options) {
     super(player, options);
 

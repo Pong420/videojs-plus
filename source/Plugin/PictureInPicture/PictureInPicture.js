@@ -1,12 +1,10 @@
 import videojs, { dom, registerPlugin, getPlugin } from 'video.js';
 
+import PipPlayerWrapper from './PipPlayerWrapper';
 import './PictureInPicture.scss';
 import './PipButton';
-import PipPlayerWrapper from './PipPlayerWrapper';
 
-const Plugin = getPlugin('plugin');
-
-class pictureInPicture extends Plugin {
+class pictureInPicture extends getPlugin('plugin') {
   constructor(player, options = {}) {
     super(player, options);
 
