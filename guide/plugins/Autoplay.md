@@ -9,7 +9,20 @@ But some mobile device may not support autoplay start even player is muted.
 
 #### Usage
 
-```html
-<script src="videojs-plus.min.js"></script>
-<script src="videojs-plus-autoplay.min.js"></script>
+```js
+const player = videojs('example-video', {
+  autoplay: true
+});
+```
+
+#### Event
+
+```js
+player.on('autoplay-success', () => {
+  console.log('autoplay success');
+});
+
+player.on('autoplay-failure', () => {
+  console.log('autoplay failure');
+});
 ```

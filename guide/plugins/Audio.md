@@ -15,7 +15,7 @@ player.on('before-audio-setup', (_, entries) => {
 });
 ```
 
-#### API
+#### API and Event
 
 ```js
 // switch audio
@@ -28,21 +28,23 @@ player.audio().track;
 player.audio().values();
 
 // events
-player.on('audio', entries => {
-  console.log('audio setup');
+player.on('audio', audio => {
+  console.log('audio setup', audio);
 });
 
-player.on('audiochange', currentEntry => {
-  /**
-   * interface currentEntry {
-   *  attribute string id,
-   *  attribute string kind,
-   *  attribute string label,
-   *  attribute string language,
-   *  attribute number index
-   *  attribute AudioTrack track
-   * };
-   */
+/**
+ * interface audio {
+ *  attribute string id,
+ *  attribute string kind,
+ *  attribute string label,
+ *  attribute string language,
+ *  attribute number index
+ *  attribute AudioTrack track
+ * };
+ *
+ * @param {audio} currentAudio
+ */
+player.on('audiochange', currentAudio => {
   console.log('audio changed');
 });
 ```

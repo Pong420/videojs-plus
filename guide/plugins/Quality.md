@@ -41,6 +41,11 @@ const player = videojs('example-video', {
 */
 player.setQualities(qualities, defaultQualityLevel);
 
+```
+
+#### API and Event
+
+```js
 // switch quality
 player.qualities.pick(1);
 
@@ -64,7 +69,7 @@ player.on('qualities', qualities => {
 
 /**
  *  @params {Object} selected `player.qualities.current()` but contains index;
-*/
+ */
 player.on('qualitychange', selected => {
   console.log('quality changed', selected);
 });

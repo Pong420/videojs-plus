@@ -54,7 +54,11 @@ const player = videojs('example-video', {
  *  @params {Number|String} startIndex - index of the default video in the playlist
  */
 player.setPlayList(playlist, startIndex);
+```
 
+#### API and Event
+
+```js
 // switch video
 player.playlist.play(1);
 

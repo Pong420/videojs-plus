@@ -8,6 +8,7 @@ class SettingSubOptionItem extends SettingMenuItem {
 
     this.selectable = true;
 
+    // FIXME:
     Object.assign(this, options);
 
     this.addChild('Component', {}, 0);

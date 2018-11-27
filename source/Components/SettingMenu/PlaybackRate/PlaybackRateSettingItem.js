@@ -3,25 +3,23 @@ import { registerComponent } from 'video.js';
 
 class PlaybackRateSettingItem extends SettingOptionItem {
   constructor(player, options) {
-    super(
-      player,
-      Object.assign(options, {
-        label: 'Speed',
-        icon: 'vjs-icon-slow-motion-video',
-        entries: [
-          0.5,
-          0.75,
-          {
-            label: 'Normal',
-            value: 1,
-            defalut: true
-          },
-          1.25,
-          1.5,
-          2
-        ]
-      })
-    );
+    super(player, {
+      ...options,
+      label: 'Speed',
+      icon: 'vjs-icon-slow-motion-video',
+      entries: [
+        0.5,
+        0.75,
+        {
+          label: 'Normal',
+          value: 1,
+          defalut: true
+        },
+        1.25,
+        1.5,
+        2
+      ]
+    });
 
     this.addClass('vjs-setting-playback-rate');
 

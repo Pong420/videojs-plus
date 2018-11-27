@@ -5,19 +5,27 @@ import SettingSubOptionTitle from './SettingSubOptionTitle.js';
 import SettingSubOptionItem from './SettingSubOptionItem.js';
 import getMenuDimension from '../MenuDimension';
 
+/**
+ * @param {Array<Object|number|string>} entries
+ */
 function parseEntries(entries) {
   let selected;
 
   entries = entries.map((data, index) => {
-    const { defalut: isDefault, label, value } = data;
-    const parsed = {
-      defalut: typeof isDefault !== 'undefined' ? isDefault : false,
-      label: typeof label !== 'undefined' ? label : data,
-      value: typeof value !== 'undefined' ? value : data,
-      index
-    };
+    if (data !== null && typeof data !== 'object') {
+      data = {
+        value: data,
+        label: data
+      };
+    }
 
-    const entry = Object.assign(data, parsed);
+    const isDefault = typeof data.defalut !== 'undefined' ? data.defalut : false;
+
+    const entry = {
+      ...data,
+      index,
+      defalut: isDefault
+    };
 
     if (isDefault) {
       selected = entry;
@@ -67,7 +75,7 @@ class SettingOptionItem extends SettingMenuItem {
     return el;
   }
 
-  setEntries(entries_) {
+  setEntries(entries_ = []) {
     Object.assign(this, parseEntries(entries_));
 
     this.updateSelectedValue();
@@ -115,7 +123,9 @@ class SettingOptionItem extends SettingMenuItem {
   }
 
   updateSelectedValue() {
-    this.selectedValueEl.innerHTML = this.localize(this.selected.label);
+    if (this.selected) {
+      this.selectedValueEl.innerHTML = this.localize(this.selected.label);
+    }
   }
 
   show() {

@@ -42,8 +42,8 @@ export class VideoComponent {
 
   onPlayerInit({ player }) {
     player.src({
-      src: '...',
-      type: 'video/mp4'
+      src: 'demo.mp4',
+      type: 'video.mp4'
     });
 
     player.on('play', () => {
