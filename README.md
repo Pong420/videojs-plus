@@ -130,12 +130,6 @@ videojs.addLanguage(language, {
 
 <br>
 
-## TODO
-
-- Allow user easier to handle the click action if `SettingSubMenuitem`
-
-<br>
-
 ## License
 
 See [Apache 2.0](LICENSE).

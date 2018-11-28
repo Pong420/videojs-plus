@@ -49,18 +49,18 @@ class QualityMenuItem extends SettingOptionItem {
   constructor(player, options) {
     super(player, {
       ...options, // you must assgin the options
-      name: 'QualityMenuItem', // component name, optional
+      name: 'QualityMenuItem', // component name, optionsal
       label: 'Quality',
       icon: 'vjs-icon-hd', // videojs icon classname, optional, for small screen
       entries: [
         {
           label: 'HD',
-          value: 720,
-          defalut: true
+          value: 720
         },
         {
           label: 'SD',
-          value: 480
+          value: 480,
+          defalut: true
         },
         {
           label: 'Smooth',
@@ -74,8 +74,7 @@ class QualityMenuItem extends SettingOptionItem {
   }
 
   /**
-   *  @param {Object} selectedItem - an object that must contains label and value attributes
-   *                                 default return an videojs component {SettingSubMenuItem}
+   *  @param {SettingSubOptionItem} selectedItem - videojs component,
    */
   update(selectedItem) {
     super.update(selectedItem);
@@ -88,6 +87,26 @@ class QualityMenuItem extends SettingOptionItem {
 
 videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityMenuItem');
 videojs.registerComponent('QualityMenuItem', QualityMenuItem);
+
+// if you want to change/customise the options item, you can regsiter new a component.
+// for example, HD quality only allow authorised user,
+const SettingSubOptionItem = videojs.getComponent('SettingSubOptionItem');
+const authorised = false;
+
+// the classname should be the name of `SettingOptionItem` suffix `Child`
+class QualityMenuItemChild extends SettingSubOptionItem {
+  handleClick() {
+    if (authorised || this.value < 720) {
+      super.handleClick();
+    } else {
+      alert('Please Login');
+      this.restore();
+    }
+  }
+}
+
+// remember to register your component
+videojs.registerComponent('QualityMenuItemChild', QualityMenuItemChild);
 ```
 
 #### Note
