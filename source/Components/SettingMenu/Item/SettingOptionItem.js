@@ -1,4 +1,4 @@
-import { registerComponent, dom } from 'video.js';
+import { getComponent, registerComponent, dom } from 'video.js';
 
 import SettingMenuItem from './SettingMenuItem.js';
 import SettingSubOptionTitle from './SettingSubOptionTitle.js';
@@ -80,8 +80,10 @@ class SettingOptionItem extends SettingMenuItem {
 
     this.updateSelectedValue();
 
+    const SubOptionItem = getComponent(`${this.name_}Child`) || SettingSubOptionItem;
+
     this.subMenuItems = this.entries.map(({ label, value }) => {
-      return new SettingSubOptionItem(this.player_, {
+      return new SubOptionItem(this.player_, {
         label,
         value,
         parent: this,
@@ -117,9 +119,6 @@ class SettingOptionItem extends SettingMenuItem {
     this.subMenuItems.forEach(function(item) {
       item.update && item.update();
     });
-
-    // this.menu.menuButton_.unpressButton()
-    this.menu.restore();
   }
 
   updateSelectedValue() {
