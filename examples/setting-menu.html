@@ -53,6 +53,8 @@
     videojs.registerComponent('ToggleAnnotation', ToggleAnnotation);
 
     const SettingOptionItem = videojs.getComponent('SettingOptionItem');
+    const SettingSubOptionItem = videojs.getComponent('SettingSubOptionItem');
+    const authorised = false;
 
     class QualityMenuItem extends SettingOptionItem {
       constructor(player, options) {
@@ -64,12 +66,12 @@
           entries: [
             {
               label: 'HD',
-              value: 720,
-              defalut: true
+              value: 720
             },
             {
               label: 'SD',
-              value: 480
+              value: 480,
+              defalut: true
             },
             {
               label: 'Smooth',
@@ -83,8 +85,7 @@
       }
 
       /**
-       *  @param {Object} selectedItem - an object that must contains label and value attributes
-       *                                 default return an videojs component {SettingSubMenuItem}
+       *  @param {SettingSubOptionItem} selectedItem - videojs component,
        */
       update(selectedItem) {
         super.update(selectedItem);
@@ -95,8 +96,20 @@
       }
     }
 
+    class QualityMenuItemChild extends SettingSubOptionItem {
+      handleClick() {
+        if (authorised || this.value < 720) {
+          super.handleClick();
+        } else {
+          alert('Please Login');
+          this.restore();
+        }
+      }
+    }
+
     videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityMenuItem');
     videojs.registerComponent('QualityMenuItem', QualityMenuItem);
+    videojs.registerComponent('QualityMenuItemChild', QualityMenuItemChild);
 
     const player = videojs('example-video', {
       // same as videojs config
