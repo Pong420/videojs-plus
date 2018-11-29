@@ -23,6 +23,12 @@ class SettingSubOptionItem extends SettingMenuItem {
 
   handleClick() {
     this.parent.update(this);
+
+    this.restore();
+  }
+
+  restore() {
+    this.menu.restore();
   }
 }
 
