@@ -6,32 +6,28 @@
 </template>
 
 <script>
-const videojs = (window.videojs = require('video.js'));
-require('videojs-hotkeys');
-require('videojs-plus/dist/videojs-plus.min.js');
-require('videojs-plus/dist/videojs-plus.min.css');
-
-// require plugin here
-require('videojs-contrib-quality-levels');
-require('videojs-plus/dist/subtitles/videojs-plus.subtitles.min.js');
-require('videojs-plus/dist/subtitles/videojs-plus.subtitles.min.css');
-require('videojs-plus/dist/quality-hls/videojs-plus.quality-hls.min.js');
+const videojs = (window.videojs = require("video.js"));
+require("videojs-plus/dist/videojs-plus.min.js");
+require("videojs-plus/dist/videojs-plus.min.css");
 
 export default {
-  name: 'Player',
-  props: ['options'],
+  name: "Player",
+  props: ["options"],
   data() {
     return {
       player: null,
       playerOptions: {
-        language,
+        // player default options, e.g.
+        aspectRatio: "16:9",
+
+        // specific options
         ...this.options
       }
     };
   },
   watch: {
     // daynamic change video source
-    'options.videoSource': {
+    "options.videoSource": {
       handler(videoSource, oldVideoSource) {
         if (videoSource && this.player) {
           if (videoSource.src && videoSource.src !== oldVideoSource.src) {
@@ -42,7 +38,7 @@ export default {
       immediate: true
     },
     // daynamic change subtitles
-    'options.subtitles'(subtitles) {
+    "options.subtitles"(subtitles) {
       if (subtitles && this.player) {
         this.player.subtitles().load(subtitles);
       }
@@ -60,7 +56,7 @@ export default {
         this.destroyPlayer();
       }
 
-      const videoEl = this.$el.querySelector('video');
+      const videoEl = this.$el.querySelector("video");
 
       this.player = videojs(videoEl, this.playerOptions);
 
@@ -70,7 +66,7 @@ export default {
       // insert children element into videojs container
       const children = Array.prototype.slice.call(this.$el.children);
       const playerEl = this.player.el_;
-      const referEl = this.player.getChild('PlayToggleLayer').el_;
+      const referEl = this.player.getChild("PlayToggleLayer").el_;
 
       children.forEach(el => {
         if (el !== playerEl) {
@@ -78,7 +74,7 @@ export default {
         }
       });
 
-      this.$emit('playerInit', this.player);
+      this.$emit("playerInit", this.player);
     },
     destroyPlayer() {
       if (this.player) {
