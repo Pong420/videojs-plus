@@ -10,8 +10,6 @@ import {
 } from '@angular/core';
 
 import videojs from 'video.js/dist/video.js';
-
-// for other videojs plugins
 window['videojs'] = videojs;
 
 import 'videojs-plus/dist/videojs-plus.min.js';
@@ -21,6 +19,7 @@ import 'videojs-plus/dist/videojs-plus.min.js';
   templateUrl: './player.component.html',
   styleUrls: [
     './player.component.css',
+
     // include videojs-plus style here
     '../../../node_modules/videojs-plus/dist/videojs-plus.min.css'
   ],
@@ -42,8 +41,10 @@ export class PlayerComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     this.playerOptions = {
-      // default options
+      // player default options, e.g.
       aspectRatio: '16:9',
+
+      // specific options
       ...this.options
     };
 
