@@ -2,7 +2,7 @@
 
 I am not familiar with Angular, so there may be a better way to create a player component.
 
-1. You should eject `webpack.config.js` from angular-cli, and add below `alias` configuration. The alias value `video.js/dist/video.js` must same as videojs import in player component
+1. As metioned before, you should add a config to webpack config file. The alias value `video.js/dist/video.js` must same as videojs import in player component
 
 ```js
 resolve: {
@@ -10,16 +10,16 @@ resolve: {
   alias: {
     // ...
     'video.js': 'video.js/dist/video.js'
-  },
-},
+  }
+}
 ```
 
-2. Then, create a player component and you could refer to files in `examples/angular`
+2. Then, create a player component and you could refer to files in [examples/angular](../examples/angular/)
 
-3. Finally, use it in other components
+3. Finally, you could use it in other components
 
 ```html
-<app-player (playerInit)="onPlayerInit($event)" [options]="playerOptions">
+<app-player [options]="playerOptions" (playerInit)="onPlayerInit($event)">
   <div class="player-inner-element">This videojs-plus angular example</div>
 </app-player>
 ```
@@ -35,17 +35,18 @@ import { Component } from '@angular/core';
 export class VideoComponent {
   playerOptions: Object = {
     autoplay: true,
-    muted: true
+    muted: true,
+    source: [
+      {
+        src: 'demo.mp4',
+        type: 'video/mp4'
+      }
+    ]
   };
 
   constructor() {}
 
   onPlayerInit({ player }) {
-    player.src({
-      src: 'demo.mp4',
-      type: 'video.mp4'
-    });
-
     player.on('play', () => {
       console.log('player play');
     });
