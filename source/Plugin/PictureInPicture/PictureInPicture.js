@@ -4,18 +4,19 @@ import PipPlayerWrapper from './PipPlayerWrapper';
 import './PictureInPicture.scss';
 import './PipButton';
 
+videojs.pipPlayer = null;
+
 class pictureInPicture extends getPlugin('plugin') {
   constructor(player, options = {}) {
     super(player, options);
 
     this.cache_ = {};
-    this.pipPlayer = null;
     this.options_ = options;
     this.parentPlayer = player;
   }
 
   toggle() {
-    if (this.pipPlayer) {
+    if (videojs.pipPlayer) {
       this.exit();
     } else {
       this.init();
@@ -23,7 +24,7 @@ class pictureInPicture extends getPlugin('plugin') {
   }
 
   init() {
-    if (!this.pipPlayer) {
+    if (!videojs.pipPlayer) {
       this.handleOriginPlayer();
       this.createPipPlayer();
     }
@@ -42,11 +43,12 @@ class pictureInPicture extends getPlugin('plugin') {
     const pipPlayerOptions = {
       ...parentPlayer.options_,
       ...parentPlayer.cache_,
+      fluid: true,
       autoplay: true,
       muted: parentPlayer.muted()
     };
 
-    const pipPlayer = (this.pipPlayer = videojs(videoEl, pipPlayerOptions));
+    const pipPlayer = (videojs.pipPlayer = videojs(videoEl, pipPlayerOptions));
 
     this.wrapper = new PipPlayerWrapper(pipPlayer, {
       ...options_,
@@ -78,13 +80,21 @@ class pictureInPicture extends getPlugin('plugin') {
     parentPlayer.controls(false);
     parentPlayer.addClass('vjs-pip-player-enabled');
 
-    parentPlayer.one('play', () => {
+    const onPlay = () => {
       this.exit();
+    };
+
+    parentPlayer.one('loadstart', () => {
+      parentPlayer.off('play', onPlay);
+      parentPlayer.one('playing', parentPlayer.pause);
     });
+
+    parentPlayer.one('play', onPlay);
   }
 
   exit() {
-    const { parentPlayer, pipPlayer, wrapper } = this;
+    const { parentPlayer, wrapper } = this;
+    const { pipPlayer } = videojs;
 
     if (parentPlayer) {
       parentPlayer.controls(true);
@@ -103,10 +113,12 @@ class pictureInPicture extends getPlugin('plugin') {
       wrapper.dispose();
     }
 
-    this.pipPlayer = null;
+    videojs.pipPlayer = null;
   }
 
   dispose() {
+    super.dispose();
+
     this.parentPlayer = null;
   }
 
@@ -169,7 +181,7 @@ class pictureInPicture extends getPlugin('plugin') {
 
     window.addEventListener('resize', onResize);
 
-    this.pipPlayer.on('dispose', () => {
+    videojs.pipPlayer.on('dispose', () => {
       window.removeEventListener('resize', onResize);
     });
   }
