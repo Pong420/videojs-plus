@@ -2,6 +2,7 @@ import {
   Component,
   AfterViewInit,
   OnDestroy,
+  OnChanges,
   ViewChild,
   ViewEncapsulation,
   Input,
@@ -10,8 +11,6 @@ import {
 } from '@angular/core';
 
 import videojs from 'video.js/dist/video.js';
-
-// for other videojs plugins
 window['videojs'] = videojs;
 
 import 'videojs-plus/dist/videojs-plus.min.js';
@@ -21,12 +20,13 @@ import 'videojs-plus/dist/videojs-plus.min.js';
   templateUrl: './player.component.html',
   styleUrls: [
     './player.component.css',
+
     // include videojs-plus style here
     '../../../node_modules/videojs-plus/dist/videojs-plus.min.css'
   ],
   encapsulation: ViewEncapsulation.None
 })
-export class PlayerComponent implements AfterViewInit, OnDestroy {
+export class PlayerComponent implements AfterViewInit, OnDestroy, OnChanges {
   @ViewChild('playerContainer') playerContainer;
   @ViewChild('videoEl') videoEl;
 
@@ -34,16 +34,29 @@ export class PlayerComponent implements AfterViewInit, OnDestroy {
 
   @Output() playerInit = new EventEmitter<any>();
 
-  playerOptions: Object;
+  playerOptions: any;
 
   player: any;
 
-  constructor() {}
+  ngOnChanges(change) {
+    const { options } = change;
+
+    if (!options.firstChange) {
+      const { previousValue, currentValue } = options;
+
+      // !previousValue.sources.length used for player initialize with empty sources.
+      if (!previousValue.sources.length || currentValue.sources[0].src !== previousValue.sources[0].src) {
+        this.player.src(currentValue.sources);
+      }
+    }
+  }
 
   ngAfterViewInit() {
     this.playerOptions = {
-      // default options
+      // player default options, e.g.
       aspectRatio: '16:9',
+
+      // specific options
       ...this.options
     };
 

@@ -44,8 +44,21 @@ yarn add videojs-plus
 </html>
 ```
 
-- [Vue](./guide/Vue.md)
-- [Angular](./guide/Angular.md)
+- Webpack
+
+Open webpack config file, adding below configuration
+
+```js
+resolve: {
+  // ....
+  alias: {
+    // ...
+    'video.js': 'video.js/dist/video.js'
+  }
+}
+```
+
+Examples: [Vue](./guide/Vue.md), [React](./guide/React.md), [Angular](./guide/Angular.md)
 
 <br>
 
