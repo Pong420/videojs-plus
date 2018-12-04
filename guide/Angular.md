@@ -33,23 +33,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./video.component.css']
 })
 export class VideoComponent {
-  playerOptions: Object = {
+  playerOptions: any = {
     autoplay: true,
     muted: true,
-    source: [
-      {
-        src: 'demo.mp4',
-        type: 'video/mp4'
-      }
-    ]
+    sources: []
   };
 
-  constructor() {}
+  player: any;
 
   onPlayerInit({ player }) {
+    this.player = player;
+
     player.on('play', () => {
       console.log('player play');
     });
+  }
+
+  handleSourceChange(sources) {
+    this.playerOptions = {
+      ...this.playerOptions,
+      sources
+    };
   }
 }
 ```
