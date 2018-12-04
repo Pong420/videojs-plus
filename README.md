@@ -58,7 +58,7 @@ resolve: {
 }
 ```
 
-Examples: [Vue](./guide/Vue.md), [Angular](./guide/Angular.md)
+Examples: [Vue](./guide/Vue.md), [React](./guide/React.md), [Angular](./guide/Angular.md)
 
 <br>
 
