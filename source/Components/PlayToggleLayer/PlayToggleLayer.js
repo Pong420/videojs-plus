@@ -5,12 +5,6 @@ const PlayToggleButton = getComponent('PlayToggle');
 const ClickableComponent = getComponent('ClickableComponent');
 
 class PlayToggleLayer extends ClickableComponent {
-  constructor(player, options) {
-    super(player, options);
-
-    // this.on("click", this.handleClick.bind(this));
-  }
-
   createEl() {
     return dom.createEl('div', {
       className: 'vjs-play-toggle-layer'

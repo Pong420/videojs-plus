@@ -37,7 +37,7 @@ class SettingMenuButton extends MenuButton {
 
     entries.forEach(component => {
       menu.addChild(component, {
-        menu: menu
+        menu
       });
     });
 
