@@ -4,6 +4,8 @@ import PipPlayerWrapper from './PipPlayerWrapper';
 import './PictureInPicture.scss';
 import './PipButton';
 
+import addEventListener from '../../Utils/Listener';
+
 videojs.pipPlayer = null;
 
 class pictureInPicture extends getPlugin('plugin') {
@@ -76,7 +78,7 @@ class pictureInPicture extends getPlugin('plugin') {
     const { parentPlayer } = this;
 
     parentPlayer.pause();
-    parentPlayer.hasStarted(false);
+    // parentPlayer.hasStarted(false);
     parentPlayer.controls(false);
     parentPlayer.addClass('vjs-pip-player-enabled');
 
@@ -131,7 +133,6 @@ class pictureInPicture extends getPlugin('plugin') {
 
   draggable(el) {
     let x, y;
-    const _this = this;
 
     const move = evt => {
       evt.preventDefault();
@@ -145,27 +146,31 @@ class pictureInPicture extends getPlugin('plugin') {
       this.updatePosition(this.cache_);
     };
 
+    // handle drag action
     el.addEventListener('mousedown', evt => {
       evt.preventDefault();
 
       x = evt.offsetX;
       y = evt.offsetY;
 
-      const disableClick = () => {
-        window.removeEventListener('mousemove', disableClick);
-        _this.dragzone.disable();
-      };
+      // update position of  pip player
+      const unbindMousemove = addEventListener('mousemove', move);
 
-      window.addEventListener('mousemove', move);
-      window.addEventListener('mousemove', disableClick);
+      // disable dragzone click handler
+      const unbindDragzoneBlocker = addEventListener('mousemove', () => {
+        this.dragzone.disable();
 
-      window.addEventListener('mouseup', function mouseup(evt) {
-        window.removeEventListener('mouseup', mouseup);
-        window.removeEventListener('mousemove', move);
-        window.removeEventListener('mousemove', disableClick);
+        unbindDragzoneBlocker();
+      });
+
+      // clear all listener
+      const unbindMouseUp = addEventListener('mouseup', () => {
+        unbindMouseUp();
+        unbindMousemove();
+        unbindDragzoneBlocker();
 
         setTimeout(() => {
-          _this.dragzone.enable();
+          this.dragzone.enable();
         }, 0);
       });
     });
@@ -179,11 +184,9 @@ class pictureInPicture extends getPlugin('plugin') {
       });
     };
 
-    window.addEventListener('resize', onResize);
+    const unbindResize = addEventListener('resize', onResize);
 
-    videojs.pipPlayer.on('dispose', () => {
-      window.removeEventListener('resize', onResize);
-    });
+    videojs.pipPlayer.on('dispose', unbindResize);
   }
 }
 
