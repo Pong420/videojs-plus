@@ -67,7 +67,7 @@ class SettingMenuButton extends MenuButton {
     }
 
     this.off(document.body, 'click', this.hideMenu);
-    this.off(document.body, 'touchend', this.hideMenu);
+    // this.off(document.body, 'touchend', this.hideMenu);
 
     setTimeout(() => {
       this.one(document.body, 'click', this.hideMenu);
