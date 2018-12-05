@@ -44,13 +44,13 @@ hook('beforesetup', (_, options) => {
 
 // prevent control bar immediately shown
 hook('setup', vjsPlayer => {
-  const mobileView = vjsPlayer.options_.mobileView !== false;
+  const enableMobileView = vjsPlayer.options_.mobileView !== false;
 
   const matchDimension = value => {
     return window.matchMedia ? window.matchMedia(`(max-width: ${value}px)`).matches : window.innerWidth <= value;
   };
 
-  if (matchDimension(480) && mobileView) {
+  if (matchDimension(480) && enableMobileView) {
     // Prevent control bar shown immediately after playing
     vjsPlayer.controlBar.hide();
     vjsPlayer.one('playing', () => {

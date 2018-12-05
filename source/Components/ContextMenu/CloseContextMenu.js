@@ -2,6 +2,7 @@ import { getComponent, registerComponent } from 'video.js';
 
 const ClickableComponent = getComponent('ClickableComponent');
 
+// for mobile view
 class CloseContextMenu extends ClickableComponent {
   buildCSSClass() {
     return 'vjs-close-menu-layer vjs-close-context-menu';
