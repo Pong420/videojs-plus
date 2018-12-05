@@ -1,4 +1,4 @@
-import { hook, getComponent, registerComponent } from 'video.js';
+import { getComponent, registerComponent } from 'video.js';
 
 const Button = getComponent('Button');
 
@@ -24,8 +24,7 @@ PipButton.prototype.controlText_ = 'Picture in Picture';
 
 registerComponent('PipButton', PipButton);
 
-hook('setup', vjsPlayer => {
-  const { parent, index } = vjsPlayer.findChild('SettingMenuButton')[0];
+const controlBarChildren = getComponent('ControlBar').prototype.options_.children;
+const indexOfSettingButton = controlBarChildren.indexOf('SettingMenuButton');
 
-  parent.addChild(new PipButton(vjsPlayer), {}, index);
-});
+controlBarChildren.splice(indexOfSettingButton, 0, 'PipButton');

@@ -21,6 +21,10 @@
   .vjs-big-play-button {
     display: block !important;
   }
+
+  .vjs-menu-content {
+    display: none;
+  }
 }
 
 .vjs-pip-button {
@@ -32,8 +36,8 @@
 }
 
 .vjs-pip-player {
-  @include disable-volume-level();
-
+  .vjs-menu-content,
+  .vjs-volume-panel,
   .vjs-pip-button,
   .vjs-setting-button {
     display: none;
