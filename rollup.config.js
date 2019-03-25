@@ -1,108 +1,58 @@
-import commonjs from 'rollup-plugin-commonjs';
-import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
-import uglify from 'rollup-plugin-uglify';
+import babel from 'rollup-plugin-babel';
+import commonjs from 'rollup-plugin-commonjs';
+import sourceMaps from 'rollup-plugin-sourcemaps';
+import camelCase from 'lodash/camelCase';
 import scss from 'rollup-plugin-scss';
-import CleanCSS from 'clean-css';
-import fs from 'fs';
-import path from 'path';
+import json from 'rollup-plugin-json';
 
-import { eslint } from 'rollup-plugin-eslint';
+const pkg = require('./package.json');
 
-const dev = process.env.NODE_ENV === 'dev';
-
-const mkdirp = dir =>
-  path
-    .resolve(dir)
-    .split(path.sep)
-    .reduce((acc, cur) => {
-      const currentPath = path.normalize(acc + path.sep + cur);
-
-      try {
-        fs.statSync(currentPath);
-      } catch (e) {
-        if (e.code === 'ENOENT') {
-          fs.mkdirSync(currentPath);
-        } else {
-          throw e;
-        }
-      }
-      return currentPath;
-    }, '');
-
-const createEntry = ({ input, output, css = true }) => {
-  return {
-    input,
-    output: {
+export default {
+  input: `source/index.js`,
+  output: [
+    {
+      file: pkg.main,
+      name: camelCase(pkg.name),
+      format: 'umd',
+      sourcemap: true,
       globals: {
         'video.js': 'videojs'
-      },
-      ...output
+      }
     },
-    external: ['video.js'],
-    watch: {
-      clearScreen: false
-    },
-    plugins: [
-      commonjs({
-        sourceMap: false
-      }),
-      resolve({
-        jsnext: true,
-        main: true,
-        browser: true
-      }),
-      scss({
-        output: styles => {
-          if (styles.length && css) {
-            const cssOutput = output.file.replace('.js', '.css');
-            const parsedCSS = new CleanCSS().minify(styles);
-
-            mkdirp(cssOutput.replace(/[^\/]*$/, ''));
-
-            fs.writeFileSync(cssOutput, parsedCSS.styles);
-          }
-        }
-      }),
-      eslint({
-        exclude: ['node_modules/**', '*.scss']
-      }),
-      babel({
-        babelrc: true,
-        exclude: 'node_modules/**',
-        compact: false
-      }),
-      !dev && uglify()
-    ]
-  };
-};
-
-const coreEntries = ['umd', 'cjs'].map(format => {
-  const prefix = format === 'umd' ? '' : `.${format}`;
-
-  return createEntry({
-    input: 'source/index.js',
-    output: {
-      file: `dist/videojs-plus${prefix}.min.js`,
-      format
-    },
-    css: format === 'umd'
-  });
-});
-
-const pluginEntries = fs.readdirSync('source/Plugin').map(pluginName => {
-  const parsedName = pluginName
-    .split(/(?=[A-Z])/)
-    .join('-')
-    .toLowerCase();
-
-  return createEntry({
-    input: `source/Plugin/${pluginName}/${pluginName}.js`,
-    output: {
-      file: `dist/${parsedName}/videojs-plus.${parsedName}.min.js`,
-      format: 'iife'
+    { file: pkg.module, format: 'es', sourcemap: true },
+    {
+      file: pkg.module,
+      format: 'iife',
+      sourcemap: true,
+      globals: {
+        'video.js': 'videojs'
+      }
     }
-  });
-});
+  ],
+  // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
+  external: ['video.js'],
+  watch: {
+    include: 'source/**'
+  },
+  plugins: [
+    // Allow json resolution
+    json(),
+    // Compile TypeScript files
+    // Allow bundling cjs modules (unlike webpack, rollup doesn't understand cjs)
+    commonjs(),
+    // Allow node_modules resolution, so you can use 'external' to control
+    // which external modules to include in the bundle
+    // https://github.com/rollup/rollup-plugin-node-resolve#usage
+    resolve(),
+    scss(),
+    babel({
+      babelrc: true,
+      exclude: 'node_modules/**',
+      compact: false
+    }),
 
-export default [...coreEntries, ...pluginEntries];
+    // Resolve source maps to the original source
+    sourceMaps()
+  ]
+};
