@@ -1,10 +1,10 @@
-import { hook, getComponent } from 'video.js';
+import videojs from 'video.js';
 import './ControlBar.Mobile';
 
 import './Progress/Progress';
 import './ControlBar.scss';
 
-getComponent('ControlBar').prototype.options_.children = [
+videojs.getComponent('ControlBar').prototype.options_.children = [
   'PlayToggle',
   'CustomControlSpacer',
   'VolumePanel',
@@ -17,7 +17,7 @@ getComponent('ControlBar').prototype.options_.children = [
   'FullscreenToggle'
 ];
 
-hook('setup', vjsPlayer => {
+videojs.hook('setup', vjsPlayer => {
   vjsPlayer.on('mouseleave', function() {
     vjsPlayer.userActive(false);
   });

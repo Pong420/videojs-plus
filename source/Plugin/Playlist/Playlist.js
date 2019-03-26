@@ -1,4 +1,4 @@
-import { hook, registerPlugin } from 'video.js';
+import videojs from 'video.js';
 import List from '../../Utils/List.js';
 
 import './BeforePlayNextLayer.js';
@@ -81,7 +81,7 @@ class PlayList extends List {
   }
 }
 
-registerPlugin('setPlayList', function(playlist, startIndex) {
+videojs.registerPlugin('setPlayList', function(playlist, startIndex) {
   const player = this.player_;
 
   player.playlist = new PlayList(player, playlist, startIndex);
@@ -89,7 +89,7 @@ registerPlugin('setPlayList', function(playlist, startIndex) {
   player.trigger('playlist', playlist);
 });
 
-hook('setup', vjsPlayer => {
+videojs.hook('setup', vjsPlayer => {
   const { playlist } = vjsPlayer.options_;
 
   if (playlist && playlist.length) {

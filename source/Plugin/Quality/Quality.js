@@ -1,4 +1,4 @@
-import { hook, registerPlugin } from 'video.js';
+import videojs from 'video.js';
 import List from '../../Utils/List';
 
 import './QualitySettingItem';
@@ -48,9 +48,9 @@ const setQualities = function(qualities, defaultQualityLevel) {
   player.trigger('quality', qualities);
 };
 
-registerPlugin('setQualities', setQualities);
+videojs.registerPlugin('setQualities', setQualities);
 
-hook('setup', vjsPlayer => {
+videojs.hook('setup', vjsPlayer => {
   const { qualities } = vjsPlayer.options_;
 
   if (qualities && qualities.length) {

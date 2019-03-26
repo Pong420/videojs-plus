@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const ClickableComponent = getComponent('ClickableComponent');
+const ClickableComponent = videojs.getComponent('ClickableComponent');
 
 class ExitPipButton extends ClickableComponent {
   constructor(player, options) {
@@ -21,6 +21,6 @@ class ExitPipButton extends ClickableComponent {
 
 ExitPipButton.prototype.controlText_ = 'Exit Pictutre In Pictutre';
 
-registerComponent('ExitPipButton', ExitPipButton);
+videojs.registerComponent('ExitPipButton', ExitPipButton);
 
 export default ExitPipButton;

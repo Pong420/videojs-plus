@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const SettingOptionItem = getComponent('SettingOptionItem');
+const SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
 class QualitySettingItem extends SettingOptionItem {
   constructor(player, options) {
@@ -34,8 +34,8 @@ class QualitySettingItem extends SettingOptionItem {
   }
 }
 
-getComponent('SettingMenuButton').prototype.options_.entries.push('QualitySettingItem');
+videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualitySettingItem');
 
-registerComponent('QualitySettingItem', QualitySettingItem);
+videojs.registerComponent('QualitySettingItem', QualitySettingItem);
 
 export default QualitySettingItem;

@@ -1,9 +1,9 @@
-import { getComponent, registerComponent, hook } from 'video.js';
+import videojs from 'video.js';
 
 import './ControlBar.Mobile.scss';
 
-const Component = getComponent('Component');
-const ControlBar = getComponent('ControlBar');
+const Component = videojs.getComponent('Component');
+const ControlBar = videojs.getComponent('ControlBar');
 
 class ControlSeparator extends Component {
   constructor(player, options) {
@@ -13,9 +13,9 @@ class ControlSeparator extends Component {
   }
 }
 
-registerComponent('ControlSeparator', ControlSeparator);
+videojs.registerComponent('ControlSeparator', ControlSeparator);
 
-hook('beforesetup', (_, options) => {
+videojs.hook('beforesetup', (_, options) => {
   const children = ControlBar.prototype.options_.children.slice(0);
   const index = children.indexOf('CustomControlSpacer');
 
@@ -43,7 +43,7 @@ hook('beforesetup', (_, options) => {
 });
 
 // prevent control bar immediately shown
-hook('setup', vjsPlayer => {
+videojs.hook('setup', vjsPlayer => {
   const enableMobileView = vjsPlayer.options_.mobileView !== false;
 
   const matchDimension = value => {

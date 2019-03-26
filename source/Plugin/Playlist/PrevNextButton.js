@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const Button = getComponent('Button');
+const Button = videojs.getComponent('Button');
 
 class PrevNextButton extends Button {
   constructor(player, options) {
@@ -45,7 +45,7 @@ class PrevNextButton extends Button {
   }
 }
 
-const ControlBar = getComponent('ControlBar');
+const ControlBar = videojs.getComponent('ControlBar');
 const children = ControlBar.prototype.options_.children;
 const indexOfPlayToggle = children.indexOf('PlayToggle');
 
@@ -65,6 +65,6 @@ if (indexOfPlayToggle !== -1) {
   });
 }
 
-registerComponent('PrevNextButton', PrevNextButton);
+videojs.registerComponent('PrevNextButton', PrevNextButton);
 
 export default PrevNextButton;

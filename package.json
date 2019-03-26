@@ -1,6 +1,6 @@
 {
   "name": "videojs-plus",
-  "version": "1.4.0",
+  "version": "1.5.0-rc2",
   "description": "An extension and skin for video.js",
   "main": "dist/videojs-plus.umd.js",
   "module": "dist/videojs-plus.es5.js",
@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "start": "node server.js",
-    "dev": "export NODE_ENV=dev && node server.js | rollup -c -w",
+    "dev": "export NODE_ENV=dev && node server.js & rollup -c -w",
     "build": "rollup -c rollup.config.js",
     "prebuild": "rimraf dist"
   },

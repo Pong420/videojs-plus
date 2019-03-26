@@ -1,4 +1,4 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 import addEventListener from '../../Utils/Listener';
 
 import './ContextMenu.scss';
@@ -7,7 +7,7 @@ import './Item/AboutThisPlayer.js';
 
 import CloseContextMenu from './CloseContextMenu';
 
-const Menu = getComponent('Menu');
+const Menu = videojs.getComponent('Menu');
 
 class ContextMenu extends Menu {
   constructor(player, options) {
@@ -67,6 +67,6 @@ ContextMenu.prototype.options_ = {
   children: ['ContextMenuToggleLoop', 'AboutThisPlayer']
 };
 
-registerComponent('ContextMenu', ContextMenu);
+videojs.registerComponent('ContextMenu', ContextMenu);
 
-getComponent('Player').prototype.options_.children.push('ContextMenu');
+videojs.getComponent('Player').prototype.options_.children.push('ContextMenu');

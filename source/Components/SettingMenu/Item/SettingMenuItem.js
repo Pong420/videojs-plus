@@ -1,12 +1,12 @@
-import { getComponent, registerComponent, mergeOptions } from 'video.js';
+import videojs from 'video.js';
 
-const MenuItem = getComponent('MenuItem');
+const MenuItem = videojs.getComponent('MenuItem');
 
 class SettingMenuItem extends MenuItem {
   constructor(player, options) {
     super(
       player,
-      mergeOptions(
+      videojs.mergeOptions(
         {
           selectable: false
         },
@@ -18,6 +18,6 @@ class SettingMenuItem extends MenuItem {
   }
 }
 
-registerComponent('SettingMenuItem', SettingMenuItem);
+videojs.registerComponent('SettingMenuItem', SettingMenuItem);
 
 export default SettingMenuItem;

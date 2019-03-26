@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const MenuItem = getComponent('MenuItem');
+const MenuItem = videojs.getComponent('MenuItem');
 
 class ContextMenuItem extends MenuItem {
   constructor(player, options) {
@@ -32,6 +32,6 @@ class ContextMenuItem extends MenuItem {
   }
 }
 
-registerComponent('ContextMenuItem', ContextMenuItem);
+videojs.registerComponent('ContextMenuItem', ContextMenuItem);
 
 export default ContextMenuItem;

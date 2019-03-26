@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const ClickableComponent = getComponent('ClickableComponent');
+const ClickableComponent = videojs.getComponent('ClickableComponent');
 
 class CancelPlayNextEl extends ClickableComponent {
   constructor(player, options) {
@@ -23,6 +23,6 @@ class CancelPlayNextEl extends ClickableComponent {
 
 CancelPlayNextEl.prototype.controlText_ = 'Cancel PlayNext';
 
-registerComponent('CancelPlayNextEl', CancelPlayNextEl);
+videojs.registerComponent('CancelPlayNextEl', CancelPlayNextEl);
 
 export default CancelPlayNextEl;

@@ -1,6 +1,6 @@
-import videojs, { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const SettingOptionItem = getComponent('SettingOptionItem');
+const SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
 class QualityHlsSettingItem extends SettingOptionItem {
   constructor(player, options) {
@@ -105,8 +105,8 @@ class QualityHlsSettingItem extends SettingOptionItem {
   }
 }
 
-getComponent('SettingMenuButton').prototype.options_.entries.push('QualityHlsSettingItem');
+videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityHlsSettingItem');
 
-registerComponent('QualityHlsSettingItem', QualityHlsSettingItem);
+videojs.registerComponent('QualityHlsSettingItem', QualityHlsSettingItem);
 
 export default QualityHlsSettingItem;

@@ -1,8 +1,8 @@
-import { getComponent, dom } from 'video.js';
+import videojs from 'video.js';
 
 import './Progress.scss';
 
-const SeekBar = getComponent('SeekBar');
+const SeekBar = videojs.getComponent('SeekBar');
 
 SeekBar.prototype.getPercent = function getPercent() {
   const time = this.player_.currentTime();
@@ -14,8 +14,8 @@ SeekBar.prototype.getPercent = function getPercent() {
 SeekBar.prototype.handleMouseMove = function handleMouseMove(event) {
   const player = this.player_;
 
-  // if (!dom.isSingleLeftClick(event) || isAdPlaying(player)) {
-  if (!dom.isSingleLeftClick(event)) {
+  // if (!videojs.dom.isSingleLeftClick(event) || isAdPlaying(player)) {
+  if (!videojs.dom.isSingleLeftClick(event)) {
     return;
   }
 

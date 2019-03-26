@@ -1,10 +1,10 @@
-import { dom, getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const Component = getComponent('Component');
+const Component = videojs.getComponent('Component');
 
 class LiveNotice extends Component {
   createEl() {
-    const el = dom.createEl('div', {
+    const el = videojs.dom.createEl('div', {
       className: 'vjs-live-notice',
       innerHTML: `
         <div class="vjs-live-notice-spot vjs-icon-circle"></div>
@@ -16,6 +16,6 @@ class LiveNotice extends Component {
   }
 }
 
-registerComponent('LiveNotice', LiveNotice);
+videojs.registerComponent('LiveNotice', LiveNotice);
 
 export default LiveNotice;

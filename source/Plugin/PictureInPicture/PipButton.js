@@ -1,6 +1,6 @@
-import { hook, getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const Button = getComponent('Button');
+const Button = videojs.getComponent('Button');
 
 class PipButton extends Button {
   constructor(player, options) {
@@ -22,9 +22,9 @@ class PipButton extends Button {
 
 PipButton.prototype.controlText_ = 'Picture in Picture';
 
-registerComponent('PipButton', PipButton);
+videojs.registerComponent('PipButton', PipButton);
 
-hook('setup', vjsPlayer => {
+videojs.hook('setup', vjsPlayer => {
   const { parent, index } = vjsPlayer.findChild('SettingMenuButton')[0];
 
   parent.addChild(new PipButton(vjsPlayer), {}, index);

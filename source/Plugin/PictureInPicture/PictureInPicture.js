@@ -1,10 +1,10 @@
-import videojs, { dom, registerPlugin, getPlugin } from 'video.js';
+import videojs from 'video.js';
 
 import PipPlayerWrapper from './PipPlayerWrapper';
 import './PictureInPicture.scss';
 import './PipButton';
 
-class pictureInPicture extends getPlugin('plugin') {
+class pictureInPicture extends videojs.getPlugin('plugin') {
   constructor(player, options = {}) {
     super(player, options);
 
@@ -32,8 +32,8 @@ class pictureInPicture extends getPlugin('plugin') {
   createPipPlayer() {
     const { parentPlayer, options_ } = this;
     const id = parentPlayer.id_ + '-pip-player';
-    const videoEl = dom.createEl('video', {
-      id: id,
+    const videoEl = videojs.dom.createEl('video', {
+      id,
       className: 'vjs-pip-player'
     });
 
@@ -175,4 +175,4 @@ class pictureInPicture extends getPlugin('plugin') {
   }
 }
 
-registerPlugin('pictureInPicture', pictureInPicture);
+videojs.registerPlugin('pictureInPicture', pictureInPicture);

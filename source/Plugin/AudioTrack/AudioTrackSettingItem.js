@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const SettingOptionItem = getComponent('SettingOptionItem');
+const SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
 class AudioTrackSettingItem extends SettingOptionItem {
   constructor(player, options) {
@@ -85,8 +85,8 @@ class AudioTrackSettingItem extends SettingOptionItem {
   }
 }
 
-getComponent('SettingMenuButton').prototype.options_.entries.push('AudioTrackSettingItem');
+videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('AudioTrackSettingItem');
 
-registerComponent('AudioTrackSettingItem', AudioTrackSettingItem);
+videojs.registerComponent('AudioTrackSettingItem', AudioTrackSettingItem);
 
 export default AudioTrackSettingItem;

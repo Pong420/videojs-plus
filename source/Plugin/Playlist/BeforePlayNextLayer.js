@@ -1,8 +1,8 @@
-import { dom, getComponent, registerComponent, registerPlugin } from 'video.js';
+import videojs from 'video.js';
 
 import './PlayNextSpinner';
 
-const Component = getComponent('Component');
+const Component = videojs.getComponent('Component');
 
 class BeforePlayNextLayer extends Component {
   constructor(player, options) {
@@ -57,11 +57,11 @@ class BeforePlayNextLayer extends Component {
   createEl() {
     const title = this.getNext().title;
 
-    const el = dom.createEl('div', {
+    const el = videojs.dom.createEl('div', {
       className: 'vjs-before-playnext'
     });
 
-    this.contentEl_ = dom.createEl('div', {
+    this.contentEl_ = videojs.dom.createEl('div', {
       className: 'vjs-before-playnext-content',
       innerHTML: `
         <div class="vjs-upnext-text">${this.localize('Up Next')}</div>
@@ -133,7 +133,7 @@ class BeforePlayNextLayer extends Component {
   }
 }
 
-const playNext = function() {
+function playNext() {
   const player = this.player_;
   const { playlist } = player;
   const haveNextVideo = playlist.loop() || !playlist.ended();
@@ -146,7 +146,7 @@ const playNext = function() {
   } else {
     player.poster(playlist.current().poster || '');
   }
-};
+}
 
-registerPlugin('playNext', playNext);
-registerComponent('BeforePlayNextLayer', BeforePlayNextLayer);
+videojs.registerPlugin('playNext', playNext);
+videojs.registerComponent('BeforePlayNextLayer', BeforePlayNextLayer);

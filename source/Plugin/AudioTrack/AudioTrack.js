@@ -1,7 +1,7 @@
-import { getPlugin, registerPlugin } from 'video.js';
+import videojs from 'video.js';
 import './AudioTrackSettingItem';
 
-class audio extends getPlugin('plugin') {
+class audio extends videojs.getPlugin('plugin') {
   constructor(player, options = {}) {
     super(player, options);
 
@@ -38,4 +38,4 @@ class audio extends getPlugin('plugin') {
   }
 }
 
-registerPlugin('audio', audio);
+videojs.registerPlugin('audio', audio);

@@ -1,9 +1,9 @@
-import { browser, hook } from 'video.js';
+import videojs from 'video.js';
 import './Player.scss';
 
-const { IS_IPHONE, IOS_VERSION, TOUCH_ENABLED } = browser;
+const { IS_IPHONE, IOS_VERSION, TOUCH_ENABLED } = videojs.browser;
 
-hook('setup', vjsPlayer => {
+videojs.hook('setup', vjsPlayer => {
   vjsPlayer.playsinline(vjsPlayer.options_.playsinline !== false);
 
   vjsPlayer.addClass('video-js');

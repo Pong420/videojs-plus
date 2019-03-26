@@ -1,8 +1,8 @@
-import { getPlugin, registerPlugin } from 'video.js';
+import videojs from 'video.js';
 import LiveNotice from './LiveNotice';
 import './Live.scss';
 
-const Plugin = getPlugin('plugin');
+const Plugin = videojs.getPlugin('plugin');
 
 class Live extends Plugin {
   constructor(player, options = {}) {
@@ -49,4 +49,4 @@ class Live extends Plugin {
   }
 }
 
-registerPlugin('live', Live);
+videojs.registerPlugin('live', Live);

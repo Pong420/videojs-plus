@@ -1,5 +1,5 @@
-import log from '../../Utils/Log';
 import videojs from 'video.js';
+import log from '../../Utils/Log';
 
 const AUTOPLAY_SUCCESS = 'autoplay-success';
 const AUTOPLAY_FAILURE = 'autoplay-failure';

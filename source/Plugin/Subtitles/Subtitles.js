@@ -1,9 +1,9 @@
-import { hook, registerPlugin, getPlugin } from 'video.js';
+import videojs from 'video.js';
 
 import './SubtitleSettingMenuItem';
 import './Subtitles.scss';
 
-class subtitles extends getPlugin('plugin') {
+class subtitles extends videojs.getPlugin('plugin') {
   constructor(player, options) {
     super(player, options);
 
@@ -101,10 +101,10 @@ class subtitles extends getPlugin('plugin') {
   }
 }
 
-hook('setup', vjsPlayer => {
+videojs.hook('setup', vjsPlayer => {
   vjsPlayer.ready(() => {
     vjsPlayer.subtitles().load(vjsPlayer.options_.subtitles);
   });
 });
 
-registerPlugin('subtitles', subtitles);
+videojs.registerPlugin('subtitles', subtitles);

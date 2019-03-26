@@ -1,6 +1,6 @@
-import { getComponent } from 'video.js';
+import videojs from 'video.js';
 
-const SettingMenu = getComponent('SettingMenu');
+const SettingMenu = videojs.getComponent('SettingMenu');
 
 class SettingMenuTemp extends SettingMenu {
   constructor(player) {

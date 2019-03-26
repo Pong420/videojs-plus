@@ -1,12 +1,12 @@
+import videojs from 'video.js';
 import './PlayToggleLayer.scss';
-import { getComponent, registerComponent, dom } from 'video.js';
 
-const PlayToggleButton = getComponent('PlayToggle');
-const ClickableComponent = getComponent('ClickableComponent');
+const PlayToggleButton = videojs.getComponent('PlayToggle');
+const ClickableComponent = videojs.getComponent('ClickableComponent');
 
 class PlayToggleLayer extends ClickableComponent {
   createEl() {
-    return dom.createEl('div', {
+    return videojs.dom.createEl('div', {
       className: 'vjs-play-toggle-layer'
     });
   }
@@ -18,9 +18,9 @@ class PlayToggleLayer extends ClickableComponent {
   }
 }
 
-registerComponent('PlayToggleLayer', PlayToggleLayer);
+videojs.registerComponent('PlayToggleLayer', PlayToggleLayer);
 
-const playerChildren = getComponent('Player').prototype.options_.children;
+const playerChildren = videojs.getComponent('Player').prototype.options_.children;
 const loadSpinnerIndex = playerChildren.indexOf('loadingSpinner');
 
 playerChildren.splice(loadSpinnerIndex, 0, 'PlayToggleLayer');

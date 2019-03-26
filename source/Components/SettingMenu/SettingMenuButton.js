@@ -1,11 +1,12 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 import SettingMenu from './SettingMenu.js';
+
 import './Item/SettingOnOffItem';
 import './Item/SettingOptionItem.js';
 import './PlaybackRate/PlaybackRateSettingItem.js';
 import './Setting.scss';
 
-const MenuButton = getComponent('MenuButton');
+const MenuButton = videojs.getComponent('MenuButton');
 
 class SettingMenuButton extends MenuButton {
   constructor(player, options) {
@@ -81,6 +82,6 @@ SettingMenuButton.prototype.options_ = {
   entries: ['PlaybackRateSettingItem']
 };
 
-registerComponent('SettingMenuButton', SettingMenuButton);
+videojs.registerComponent('SettingMenuButton', SettingMenuButton);
 
 export default SettingMenuButton;

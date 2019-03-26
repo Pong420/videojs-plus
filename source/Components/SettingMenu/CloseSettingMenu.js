@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const ClickableComponent = getComponent('ClickableComponent');
+const ClickableComponent = videojs.getComponent('ClickableComponent');
 
 class CloseSettingMenu extends ClickableComponent {
   buildCSSClass() {
@@ -12,6 +12,6 @@ class CloseSettingMenu extends ClickableComponent {
   }
 }
 
-registerComponent('CloseSettingMenu', CloseSettingMenu);
+videojs.registerComponent('CloseSettingMenu', CloseSettingMenu);
 
 export default CloseSettingMenu;

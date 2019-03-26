@@ -1,7 +1,7 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 import ExitPipButton from './ExitPipButton';
 
-const Component = getComponent('Component');
+const Component = videojs.getComponent('Component');
 
 class PipPlayerWrapper extends Component {
   constructor(player, options) {
@@ -30,6 +30,6 @@ class PipPlayerWrapper extends Component {
   }
 }
 
-registerComponent('PipPlayerWrapper', PipPlayerWrapper);
+videojs.registerComponent('PipPlayerWrapper', PipPlayerWrapper);
 
 export default PipPlayerWrapper;

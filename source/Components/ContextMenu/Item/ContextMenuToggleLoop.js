@@ -1,4 +1,4 @@
-import { registerComponent } from 'video.js';
+import videojs from 'video.js';
 import ContextMenuItem from './ContextMenuItem.js';
 
 class ContextMenuToggleLoop extends ContextMenuItem {
@@ -27,6 +27,6 @@ class ContextMenuToggleLoop extends ContextMenuItem {
   }
 }
 
-registerComponent('ContextMenuToggleLoop', ContextMenuToggleLoop);
+videojs.registerComponent('ContextMenuToggleLoop', ContextMenuToggleLoop);
 
 export default ContextMenuToggleLoop;

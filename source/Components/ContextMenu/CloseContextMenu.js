@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const ClickableComponent = getComponent('ClickableComponent');
+const ClickableComponent = videojs.getComponent('ClickableComponent');
 
 // for mobile view
 class CloseContextMenu extends ClickableComponent {
@@ -13,6 +13,6 @@ class CloseContextMenu extends ClickableComponent {
   }
 }
 
-registerComponent('CloseContextMenu', CloseContextMenu);
+videojs.registerComponent('CloseContextMenu', CloseContextMenu);
 
 export default CloseContextMenu;

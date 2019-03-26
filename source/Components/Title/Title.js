@@ -1,8 +1,8 @@
-import { getComponent, registerComponent, dom, registerPlugin } from 'video.js';
+import videojs from 'video.js';
 
 import './Title.scss';
 
-class Title extends getComponent('Component') {
+class Title extends videojs.getComponent('Component') {
   constructor(player, options) {
     super(player, options);
 
@@ -16,7 +16,7 @@ class Title extends getComponent('Component') {
       className: 'vjs-title'
     });
 
-    this.contentEl_ = dom.createEl('div', {
+    this.contentEl_ = videojs.dom.createEl('div', {
       className: 'vjs-title-field'
     });
 
@@ -49,7 +49,7 @@ const title = function(title_) {
   videoTitle.update(title_);
 };
 
-registerPlugin('title', title);
-registerComponent('VideoTitle', Title);
+videojs.registerPlugin('title', title);
+videojs.registerComponent('VideoTitle', Title);
 
-getComponent('Player').prototype.options_.children.splice(2, 0, 'VideoTitle');
+videojs.getComponent('Player').prototype.options_.children.splice(2, 0, 'VideoTitle');

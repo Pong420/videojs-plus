@@ -1,4 +1,4 @@
-import { registerComponent } from 'video.js';
+import videojs from 'video.js';
 
 import SettingMenuItem from './SettingMenuItem.js';
 
@@ -32,6 +32,6 @@ class SettingSubOptionItem extends SettingMenuItem {
   }
 }
 
-registerComponent('SettingSubOptionItem', SettingSubOptionItem);
+videojs.registerComponent('SettingSubOptionItem', SettingSubOptionItem);
 
 export default SettingSubOptionItem;

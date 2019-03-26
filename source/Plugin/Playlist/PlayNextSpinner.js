@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const ClickableComponent = getComponent('ClickableComponent');
+const ClickableComponent = videojs.getComponent('ClickableComponent');
 
 class PlayNextSpinner extends ClickableComponent {
   buildCSSClass() {
@@ -31,6 +31,6 @@ class PlayNextSpinner extends ClickableComponent {
 
 PlayNextSpinner.prototype.controlText_ = 'PlayNext';
 
-registerComponent('PlayNextSpinner', PlayNextSpinner);
+videojs.registerComponent('PlayNextSpinner', PlayNextSpinner);
 
 export default PlayNextSpinner;

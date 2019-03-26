@@ -1,8 +1,8 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
 import CloseSettingMenu from './CloseSettingMenu';
 
-const Menu = getComponent('Menu');
+const Menu = videojs.getComponent('Menu');
 
 class SettingMenu extends Menu {
   constructor(player, options) {
@@ -85,6 +85,6 @@ class SettingMenu extends Menu {
   }
 }
 
-registerComponent('SettingMenu', SettingMenu);
+videojs.registerComponent('SettingMenu', SettingMenu);
 
 export default SettingMenu;

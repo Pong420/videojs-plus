@@ -1,4 +1,4 @@
-import { browser } from 'video.js';
+import videojs from 'video.js';
 
 let logType = '';
 
@@ -7,7 +7,7 @@ try {
 } catch (e) {}
 
 const log = (function() {
-  if (logType === 'normal' || browser.IE_VERSION) {
+  if (logType === 'normal' || videojs.browser.IE_VERSION) {
     // log without style
     return console.info.bind(console, '[VJS Plus]:');
   } else if (logType) {

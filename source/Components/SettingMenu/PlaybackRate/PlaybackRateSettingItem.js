@@ -1,5 +1,5 @@
+import videojs from 'video.js';
 import SettingOptionItem from '../Item/SettingOptionItem.js';
-import { registerComponent } from 'video.js';
 
 class PlaybackRateSettingItem extends SettingOptionItem {
   constructor(player, options) {
@@ -42,6 +42,6 @@ class PlaybackRateSettingItem extends SettingOptionItem {
   }
 }
 
-registerComponent('PlaybackRateSettingItem', PlaybackRateSettingItem);
+videojs.registerComponent('PlaybackRateSettingItem', PlaybackRateSettingItem);
 
 export default PlaybackRateSettingItem;

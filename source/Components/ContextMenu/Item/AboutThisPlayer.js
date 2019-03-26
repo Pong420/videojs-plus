@@ -1,4 +1,4 @@
-import { registerComponent } from 'video.js';
+import videojs from 'video.js';
 import ContextMenuItem from './ContextMenuItem.js';
 
 class AboutThisPlayer extends ContextMenuItem {
@@ -17,6 +17,6 @@ class AboutThisPlayer extends ContextMenuItem {
   }
 }
 
-registerComponent('AboutThisPlayer', AboutThisPlayer);
+videojs.registerComponent('AboutThisPlayer', AboutThisPlayer);
 
 export default AboutThisPlayer;

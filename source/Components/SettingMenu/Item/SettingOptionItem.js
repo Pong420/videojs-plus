@@ -1,4 +1,4 @@
-import { getComponent, registerComponent, dom } from 'video.js';
+import videojs from 'video.js';
 
 import SettingMenuItem from './SettingMenuItem.js';
 import SettingSubOptionTitle from './SettingSubOptionTitle.js';
@@ -57,7 +57,7 @@ class SettingOptionItem extends SettingMenuItem {
 
   createEl() {
     const { icon, label } = this.options_;
-    const el = dom.createEl('li', {
+    const el = videojs.dom.createEl('li', {
       className: 'vjs-menu-item vjs-setting-menu-item',
       innerHTML: `
         <div class="vjs-icon-placeholder ${icon || ''}"></div>
@@ -66,7 +66,7 @@ class SettingOptionItem extends SettingMenuItem {
       `
     });
 
-    this.selectedValueEl = dom.createEl('div', {
+    this.selectedValueEl = videojs.dom.createEl('div', {
       className: 'vjs-setting-menu-value'
     });
 
@@ -80,7 +80,7 @@ class SettingOptionItem extends SettingMenuItem {
 
     this.updateSelectedValue();
 
-    const SubOptionItem = getComponent(`${this.name_}Child`) || SettingSubOptionItem;
+    const SubOptionItem = videojs.getComponent(`${this.name_}Child`) || SettingSubOptionItem;
 
     this.subMenuItems = this.entries.map(({ label, value }) => {
       return new SubOptionItem(this.player_, {
@@ -133,6 +133,6 @@ class SettingOptionItem extends SettingMenuItem {
   }
 }
 
-registerComponent('SettingOptionItem', SettingOptionItem);
+videojs.registerComponent('SettingOptionItem', SettingOptionItem);
 
 export default SettingOptionItem;

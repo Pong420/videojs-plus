@@ -1,6 +1,6 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const SettingOptionItem = getComponent('SettingOptionItem');
+const SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
 class SubtitleSettingMenuItem extends SettingOptionItem {
   constructor(player, options) {
@@ -42,8 +42,8 @@ class SubtitleSettingMenuItem extends SettingOptionItem {
   }
 }
 
-getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
+videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
 
-registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
+videojs.registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
 
 export default SubtitleSettingMenuItem;

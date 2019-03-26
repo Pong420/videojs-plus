@@ -1,8 +1,8 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
 import './FullWindowToggle.scss';
 
-class FullWindowToggle extends getComponent('FullscreenToggle') {
+class FullWindowToggle extends videojs.getComponent('FullscreenToggle') {
   constructor(player, options) {
     super(player, options);
 
@@ -32,9 +32,9 @@ class FullWindowToggle extends getComponent('FullscreenToggle') {
   }
 }
 
-registerComponent('FullWindowToggle', FullWindowToggle);
+videojs.registerComponent('FullWindowToggle', FullWindowToggle);
 
-const controlBarChildren = getComponent('ControlBar').prototype.options_.children;
+const controlBarChildren = videojs.getComponent('ControlBar').prototype.options_.children;
 const fullScreenButtonIndex = controlBarChildren.indexOf('FullscreenToggle');
 
 controlBarChildren[fullScreenButtonIndex] = 'FullWindowToggle';

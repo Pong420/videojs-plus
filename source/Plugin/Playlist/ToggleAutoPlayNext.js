@@ -1,10 +1,10 @@
-import { getComponent, registerComponent } from 'video.js';
+import videojs from 'video.js';
 
-const SettingMenuButton = getComponent('SettingMenuButton');
-const SettingOnOffItem = getComponent('SettingOnOffItem');
+const SettingMenuButton = videojs.getComponent('SettingMenuButton');
+const SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
 
 class ToggleAutoPlayNext extends SettingOnOffItem {
-  constructor(player, options) {
+  constructor(player) {
     super(player, {
       name: 'ToggleAutoPlayNext',
       label: 'Autoplay',
@@ -45,7 +45,7 @@ class ToggleAutoPlayNext extends SettingOnOffItem {
   }
 }
 
-registerComponent('ToggleAutoPlayNext', ToggleAutoPlayNext);
+videojs.registerComponent('ToggleAutoPlayNext', ToggleAutoPlayNext);
 
 SettingMenuButton.prototype.options_.entries.splice(0, 0, 'ToggleAutoPlayNext');
 

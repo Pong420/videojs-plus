@@ -1,10 +1,10 @@
+import videojs from 'video.js';
 import SettingMenuItem from './SettingMenuItem.js';
-import { dom, registerComponent } from 'video.js';
 
 class SettingOnOffItem extends SettingMenuItem {
   createEl() {
     const options = this.options_;
-    const el = dom.createEl('li', {
+    const el = videojs.dom.createEl('li', {
       className: 'vjs-menu-item vjs-setting-onoff-item',
       innerHTML: `
         <div class="vjs-icon-placeholder ${this.options_.icon || ''}"></div>
@@ -36,6 +36,6 @@ class SettingOnOffItem extends SettingMenuItem {
   selected() {}
 }
 
-registerComponent('SettingOnOffItem', SettingOnOffItem);
+videojs.registerComponent('SettingOnOffItem', SettingOnOffItem);
 
 export default SettingOnOffItem;
