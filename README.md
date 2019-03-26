@@ -1,5 +1,3 @@
-:warning: This project is under development and not ready for proudction.
-
 ## VideoJS Plus
 
 VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/video.js). <br>
@@ -29,36 +27,20 @@ yarn add videojs-plus
 ```html
 <html>
   <head>
-    <link rel="stylesheet" href="videojs-plus.min.css" />
+    <link rel="stylesheet" href="videojs-plus.css" />
   </head>
   <body>
     <video id="example-video" class="vjs-fluid" poster="http://vjs.zencdn.net/v/oceans.png">
       <source src="http://vjs.zencdn.net/v/oceans.mp4" />
     </video>
   </body>
-  <script src="http://vjs.zencdn.net/6.10.3/video.js"></script>
-  <script src="videojs-plus.min.js"></script>
+  <script src="http://vjs.zencdn.net/7.4.1/video.js"></script>
+  <script src="videojs-plus.umd.js"></script>
   <script>
     var player = videojs('example-video');
   </script>
 </html>
 ```
-
-- Webpack
-
-Open webpack config file, adding below configuration
-
-```js
-resolve: {
-  // ....
-  alias: {
-    // ...
-    'video.js': 'video.js/dist/video.js'
-  }
-}
-```
-
-Examples: [Vue](./guide/Vue.md), [React](./guide/React.md), [Angular](./guide/Angular.md)
 
 <br>
 

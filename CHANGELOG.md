@@ -1,3 +1,8 @@
+# 1.5.0
+
+- No new features/function.
+- Update npm package structure
+
 # 1.4.0
 
 ### Update
