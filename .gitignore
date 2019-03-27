@@ -13,3 +13,6 @@ yarn.lock
 .yarnclean
 .vscode
 temp
+
+package
+*tgz

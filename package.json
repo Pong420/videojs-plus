@@ -1,11 +1,13 @@
 {
   "name": "videojs-plus",
-  "version": "1.5.0-rc3",
+  "version": "1.5.0-rc4",
   "description": "An extension and skin for video.js",
   "main": "dist/videojs-plus.umd.js",
   "module": "dist/videojs-plus.es5.js",
+  "typings": "./index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts"
   ],
   "scripts": {
     "start": "node server.js",
