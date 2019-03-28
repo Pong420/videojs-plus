@@ -83,6 +83,11 @@ class SettingMenu extends Menu {
   removeStyle() {
     this.contentEl_.removeAttribute('style');
   }
+
+  hide() {
+    // Disable default hide function
+    // As the default hide function violate the calculation of menu dimension
+  }
 }
 
 videojs.registerComponent('SettingMenu', SettingMenu);

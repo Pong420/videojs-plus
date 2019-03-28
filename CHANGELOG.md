@@ -1,7 +1,12 @@
 # 1.5.0
 
-- No new features/function.
-- Update npm package structure
+### Update
+
+- Update npm package structure, easier to use with webpack
+
+### Bug Fixes
+
+- Fix setting menu cannot shown after `player.reset()`
 
 # 1.4.0
 
