@@ -1,6 +1,6 @@
 {
   "name": "videojs-plus",
-  "version": "1.5.0-rc5",
+  "version": "1.5.0-rc6",
   "description": "An extension and skin for video.js",
   "main": "dist/videojs-plus.umd.js",
   "module": "dist/videojs-plus.es5.js",
@@ -19,9 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.0",
     "@babel/node": "^7.2.2",
-    "@babel/plugin-transform-runtime": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
-    "@babel/register": "^7.4.0",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
@@ -33,12 +31,10 @@
     "rollup-plugin-node-resolve": "^4.0.1",
     "rollup-plugin-scss": "^1.0.1",
     "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-uglify": "^6.0.2",
-    "rollup-watch": "^4.3.1"
+    "video.js": "^7.4.1",
+    "videojs-contrib-quality-levels": "^2.0.9"
   },
   "dependencies": {
-    "video.js": "^7.4.1",
-    "videojs-contrib-quality-levels": "^2.0.9",
     "videojs-plus-font": "git://github.com/Pong420/font#af50d0ec9e9a604d0ae37043d6d1d9678e62314c"
   }
 }
