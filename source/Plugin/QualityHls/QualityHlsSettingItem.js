@@ -79,7 +79,11 @@ class QualityHlsSettingItem extends SettingOptionItem {
     this.player_.trigger('qualities', this.levels);
   }
 
-  onChange({ value }) {
+  onChange(selected) {
+    const { value } = selected;
+
+    super.onChange(selected);
+
     this.levels.forEach(lv => {
       lv.enabled = lv.height === value || value === 'auto';
     });

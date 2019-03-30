@@ -58,19 +58,14 @@ player.qualities.index();
 // get all qualities
 player.qualities.values;
 
-/**
- *  Fire when `setQualities` called.
- *  But if you set qualities in options and listen after player initialized,
- *  the `setQualities` function will called before you listen *
- */
-player.on('qualities', qualities => {
+player.on('qualities', (evt, qualities) => {
   console.log('qualities setup', qualities);
 });
 
 /**
- *  @params {Object} selected `player.qualities.current()` but contains index;
+ *  @params {Object} selected same as `player.qualities.current()` but contains index;
  */
-player.on('qualitychange', selected => {
+player.on('qualitychange', (evt, selected) => {
   console.log('quality changed', selected);
 });
 ```

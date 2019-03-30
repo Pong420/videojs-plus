@@ -11,14 +11,14 @@ Quality menu item will display automatically.
 player.qualityLevels();
 
 // Fire when all Hls playlist added.
-player.on('qualities', qualityLevels => {
+player.on('qualities', (evt, qualityLevels) => {
   console.log('qualities setup', qualityLevels);
 });
 
 /**
  * @param {Object} selected - current quality level related value....
  */
-player.on('qualitychange', selected => {
+player.on('qualitychange', (evt, selected) => {
   console.log('quality changed');
 });
 

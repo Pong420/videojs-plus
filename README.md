@@ -22,7 +22,7 @@ yarn add videojs-plus
 
 ### Usage
 
-- Basic
+- Just include the JS and CSS and use videojs normally
 
 ```html
 <html>
@@ -102,6 +102,7 @@ videojs.getComponent('ControlBar').prototype.options_.children = [
 - [FullWindow Toggle](./guide/plugins/FullWindow.md)
 - [Picture In Picture](./guide/plugins/PictureInPicture.md) ( Experimental )
 - [Live](./guide/plugins/Live.md) ( Style plugins for live streaming )
+- [Unload](./guide/plugins/Unload.md)
 
 <br>
 

@@ -32,16 +32,19 @@ class AudioTrackSettingItem extends SettingOptionItem {
       player.tech_.off('usage', onHlsUsageEvent);
     });
 
+    player.on('audiochange', (_, { index }) => {
+      this.select(index);
+      this.update(index);
+    });
+
     // hide when new source set
     player.on('loadstart', () => {
       this.hide();
     });
   }
 
-  update(selectedItem) {
-    super.update(selectedItem);
-
-    this.player_.audio().pick(selectedItem.value);
+  onChange({ value }) {
+    this.player_.audio().pick(value);
   }
 
   onAlternateAudio() {

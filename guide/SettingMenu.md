@@ -26,9 +26,6 @@ class ToggleAnnotation extends SettingOnOffItem {
     this.update(true);
   }
 
-  /**
-   *  @param {Boolean} active
-   */
   update(active) {
     super.update(active);
 
