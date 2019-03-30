@@ -4,6 +4,7 @@
 
 - Update npm package structure, easier to use with webpack
 - Update optional setting menu
+- Add plugin `Unload`
 
 ### Bug Fixes
 
