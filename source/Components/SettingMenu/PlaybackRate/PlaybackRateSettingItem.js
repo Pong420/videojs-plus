@@ -13,7 +13,7 @@ class PlaybackRateSettingItem extends SettingOptionItem {
         {
           label: 'Normal',
           value: 1,
-          defalut: true
+          default: true
         },
         1.25,
         1.5,
@@ -27,18 +27,19 @@ class PlaybackRateSettingItem extends SettingOptionItem {
     // So we need to listen on `ratechange`
     player.on('ratechange', () => {
       const rate = player.playbackRate();
-      const currentEntry = this.entries.find(({ value }) => rate === value);
+      const index = this.entries.findIndex(({ value }) => rate === value);
 
-      this.update(currentEntry);
+      if (index > -1) {
+        this.select(index);
+        this.update(index);
+      } else {
+        videojs.log.warn('Incorrect playbackRate value, setting menu will not updated');
+      }
     });
   }
 
-  update(entry) {
-    super.update(entry);
-
-    if (this.player_.playbackRate() !== entry.value) {
-      this.player_.playbackRate(entry.value);
-    }
+  onChange({ value }) {
+    this.player_.playbackRate(value);
   }
 }
 

@@ -8,9 +8,7 @@ import getMenuDimension from '../MenuDimension';
 /**
  * @param {Array<Object|number|string>} entries
  */
-function parseEntries(entries) {
-  let selected;
-
+function parseEntries(entries, selectedIndex) {
   entries = entries.map((data, index) => {
     if (data !== null && typeof data !== 'object') {
       data = {
@@ -19,28 +17,22 @@ function parseEntries(entries) {
       };
     }
 
-    const isDefault = typeof data.defalut !== 'undefined' ? data.defalut : false;
-
-    const entry = {
-      ...data,
-      index,
-      defalut: isDefault
-    };
-
-    if (isDefault) {
-      selected = entry;
+    let isDefault = false;
+    if (typeof selectedIndex === 'undefined' && typeof data.default !== 'undefined') {
+      isDefault = true;
+      selectedIndex = index;
     }
 
-    return entry;
+    return {
+      ...data,
+      index,
+      default: isDefault
+    };
   });
-
-  if (!selected) {
-    selected = entries[0];
-  }
 
   return {
     entries,
-    selected
+    selected: entries[selectedIndex || 0]
   };
 }
 
@@ -75,15 +67,16 @@ class SettingOptionItem extends SettingMenuItem {
     return el;
   }
 
-  setEntries(entries_ = []) {
-    Object.assign(this, parseEntries(entries_));
+  setEntries(entries_ = [], selectedIndex) {
+    Object.assign(this, parseEntries(entries_, selectedIndex));
 
     this.updateSelectedValue();
 
     const SubOptionItem = videojs.getComponent(`${this.name_}Child`) || SettingSubOptionItem;
 
-    this.subMenuItems = this.entries.map(({ label, value }) => {
+    this.subMenuItems = this.entries.map(({ label, value }, index) => {
       return new SubOptionItem(this.player_, {
+        index,
         label,
         value,
         parent: this,
@@ -108,17 +101,21 @@ class SettingOptionItem extends SettingMenuItem {
     this.menu.resize(dimensions);
   }
 
-  update({ label, value }) {
-    this.selected = {
-      label,
-      value
-    };
+  select(index) {
+    this.selected = this.entries[index];
+  }
 
+  update() {
     this.updateSelectedValue();
 
     this.subMenuItems.forEach(function(item) {
       item.update && item.update();
     });
+  }
+
+  onChange({ index }) {
+    this.select(index);
+    this.update(index);
   }
 
   updateSelectedValue() {

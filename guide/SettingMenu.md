@@ -4,7 +4,7 @@
 
 [Demo](https://pong420.github.io/videojs-plus/examples/setting-menu.html)
 
-:warning: below example script could be outdated, visit the source code of above demo will be better
+If you got error from below example script, visit [the example source code](examples/setting-menu.html)
 
 #### Create an on off menu item
 
@@ -73,30 +73,24 @@ class QualityMenuItem extends SettingOptionItem {
     this.addClass('vjs-setting-quality');
   }
 
-  /**
-   *  @param {SettingSubOptionItem} selectedItem - videojs component,
-   */
-  update(selectedItem) {
-    super.update(selectedItem);
-
-    const { label, value } = selectedItem;
-
-    console.log(label, value);
+  onChange(val) {
+    super.onChange(val);
+    console.log(val);
   }
 }
 
 videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityMenuItem');
 videojs.registerComponent('QualityMenuItem', QualityMenuItem);
 
-// if you want to change/customise the options item, you can regsiter new a component.
-// for example, HD quality only allow authorised user,
+// If you want to change/customise the options item, you can regsiter new a component.
+// For example, HD quality only allow authorised user.
 const SettingSubOptionItem = videojs.getComponent('SettingSubOptionItem');
 const authorised = false;
 
-// the classname should be the name of `SettingOptionItem` suffix `Child`
+// The classname must be the name of your `SettingOptionItem` suffix `Child`
 class QualityMenuItemChild extends SettingSubOptionItem {
   handleClick() {
-    if (authorised || this.value < 720) {
+    if (authorised || this.value === 'Auto' || this.value < 720) {
       super.handleClick();
     } else {
       alert('Please Login');

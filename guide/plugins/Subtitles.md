@@ -45,16 +45,17 @@ player.subtitles().track;
 // get all subtitles
 player.subtitles().values();
 
-player.on('subtitles', subtitles => {
+// Expect `values`, apis are chainable
+player
+  .subtitles()
+  .load(subtitles)
+  .pick(0);
+
+player.on('subtitles', (event, subtitles) => {
   console.log('subtitles setup', subtitles);
 });
 
-/**
- * @param {Object} selected - {label, index}
- *
- * subtitlechange no "s"
- */
-player.on('subtitlechange', selected => {
+player.on('subtitlechange', (event, subtitle) => {
   console.log('subtitles changed');
 });
 ```

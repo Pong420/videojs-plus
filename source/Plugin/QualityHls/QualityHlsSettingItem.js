@@ -53,22 +53,24 @@ class QualityHlsSettingItem extends SettingOptionItem {
   }
 
   onAllLevelsAdded() {
-    const entries = this.levels
-      .map(({ height }) => {
-        return {
-          label: this.localize(`${height}p`),
-          value: height,
-          defalut: false
-        };
-      })
-      .sort((a, b) => {
-        return b.value - a.value;
-      })
-      .concat({
+    const entries = [
+      ...this.levels
+        .map(({ height }) => {
+          return {
+            label: this.localize(`${height}p`),
+            value: height,
+            default: false
+          };
+        })
+        .sort((a, b) => {
+          return b.value - a.value;
+        }),
+      {
         label: 'Auto',
         value: 'auto',
-        defalut: true
-      });
+        default: true
+      }
+    ];
 
     this.setEntries(entries);
 
@@ -77,11 +79,7 @@ class QualityHlsSettingItem extends SettingOptionItem {
     this.player_.trigger('qualities', this.levels);
   }
 
-  update(selectedItem) {
-    super.update(selectedItem);
-
-    const value = selectedItem.value;
-
+  onChange({ value }) {
     this.levels.forEach(lv => {
       lv.enabled = lv.height === value || value === 'auto';
     });

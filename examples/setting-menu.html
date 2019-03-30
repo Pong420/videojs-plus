@@ -84,21 +84,15 @@
         this.addClass('vjs-setting-quality');
       }
 
-      /**
-       *  @param {SettingSubOptionItem} selectedItem - videojs component,
-       */
-      update(selectedItem) {
-        super.update(selectedItem);
-
-        const { label, value } = selectedItem;
-
-        console.log(label, value);
+      onChange(val) {
+        super.onChange(val);
+        console.log(val);
       }
     }
 
     class QualityMenuItemChild extends SettingSubOptionItem {
       handleClick() {
-        if (authorised || this.value < 720) {
+        if (authorised || this.value === 'Auto' || this.value < 720) {
           super.handleClick();
         } else {
           alert('Please Login');
@@ -113,7 +107,8 @@
 
     const player = videojs('example-video', {
       // same as videojs config
-      aspectRatio: '16:9'
+      aspectRatio: '16:9',
+      muted: true
     });
   </script>
 </html>

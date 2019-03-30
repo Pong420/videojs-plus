@@ -11,13 +11,12 @@ class subtitles extends videojs.getPlugin('plugin') {
     this.track = null;
 
     let timeout;
-
     const handleSubtitleChangeEvent = () => {
       clearTimeout(timeout);
 
       const subtitles = this.values();
       const currentSubtitle = subtitles.find(t => t.mode === 'showing') || {};
-      const newFlag = currentSubtitle.label || currentSubtitle.id;
+      const newFlag = currentSubtitle.label || currentSubtitle.id || -1;
 
       // multiple `change` event will reveiced when subtitles changed ( depends on number of subtitles or browser ? )
       // so that timeout is used to make sure `subtitlechange` event emit once;
@@ -62,11 +61,20 @@ class subtitles extends videojs.getPlugin('plugin') {
 
       subtitles.forEach(subtitle => {
         if (this.flag) {
-          subtitle.default = subtitle.label === this.flag;
+          subtitle.default = this.flag === subtitle.label || -1;
         }
 
         const manualCleanup = true;
-        const trackEl = player.addRemoteTextTrack(subtitle, manualCleanup);
+
+        // set default to false, otherwise subtitle will reset to the default subtitle
+        // when user switch quality with quality plugin
+        const trackEl = player.addRemoteTextTrack(
+          {
+            ...subtitle,
+            default: false
+          },
+          manualCleanup
+        );
 
         if (subtitle.default) {
           this.flag = subtitle.label;
@@ -78,12 +86,16 @@ class subtitles extends videojs.getPlugin('plugin') {
 
       player.trigger('subtitles', subtitles);
     }
+
+    return this;
   }
 
   remove() {
     this.values().forEach(track => {
       this.player.removeRemoteTextTrack(track);
     });
+
+    return this;
   }
 
   pick(index) {
@@ -98,6 +110,8 @@ class subtitles extends videojs.getPlugin('plugin') {
     } else {
       this.track.mode = 'disabled';
     }
+
+    return this;
   }
 }
 

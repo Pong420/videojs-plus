@@ -3,10 +3,12 @@
 ### Update
 
 - Update npm package structure, easier to use with webpack
+- Update optional setting menu
 
 ### Bug Fixes
 
 - Fix setting menu cannot shown after `player.reset()`
+- Fix UI not update if qualities or subtitles change through api
 
 # 1.4.0
 

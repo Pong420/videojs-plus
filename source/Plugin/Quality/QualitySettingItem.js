@@ -15,22 +15,24 @@ class QualitySettingItem extends SettingOptionItem {
     this.addClass('vjs-setting-quality');
 
     player.on('quality', (_, qualities) => {
-      this.setEntries(
-        qualities.map((quality, index) => {
-          quality.value = index;
+      const entries = qualities.map((quality, index) => {
+        quality.value = index;
+        return quality;
+      });
 
-          return quality;
-        })
-      );
+      this.setEntries(entries, player.qualities.index());
 
       this.show();
     });
+
+    player.on('qualitychange', (_, { index }) => {
+      this.select(index);
+      this.update(index);
+    });
   }
 
-  update(selectedItem) {
-    super.update(selectedItem);
-
-    this.player_.qualities.pick(selectedItem.value);
+  onChange({ value }) {
+    this.player_.qualities.pick(value);
   }
 }
 
