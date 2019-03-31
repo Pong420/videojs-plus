@@ -42,6 +42,10 @@ yarn add videojs-plus
 </html>
 ```
 
+#### Examples In CodeSandbox
+
+- [React Hooks](https://codesandbox.io/s/71z2lm4ko6)
+
 <br>
 
 ## Features
