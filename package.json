@@ -14,7 +14,8 @@
     "dev": "export NODE_ENV=dev && node server.js & rollup -c -w",
     "build": "rollup -c rollup.config.js",
     "prebuild": "rimraf dist",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "ghpages": "node gh-pages.js"
   },
   "license": "Apache-2.0",
   "devDependencies": {
@@ -22,6 +23,7 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.2",
     "express": "^4.16.4",
+    "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
     "rimraf": "^2.6.3",
