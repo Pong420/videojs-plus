@@ -1,3 +1,9 @@
+# 1.5.x
+
+### Update
+
+- Prevent `FullWindowToggle` disabled if the browser does not support Fullscreen API
+
 # 1.5.0
 
 ### Update

@@ -30,6 +30,13 @@ class FullWindowToggle extends videojs.getComponent('FullscreenToggle') {
       this.player_.exitFullscreen();
     }
   }
+
+  // Since `FullWindowToggle` are extends from `FullscreenToggle`,
+  // disable function will be called if the browser does not support fullscreen API
+  // However, `FullWindowToggle`  is assumed support all platform. So the function should be override
+  disable(force) {
+    force && super.disable();
+  }
 }
 
 videojs.registerComponent('FullWindowToggle', FullWindowToggle);
