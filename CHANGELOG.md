@@ -1,3 +1,9 @@
+# 1.5.2
+
+### Update
+
+- Allow to change audio track label through videojs language
+
 # 1.5.1
 
 ### Update

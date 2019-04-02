@@ -55,7 +55,7 @@ class AudioTrackSettingItem extends SettingOptionItem {
 
       // label and value are necessary attributes
       return {
-        label,
+        label: this.localize(label),
         value: index,
         id,
         kind,

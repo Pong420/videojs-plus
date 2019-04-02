@@ -5,9 +5,26 @@ This a plugin for **HLS streaming** with multiple audio tracks and create an ite
 #### Usage
 
 Just include the plugin and audio menu item will display automatically.
-The only one configuration may be the label of audio. The default label should be defined in HLS manifest but you could customize yourself. <br>
 
-For example:
+#### Chanage label in the menu
+
+The default label will be the `label` defined in HLS manifest and you could customize yourself.
+
+You could use [VideoJS Language Features](https://docs.videojs.com/docs/guides/languages.html) replace the default label
+
+```js
+const language = "en-us";
+videojs("example-video". {
+  language
+  // ..other options
+})
+videojs.addLanguage(language, {
+  "Audio 1": "Dubbing",
+  "Audio 2": "Original",
+});
+```
+
+or
 
 ```js
 player.on('before-audio-setup', (_, entries) => {
