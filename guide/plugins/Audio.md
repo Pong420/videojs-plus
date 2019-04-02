@@ -1,10 +1,11 @@
 ## Audio
 
-This a plugin for **HLS streaming** with multiple audio tracks and create an item in setting menu. So that user could swtich between those audio tracks.
+This a plugin for **HLS streaming** with multiple audio tracks and create an item in the setting menu. So that user could switch between those audio tracks.
 
 #### Usage
 
-Audio menu item will display automatically. The only one configuration may be the label of audio. The default label should be defined in HLS manifest but you could customisze yourself. <br>
+Just include the plugin and audio menu item will display automatically.
+The only one configuration may be the label of audio. The default label should be defined in HLS manifest but you could customize yourself. <br>
 
 For example:
 

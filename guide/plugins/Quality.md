@@ -35,10 +35,6 @@ const player = videojs('example-video', {
 
 // or
 
-/**
- *  @params {Array} qualities
- *  @params {Number|String} defaultQualityLevel - index of the default quality
-*/
 player.setQualities(qualities, defaultQualityLevel);
 
 ```
@@ -62,9 +58,6 @@ player.on('qualities', (evt, qualities) => {
   console.log('qualities setup', qualities);
 });
 
-/**
- *  @params {Object} selected same as `player.qualities.current()` but contains index;
- */
 player.on('qualitychange', (evt, selected) => {
   console.log('quality changed', selected);
 });

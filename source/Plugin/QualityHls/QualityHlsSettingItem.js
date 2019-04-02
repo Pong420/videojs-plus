@@ -72,7 +72,8 @@ class QualityHlsSettingItem extends SettingOptionItem {
       }
     ];
 
-    this.setEntries(entries);
+    // use auto as default
+    this.setEntries(entries, entries.length - 1);
 
     this.show();
 

@@ -1,8 +1,12 @@
-# 1.5.x
+# 1.5.1
 
 ### Update
 
 - Prevent `FullWindowToggle` disabled if the browser does not support Fullscreen API
+
+### Bug Fixes
+
+- Fix HlS quality plugin, UI display mistaken
 
 # 1.5.0
 

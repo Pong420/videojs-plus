@@ -9,12 +9,7 @@ The playlist UI at the right hand side need to created by yourself
 
 #### Usage
 
-```html
-<link rel="stylesheet" href="videojs-plus-playlist.min.css" />
-
-<script src="videojs-plus.min.js"></script>
-<script src="videojs-plus-playlist.min.js"></script>
-```
+inclide the plugin and style.css
 
 ```js
 const playlist = [
@@ -77,24 +72,19 @@ player.playlist.loop(false);
 // control player list should autoplay next or not
 player.playlist.autoplayNext(false);
 
-/**
- *  Fire when `setPlayList` called.
- *  But if you set playlist in options and listen after player initialized,
- *  the `setPlayList` function will called before you listen
- */
+// Fire when `setPlayList` called.
+// But if you set playlist in options and listen after player initialized,
+// the `setPlayList` function will be called before you listen
 player.on('playlist', playlist => {
   console.log('playlist setup', playlist);
 });
 
-/*
- *  @params {Object} selected `player.playlist.current()` but contains index;
- */
-player.on('playlistchange', selected => {
+player.on('playlistchange', (evt, selected) => {
   console.log('playlist changed', selected);
 });
 
 // fire when autoplay next options changed
-player.on('autoplaynext', (_, autoplayNext) => {
+player.on('autoplaynext', (evt, autoplayNext) => {
   console.log('autoplay next behaviour changed', autoplayNext);
 });
 ```
