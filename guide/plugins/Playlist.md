@@ -1,6 +1,6 @@
 ## Playlist
 
-The playlist UI at the right hand side need to created by yourself
+The playlist UI at the right-hand side need to create by yourself
 
 <img src="../../screenshot/playlist_1.png" style="max-width: 960px;">
 <img src="../../screenshot/playlist_2.png" style="max-width: 960px;">
@@ -69,7 +69,7 @@ player.playlist.values;
 // loop playlist, default true
 player.playlist.loop(false);
 
-// control player list should autoplay next or not
+// control player should autoplay next or not
 player.playlist.autoplayNext(false);
 
 // Fire when `setPlayList` called.

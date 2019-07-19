@@ -58,7 +58,7 @@ yarn add videojs-plus
 <img src="./screenshot/mobileui.control.small.png" width="300">
 
 - **Dimensions of controls**<br>
-  You can change the dimensions of controls / menu by changing the `font-size` of `.video-js`. For example,
+  You can change the dimensions of controls/menu by changing the `font-size` of `.video-js`. For example,
 
 ```css
 .video-js {
@@ -113,7 +113,7 @@ videojs.getComponent('ControlBar').prototype.options_.children = [
 ## Tips
 
 - language <br>
-  You can change the language of setting / context by [VideoJS language feature](https://docs.videojs.com/docs/guides/languages.html). For example
+  You can change the language of setting/context by [VideoJS language feature](https://docs.videojs.com/docs/guides/languages.html). For example
 
 ```js
 const language = "zh-hk";

@@ -1,8 +1,8 @@
-This is a plugin for switch between different video quality by HLS playlists.
+This is a plugin for switch between video quality by HLS playlists.
 
 #### Usage
 
-Just install and include [videojs-contrib-quality-levels](https://github.com/videojs/videojs-contrib-quality-levels) and the plugin, quality menu item will display automatically.
+Just install and include [videojs-contrib-quality-levels](https://github.com/videojs/videojs-contrib-quality-levels) and the plugin, the quality menu item will be automatically.
 
 #### Chanage label in the menu
 

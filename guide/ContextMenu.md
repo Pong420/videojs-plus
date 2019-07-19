@@ -2,7 +2,7 @@
 
 <img src="../screenshot/contextmenu.png" style="max-width: 960px;">
 
-#### Example for adding a contextmenu item
+#### Example for adding a custom contextmenu item
 
 ```js
 const ContextMenuItem = videojs.getComponent('ContextMenuItem');

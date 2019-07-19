@@ -1,8 +1,8 @@
 ## Subtitles
 
 This plugin is a wrapper of [VideoJS TextTrack API](https://docs.videojs.com/docs/guides/text-tracks.html).<br>
-Also create a [setting menu item](../SettingMenu.md) for subtitles selection. <br>
-Currently, only support kind `subtitles`, not sure `caption` should also included or not
+Also, create a [setting menu item](../SettingMenu.md) for subtitles selection. <br>
+Currently, only support text track kind `subtitles`, not sure `caption` should also be included or not
 
 #### Usage
 
@@ -62,9 +62,9 @@ player.on('subtitlechange', (event, subtitle) => {
 
 #### Note
 
-- HLS In-Manifest WebVTT subtitles may not supported since i have not resources for testing
+- HLS In-Manifest WebVTT subtitles may not be supported since I have not resourced for testing
 
-- VideoJS only support `vtt` format. Here is one of the method to load `srt` in videojs. Inspired by this [comment](https://github.com/videojs/video.js/issues/4822#issuecomment-351939054) and here is a working example with [imshaikot/srt-webvtt
+- VideoJS only support `vtt` format. Here is one of the methods to load `srt` in videojs. Inspired by this [comment](https://github.com/videojs/video.js/issues/4822#issuecomment-351939054) and here is a working example with [imshaikot/srt-webvtt
   ](https://github.com/imshaikot/srt-webvtt).
 
 ```js

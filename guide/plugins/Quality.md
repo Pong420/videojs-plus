@@ -1,6 +1,6 @@
 ## Quality
 
-This is a plugin for switch between different video quality by different video source
+This is a plugin for switch between video quality by the different video source
 
 #### Usage
 

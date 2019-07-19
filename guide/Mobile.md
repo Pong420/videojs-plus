@@ -4,7 +4,7 @@
 <img src="../screenshot/mobileui.setting.png" width="300px">
 
 Mobile UI is controlled by class `vjs-mobile-view`.
-This class will added if player initialize at screen smaller or equal 480px.
+This class will be added if the player initializes at screen smaller or equal 480px.
 
 #### Disable mobile view
 

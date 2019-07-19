@@ -4,7 +4,7 @@
 
 [Demo](https://pong420.github.io/videojs-plus/examples/setting-menu.html)
 
-If you got error from below example script, visit [the example source code](examples/setting-menu.html)
+If you got an error from below example script, visit [the example source code](examples/setting-menu.html)
 
 #### Create an on off menu item
 
@@ -79,7 +79,7 @@ class QualityMenuItem extends SettingOptionItem {
 videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityMenuItem');
 videojs.registerComponent('QualityMenuItem', QualityMenuItem);
 
-// If you want to change/customise the options item, you can regsiter new a component.
+// If you want to change/customize the options item, you can register new a component.
 // For example, HD quality only allow authorised user.
 const SettingSubOptionItem = videojs.getComponent('SettingSubOptionItem');
 const authorised = false;
@@ -102,7 +102,7 @@ videojs.registerComponent('QualityMenuItemChild', QualityMenuItemChild);
 
 #### Note
 
-- above example script should load before initialize player, otherwise you should assgin `menu` your self. For example
+- above example script should load before initializing player, otherwise you should assign `menu` your self. For example
 
 ```js
 const { component: SettingMenu } = player.findChild('SettingMenu')[0];
@@ -114,7 +114,7 @@ SettingMenu.addChild(
 );
 ```
 
-- If your new menu item is wider then default, you should override the default width
+- If your new menu item‘ dimension is large then default, you should overwrite the default width
 
 ```css
 .vjs-menu .vjs-menu-content .vjs-menu-item.vjs-setting-menu-item {
