@@ -54,15 +54,18 @@ const output = setFileName =>
       sourcemap: true,
       globals: {
         'video.js': 'videojs'
-      }
+      },
+      banner: `/* eslint-disable */`
     };
   });
 
+const distDir = 'dist';
+
 export default [
-  createEntry('source/index.js', output(format => `dist/videojs-plus.${format}.js`)),
+  createEntry('source/index.js', output(format => path.join(distDir, `/videojs-plus.${format}.js`))),
   ...fs.readdirSync(pluginsDir).map(pluginName => {
     const kebabCaseName = kebabCase(pluginName);
-    const outdir = `dist/plugins/${kebabCaseName}`;
+    const outdir = path.join(distDir, `/plugins/${kebabCaseName}`);
     return createEntry(
       `${pluginsDir}/${pluginName}/${pluginName}.js`,
       output(format => {
