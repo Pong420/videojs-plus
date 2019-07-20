@@ -72,12 +72,16 @@ class QualityHlsSettingItem extends SettingOptionItem {
       }
     ];
 
-    // use auto as default
-    this.setEntries(entries, entries.length - 1);
+    if (this.levels.length > 1) {
+      // use auto as default
+      this.setEntries(entries, entries.length - 1);
 
-    this.show();
+      this.show();
 
-    this.player_.trigger('qualities', this.levels);
+      this.player_.trigger('qualities', this.levels);
+    } else {
+      this.hide();
+    }
   }
 
   onChange(selected) {
