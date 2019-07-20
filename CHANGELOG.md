@@ -1,3 +1,10 @@
+# 1.5.3
+
+### Update
+
+- Quality HLS menu item will show only if more then one quality
+- Change context menu close handling. A fullscreen hidden layer will block other click action until context menu hide
+
 # 1.5.2
 
 ### Update
