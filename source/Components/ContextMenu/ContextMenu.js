@@ -1,5 +1,4 @@
 import videojs from 'video.js';
-import addEventListener from '../../Utils/Listener';
 
 import './ContextMenu.scss';
 import './Item/ContextMenuToggleLoop.js';
@@ -18,10 +17,6 @@ class ContextMenu extends Menu {
     this.hide();
 
     this.player_.on('contextmenu', this.onContextmenu.bind(this));
-
-    const unbindWindowClickAction = addEventListener('click', this.handleClick.bind(this));
-
-    this.on('dispose', unbindWindowClickAction);
   }
 
   createEl(...args) {
