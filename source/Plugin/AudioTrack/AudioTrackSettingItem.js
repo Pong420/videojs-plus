@@ -24,8 +24,10 @@ class AudioTrackSettingItem extends SettingOptionItem {
       }
     };
 
-    // show when alternate audio detected
-    player.tech_.on('usage', onHlsUsageEvent);
+    player.ready(() => {
+      // show when alternate audio detected
+      player.tech_.on('usage', onHlsUsageEvent);
+    });
 
     // unbind the callback on player dispose
     player.on('dispose', () => {
