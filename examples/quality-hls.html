@@ -25,7 +25,10 @@
   <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-quality-levels@2.0.9/dist/videojs-contrib-quality-levels.js"></script>
   <script src="../dist/videojs-plus.umd.js"></script>
   <script src="../dist/plugins/quality-hls/index.js"></script>
+  <script src="../dist/plugins//audio-track/index.js"></script>
   <script>
+    const log = (event, data) => console.log(event.type, data);
+
     var player = videojs('example-video', {
       // same as videojs config
       aspectRatio: '16:9'
@@ -34,5 +37,8 @@
     player.on('loadedmetadata', function() {
       player.findChild('SettingMenu')[0].component.menuButton_.handleClick();
     });
+
+    player.on('hls-quality', log);
+    player.on('hls-qualitychange', log);
   </script>
 </html>

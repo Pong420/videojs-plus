@@ -6,9 +6,10 @@ import commonjs from 'rollup-plugin-commonjs';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import scss from 'rollup-plugin-scss';
 import json from 'rollup-plugin-json';
+import copy from 'rollup-plugin-copy';
 import kebabCase from 'lodash/kebabCase';
 
-function createEntry(input, output, css) {
+function createEntry(input, output, css, plugins = []) {
   return {
     input,
     output,
@@ -40,7 +41,8 @@ function createEntry(input, output, css) {
             fs.writeFileSync(cssOutput, styles);
           }
         }
-      })
+      }),
+      ...plugins
     ]
   };
 }
@@ -65,14 +67,20 @@ export default [
   createEntry('source/index.js', output(format => path.join(distDir, `/videojs-plus.${format}.js`))),
   ...fs.readdirSync(pluginsDir).map(pluginName => {
     const kebabCaseName = kebabCase(pluginName);
-    const outdir = path.join(distDir, `/plugins/${kebabCaseName}`);
+    const srcDir = `${pluginsDir}/${pluginName}/`;
+    const outDir = path.join(distDir, `/plugins/${kebabCaseName}`);
     return createEntry(
-      `${pluginsDir}/${pluginName}/${pluginName}.js`,
+      `${srcDir}/${pluginName}.js`,
       output(format => {
         const name = format === 'umd' ? 'index' : `${kebabCaseName}.${format}`;
-        return `${outdir}/${name}.js`;
+        return `${outDir}/${name}.js`;
       }),
-      `${outdir}/style.css`
+      `${outDir}/style.css`,
+      [
+        copy({
+          targets: [{ src: `${srcDir}/index.d.ts`, dest: outDir }]
+        })
+      ]
     );
   })
 ];

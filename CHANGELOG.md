@@ -80,7 +80,7 @@
 
 ### Bug Fixes
 
-- fix quality restore incorrectly when changing new qaulities
+- fix quality restore incorrectly when changing new qualities
 
 # 1.0.9
 
@@ -108,8 +108,8 @@
 
 ### Update
 
-- seprate hls qaulity plugin
-- remove qaulity levels depenedecy from hls qaulity plugin.
+- seprate hls quality plugin
+- remove quality levels depenedecy from hls quality plugin.
 
 # 1.0.5
 
@@ -135,7 +135,7 @@
 ### Update
 
 - Rame name resolution plugin to quality
-- Add Hls qaulity picker
+- Add Hls quality picker
 
 ### Bug Fixes
 

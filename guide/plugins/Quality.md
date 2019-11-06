@@ -54,7 +54,7 @@ player.qualities.index();
 // get all qualities
 player.qualities.values;
 
-player.on('qualities', (evt, qualities) => {
+player.on('quality', (evt, qualities) => {
   console.log('qualities setup', qualities);
 });
 
