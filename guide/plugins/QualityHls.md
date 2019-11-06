@@ -43,11 +43,11 @@ player.on('before-quality-setup', function(_, { levels }) {
 player.qualityLevels();
 
 // Fire when all Hls playlist added.
-player.on('qualities', (evt, qualityLevels) => {
+player.on('hls-quality', (evt, qualityLevels) => {
   console.log('qualities setup', qualityLevels);
 });
 
-player.on('qualitychange', (evt, selected) => {
+player.on('hls-qualitychange', (evt, selected) => {
   console.log('quality changed');
 });
 ```

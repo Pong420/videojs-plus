@@ -78,7 +78,7 @@ class QualityHlsSettingItem extends SettingOptionItem {
 
       this.show();
 
-      this.player_.trigger('qualities', this.levels);
+      this.player_.trigger('hls-quality', this.levels);
     } else {
       this.hide();
     }
@@ -94,15 +94,15 @@ class QualityHlsSettingItem extends SettingOptionItem {
     });
 
     this.player_.trigger(
-      'qualitychange',
+      'hls-qualitychange',
       this.entries.reduce((acc, entry, index) => {
         if (entry.value === value) {
           const level = this.levels.find(v => v.height === value) || {};
 
           acc = {
             index,
-            ...entry,
-            ...level
+            level,
+            ...entry
           };
         }
 
