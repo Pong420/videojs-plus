@@ -38,6 +38,6 @@
     "videojs-contrib-quality-levels": "^2.0.9"
   },
   "dependencies": {
-    "videojs-plus-font": "git://github.com/Pong420/font#af50d0ec9e9a604d0ae37043d6d1d9678e62314c"
+    "videojs-plus-font": "Pong420/font#af50d0e"
   }
 }

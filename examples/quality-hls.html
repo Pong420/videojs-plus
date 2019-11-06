@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../dist/videojs-plus.css" />
+  </head>
+
+  <body>
+    <div class="flex">
+      <div class="container">
+        <video id="example-video" class="vjs-fluid">
+          <source
+            src="https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8"
+            type="application/x-mpegURL"
+          />
+        </video>
+      </div>
+    </div>
+  </body>
+  <script src="https://vjs.zencdn.net/7.6.0/video.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-quality-levels@2.0.9/dist/videojs-contrib-quality-levels.js"></script>
+  <script src="../dist/videojs-plus.umd.js"></script>
+  <script src="../dist/plugins/quality-hls/index.js"></script>
+  <script>
+    var player = videojs('example-video', {
+      // same as videojs config
+      aspectRatio: '16:9'
+    });
+
+    player.on('loadedmetadata', function() {
+      player.findChild('SettingMenu')[0].component.menuButton_.handleClick();
+    });
+  </script>
+</html>
