@@ -1,3 +1,9 @@
+# 1.5.5
+
+### Bug Fixes
+
+- Fix fail to install with yarn
+
 # 1.5.3
 
 ### Update
