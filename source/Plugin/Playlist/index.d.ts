@@ -31,6 +31,8 @@ declare module 'video.js' {
   export interface VideoJsPlayer {
     playlist: PlayListPlugin;
 
+    setPlayList(playlist: PlayList, startIndex?: number);
+
     on(type: 'playList', listener?: PlayListListener): void;
     on(type: 'playListchange', listener?: PlayListChangeListener): void;
     one(type: 'playList', listener?: PlayListListener): void;

@@ -26,6 +26,8 @@ declare module 'video.js' {
   export interface VideoJsPlayer {
     qualities: QualityPlugin;
 
+    setQualities(qualities: Quality[], index?: number): void;
+
     on(type: 'quality', listener?: QualityListener): void;
     on(type: 'qualitychange', listener?: QualityChangeListener): void;
     one(type: 'quality', listener?: QualityListener): void;

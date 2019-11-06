@@ -26,11 +26,11 @@ declare module 'video.js' {
   ) => void;
 
   export interface VideoJsPlayer {
-    on(type: 'before-quality-setup', listener?: BeforeQualitySetupListener): void;
-    one(type: 'before-quality-setup', listener?: BeforeQualitySetupListener): void;
     on(type: 'hls-quality', listener?: QualityHlsListener): void;
     on(type: 'hls-qualitychange', listener?: QualityHlsChangeListener): void;
+    on(type: 'before-quality-setup', listener?: BeforeQualitySetupListener): void;
     one(type: 'hls-quality', listener?: QualityHlsListener): void;
     one(type: 'hls-qualitychange', listener?: QualityHlsChangeListener): void;
+    one(type: 'before-quality-setup', listener?: BeforeQualitySetupListener): void;
   }
 }
