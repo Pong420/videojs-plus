@@ -24,6 +24,8 @@ declare module 'video.js' {
 
   export type PlayListChangeListener = (event: Event, data: PlayList & { index: number }) => void;
 
+  export type AutoplayNextListener = (event: Event, data: boolean) => void;
+
   interface VideoJSPlayerOptions {
     playlist?: PlayList[];
   }
@@ -35,7 +37,9 @@ declare module 'video.js' {
 
     on(type: 'playList', listener?: PlayListListener): void;
     on(type: 'playListchange', listener?: PlayListChangeListener): void;
+    on(type: 'autoplaynext', listener?: AutoplayNextListener): void;
     one(type: 'playList', listener?: PlayListListener): void;
     one(type: 'playListchange', listener?: PlayListChangeListener): void;
+    one(type: 'autoplaynext', listener?: AutoplayNextListener): void;
   }
 }

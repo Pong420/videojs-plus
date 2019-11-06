@@ -45,7 +45,7 @@ player.subtitles().track;
 // get all subtitles
 player.subtitles().values();
 
-// Expect `values`, apis are chainable
+// expect `values` and `track`, apis are chainable
 player
   .subtitles()
   .load(subtitles)

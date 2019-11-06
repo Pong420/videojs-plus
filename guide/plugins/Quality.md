@@ -54,11 +54,12 @@ player.qualities.index();
 // get all qualities
 player.qualities.values;
 
-player.on('quality', (evt, qualities) => {
+// fire when `player.setQualities` call.
+player.on('quality', (event, qualities) => {
   console.log('qualities setup', qualities);
 });
 
-player.on('qualitychange', (evt, selected) => {
+player.on('qualitychange', (event, selected) => {
   console.log('quality changed', selected);
 });
 ```

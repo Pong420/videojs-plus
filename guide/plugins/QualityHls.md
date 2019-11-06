@@ -39,15 +39,15 @@ player.on('before-quality-setup', function(_, { levels }) {
 #### API and Event
 
 ```js
-// Get all quality levels, for more details refer to videojs-contrib-quality-levels
+// get all quality levels, for more details refer to videojs-contrib-quality-levels
 player.qualityLevels();
 
-// Fire when all Hls playlist added.
-player.on('hls-quality', (evt, qualityLevels) => {
+// fire when all HLS playlist added.
+player.on('hls-quality', (event, qualityLevels) => {
   console.log('qualities setup', qualityLevels);
 });
 
-player.on('hls-qualitychange', (evt, selected) => {
+player.on('hls-qualitychange', (event, selected) => {
   console.log('quality changed');
 });
 ```

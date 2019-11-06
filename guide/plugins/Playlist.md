@@ -72,19 +72,17 @@ player.playlist.loop(false);
 // control player should autoplay next or not
 player.playlist.autoplayNext(false);
 
-// Fire when `setPlayList` called.
-// But if you set playlist in options and listen after player initialized,
-// the `setPlayList` function will be called before you listen
+// fire when `player.setPlayList` call.
 player.on('playlist', playlist => {
   console.log('playlist setup', playlist);
 });
 
-player.on('playlistchange', (evt, selected) => {
-  console.log('playlist changed', selected);
+player.on('playlistchange', (event, selectedPlayList) => {
+  console.log('playlist changed', selectedPlayList);
 });
 
 // fire when autoplay next options changed
-player.on('autoplaynext', (evt, autoplayNext) => {
+player.on('autoplaynext', (event, autoplayNext) => {
   console.log('autoplay next behaviour changed', autoplayNext);
 });
 ```

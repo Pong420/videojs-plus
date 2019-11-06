@@ -27,9 +27,9 @@ videojs.addLanguage(language, {
 or
 
 ```js
-player.on('before-audio-setup', (_, entries) => {
-  entries[0].label = 'Dubbing';
-  entries[1].label = 'Original';
+player.on('before-audio-setup', (event, audios) => {
+  audios[0].label = 'Dubbing';
+  audios[1].label = 'Original';
 });
 ```
 
@@ -46,23 +46,11 @@ player.audio().track;
 player.audio().values();
 
 // events
-player.on('audio', audio => {
+player.on('audio', audios => {
   console.log('audio setup', audio);
 });
 
-/**
- * interface audio {
- *  attribute string id,
- *  attribute string kind,
- *  attribute string label,
- *  attribute string language,
- *  attribute number index
- *  attribute AudioTrack track
- * };
- *
- * @param {audio} currentAudio
- */
-player.on('audiochange', currentAudio => {
+player.on('audiochange', audio => {
   console.log('audio changed');
 });
 ```

@@ -1,3 +1,14 @@
+# 1.5.6
+
+### Bug Fixes
+
+- Fix audio plugin for higher videojs
+
+### Update
+
+- Prefix event type in `quality-hls` plugins
+- Add typescript definition file
+
 # 1.5.5
 
 ### Bug Fixes
