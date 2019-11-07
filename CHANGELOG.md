@@ -1,4 +1,4 @@
-# 1.5.7 (Not release)
+# 1.5.7
 
 ### Bug Fixes
 
