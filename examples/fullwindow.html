@@ -25,8 +25,11 @@
   <script>
     var player = videojs('example-video', {
       // same as videojs config
-      aspectRatio: '16:9',
-      fullwindow: true
+      aspectRatio: '16:9'
+    });
+
+    player.on('fullscreenchange', function(event) {
+      console.log('[fullscreenchange]', 'is fullscreen:', player.isFullscreen());
     });
   </script>
 </html>

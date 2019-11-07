@@ -1,8 +1,15 @@
+# 1.5.7 (Not release)
+
+### Bug Fixes
+
+- Fix full window for video.js@7.x.x
+- Add playlist `autoplaynext` event typing
+
 # 1.5.6
 
 ### Bug Fixes
 
-- Fix audio plugin for higher videojs
+- Fix audio plugin for video.js@7.x.x
 
 ### Update
 
