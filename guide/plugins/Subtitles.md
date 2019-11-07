@@ -9,7 +9,7 @@ Currently, only support text track kind `subtitles`, not sure `caption` should a
 ```js
 const subtitles = [
   {
-    default: true, // Boolean
+    default: true, // Boolean, Optional
     kind: 'subtitles', // Required
     srclang: 'zh-hk', // Required
     label: '繁體中文', // Required

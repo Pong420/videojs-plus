@@ -1,14 +1,16 @@
 This is a plugin for switch between video quality by HLS playlists.
 
+[Demo](https://pong420.github.io/videojs-plus/examples/quality-hls.html)
+
 #### Usage
 
-Just install and include [videojs-contrib-quality-levels](https://github.com/videojs/videojs-contrib-quality-levels) and the plugin, the quality menu item will be automatically.
+Just include [videojs-contrib-quality-levels](https://github.com/videojs/videojs-contrib-quality-levels) and the **plugin**, the quality menu item will be setup automatically.
 
 #### Chanage label in the menu
 
-The default label will be the `height` defined in HLS manifest with `p` and you could customize yourself.
+The default label will be the `height` defined in HLS manifest with `p` but you could customize yourself.
 
-You could use [VideoJS Language Features](https://docs.videojs.com/docs/guides/languages.html) replace the default label
+Use [VideoJS Language Features](https://docs.videojs.com/docs/guides/languages.html)
 
 ```js
 const language = "en-us";
@@ -28,10 +30,10 @@ videojs.addLanguage(language, {
 or
 
 ```js
-player.on('before-quality-setup', function(_, { levels }) {
+player.on('before-quality-setup', (_, { levels }) => {
   const labels = ['Full HD', 'HD', ...]
-  levels.forEach((lv, index) => {
-    lv.label = labels[index];
+  levels.forEach((level, index) => {
+    level.label = labels[index];
   });
 });
 ```
@@ -47,7 +49,7 @@ player.on('hls-quality', (event, qualityLevels) => {
   console.log('qualities setup', qualityLevels);
 });
 
-player.on('hls-qualitychange', (event, selected) => {
+player.on('hls-qualitychange', (event, currentQuality) => {
   console.log('quality changed');
 });
 ```

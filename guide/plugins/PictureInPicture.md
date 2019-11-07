@@ -1,5 +1,7 @@
 ## Picture In Picture
 
+:warning: Working in progress
+
 <img src="../../screenshot/picture-in-picture.png">
 
 [Demo](https://pong420.github.io/videojs-plus/examples/picture-in-picture.html)
