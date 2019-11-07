@@ -38,15 +38,20 @@ class ContextMenu extends Menu {
     this.el_.style.left = x + 'px';
   }
 
-  onContextmenu(evt) {
-    evt.preventDefault();
+  onContextmenu(event) {
+    event.preventDefault();
 
     const rect = this.player_.el().getBoundingClientRect();
+    const { pageX, pageY } = event;
 
-    const x = evt.pageX - rect.x;
-    const y = evt.pageY - rect.y;
+    if (pageY > rect.y && pageY - rect.height < rect.y && pageX > rect.x && pageX - rect.width < rect.x) {
+      const x = pageX - rect.x;
+      const y = pageY - rect.y;
 
-    this.show(x, y);
+      this.show(x, y);
+    } else {
+      this.hide();
+    }
   }
 
   handleClick(evt) {

@@ -4,6 +4,7 @@
 
 - Fix full window for video.js@7.x.x
 - Add playlist `autoplaynext` event typing
+- Fix context menu
 
 # 1.5.6
 
