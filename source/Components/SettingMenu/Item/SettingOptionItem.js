@@ -18,7 +18,7 @@ function parseEntries(entries, selectedIndex) {
     }
 
     let isDefault = false;
-    if (typeof selectedIndex === 'undefined' && typeof data.default !== 'undefined') {
+    if (typeof selectedIndex === 'undefined' && data.default === true) {
       isDefault = true;
       selectedIndex = index;
     }
@@ -72,7 +72,8 @@ class SettingOptionItem extends SettingMenuItem {
 
     this.updateSelectedValue();
 
-    const SubOptionItem = videojs.getComponent(`${this.name_}Child`) || SettingSubOptionItem;
+    const SubOptionItem =
+      videojs.getComponent(`${this.name_}Child`) || SettingSubOptionItem;
 
     this.subMenuItems = this.entries.map(({ label, value }, index) => {
       return new SubOptionItem(this.player_, {
