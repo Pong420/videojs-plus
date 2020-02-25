@@ -57,7 +57,7 @@ class QualityMenuItem extends SettingOptionItem {
         {
           label: 'SD',
           value: 480,
-          defalut: true
+          default: true
         },
         {
           label: 'Smooth',
