@@ -1,5 +1,6 @@
 import videojs from 'video.js';
 import SettingOptionItem from '../Item/SettingOptionItem.js';
+import log from '../../../Utils/Log';
 
 class PlaybackRateSettingItem extends SettingOptionItem {
   constructor(player, options) {
@@ -33,7 +34,7 @@ class PlaybackRateSettingItem extends SettingOptionItem {
         this.select(index);
         this.update(index);
       } else {
-        videojs.log.warn('Incorrect playbackRate value, setting menu will not updated');
+        log.warn('Incorrect playbackRate value, setting menu will not updated');
       }
     });
   }

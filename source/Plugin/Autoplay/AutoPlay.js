@@ -11,7 +11,7 @@ const AutoplayHandler = player => {
     player.mutedautoplay_ = 'ignore';
 
     if (NotPreoload) {
-      videojs.log.warn('Preload is none so that manual autoplay start is disabled');
+      log('Preload is none so that manual autoplay start is disabled');
       player.trigger(AUTOPLAY_FAILURE);
     }
 

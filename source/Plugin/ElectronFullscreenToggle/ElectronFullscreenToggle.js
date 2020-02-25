@@ -1,4 +1,5 @@
 import videojs from 'video.js';
+import log from '../../Utils/Log';
 
 let getCurrentWindow;
 try {
@@ -70,7 +71,7 @@ if (getCurrentWindow) {
 
   controlBarChildren[fullScreenButtonIndex] = 'ElectronFullscreenToggle';
 } else {
-  videojs.log.warn(
+  log(
     'Plugin "ElectronFullscreenToggle" is not enabled, please check the docs for more information'
   );
 }

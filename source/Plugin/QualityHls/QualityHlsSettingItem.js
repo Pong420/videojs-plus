@@ -1,4 +1,5 @@
 import videojs from 'video.js';
+import log from '../../Utils/Log';
 
 const SettingOptionItem = videojs.getComponent('SettingOptionItem');
 
@@ -22,7 +23,7 @@ class QualityHlsSettingItem extends SettingOptionItem {
     const player = this.player_;
 
     if (!player.qualityLevels) {
-      videojs.log.warn('plugin videojs-contrib-quality-levels do not exsits');
+      log('plugin videojs-contrib-quality-levels do not exsits');
 
       return false;
     }
@@ -112,7 +113,9 @@ class QualityHlsSettingItem extends SettingOptionItem {
   }
 }
 
-videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityHlsSettingItem');
+videojs
+  .getComponent('SettingMenuButton')
+  .prototype.options_.entries.push('QualityHlsSettingItem');
 
 videojs.registerComponent('QualityHlsSettingItem', QualityHlsSettingItem);
 
