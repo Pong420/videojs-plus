@@ -30,7 +30,11 @@ yarn add videojs-plus
     <link rel="stylesheet" href="videojs-plus.css" />
   </head>
   <body>
-    <video id="example-video" class="vjs-fluid" poster="http://vjs.zencdn.net/v/oceans.png">
+    <video
+      id="example-video"
+      class="vjs-fluid"
+      poster="http://vjs.zencdn.net/v/oceans.png"
+    >
       <source src="http://vjs.zencdn.net/v/oceans.mp4" />
     </video>
   </body>
@@ -104,6 +108,7 @@ videojs.getComponent('ControlBar').prototype.options_.children = [
 - [Quality (HLS)](./guide/plugins/QualityHls.md)
 - [Audio (HLS)](./guide/plugins/Audio.md)
 - [FullWindow Toggle](./guide/plugins/FullWindow.md)
+- [Electron Fullscreen Toggle](./guide/plugins/ElectronFullscreenToggle.md)
 - [Picture In Picture](./guide/plugins/PictureInPicture.md) ( Experimental )
 - [Live](./guide/plugins/Live.md) ( Style plugins for live streaming )
 - [Unload](./guide/plugins/Unload.md)

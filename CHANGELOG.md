@@ -1,3 +1,14 @@
+# 1.5.8
+
+### Bug Fixes
+
+- Fix incorrect default value of `SettingMenu`
+
+### Update
+
+- New plugin `ElectronFullscreenToggle`
+-
+
 # 1.5.7
 
 ### Bug Fixes
