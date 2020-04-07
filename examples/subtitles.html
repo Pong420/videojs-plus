@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../dist/videojs-plus.css" />
+    <link rel="stylesheet" href="../dist/plugins/subtitles/style.css" />
+  </head>
+
+  <body>
+    <div class="flex">
+      <div class="container">
+        <video
+          id="example-video"
+          class="vjs-fluid"
+          poster="https://vjs.zencdn.net/v/oceans.png"
+        >
+          <source src="https://vjs.zencdn.net/v/oceans.mp4" />
+        </video>
+      </div>
+    </div>
+  </body>
+  <script src="https://vjs.zencdn.net/7.6.5/video.js"></script>
+  <script src="../dist/videojs-plus.umd.js"></script>
+  <script src="../dist/plugins/subtitles/index.js"></script>
+  <script>
+    var subtitles = [
+      {
+        default: true,
+        kind: 'subtitles',
+        srclang: 'zh-TW',
+        label: '中文（繁體）',
+        src: 'vtt/vtt_TC.txt'
+      },
+      {
+        kind: 'subtitles',
+        srclang: 'en-US',
+        label: 'English',
+        src: 'vtt/vtt_EN.txt'
+      }
+    ];
+
+    var player = videojs('example-video', {
+      // same as videojs config
+      aspectRatio: '16:9',
+      subtitles
+    });
+  </script>
+</html>
