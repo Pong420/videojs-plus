@@ -8,6 +8,7 @@ import scss from 'rollup-plugin-scss';
 import json from 'rollup-plugin-json';
 import copy from 'rollup-plugin-copy';
 import kebabCase from 'lodash/kebabCase';
+import pkg from './package.json';
 
 function createEntry(input, output, css, plugins = []) {
   return {
@@ -36,7 +37,8 @@ function createEntry(input, output, css, plugins = []) {
       scss({
         output: styles => {
           if (styles && styles.length) {
-            const cssOutput = css || output[0].file.replace(/\.(umd|es|iife).js/, '.css');
+            const cssOutput =
+              css || output[0].file.replace(/\.(umd|es|iife).js/, '.css');
             mkdirp(cssOutput.replace(/[^\/]*$/, ''));
             fs.writeFileSync(cssOutput, styles);
           }
@@ -57,14 +59,23 @@ const output = setFileName =>
       globals: {
         'video.js': 'videojs'
       },
-      banner: `/* eslint-disable */`
+      banner: `
+        /* eslint-disable */
+        /* VERSION: 1.5.9 */
+      `
+        .trim()
+        .replace(/^(\s{2})+/gm, '')
+        .replace(/^ *\n/, '')
     };
   });
 
 const distDir = 'dist';
 
 export default [
-  createEntry('source/index.js', output(format => path.join(distDir, `/videojs-plus.${format}.js`))),
+  createEntry(
+    'source/index.js',
+    output(format => path.join(distDir, `/videojs-plus.${format}.js`))
+  ),
   ...fs.readdirSync(pluginsDir).map(pluginName => {
     const kebabCaseName = kebabCase(pluginName);
     const srcDir = `${pluginsDir}/${pluginName}/`;

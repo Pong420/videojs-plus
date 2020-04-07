@@ -1,3 +1,9 @@
+# 1.5.9
+
+### Bug Fixes
+
+- Fix subtitle change, default subtitle
+
 # 1.5.8
 
 ### Bug Fixes
@@ -7,7 +13,6 @@
 ### Update
 
 - New plugin `ElectronFullscreenToggle`
--
 
 # 1.5.7
 
