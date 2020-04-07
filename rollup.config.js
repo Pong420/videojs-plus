@@ -61,7 +61,7 @@ const output = setFileName =>
       },
       banner: `
         /* eslint-disable */
-        /* VERSION: 1.5.9 */
+        /* VERSION: ${pkg.version} */
       `
         .trim()
         .replace(/^(\s{2})+/gm, '')
