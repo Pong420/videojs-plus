@@ -54,16 +54,13 @@ class subtitles extends videojs.getPlugin('plugin') {
   load(subtitles_ = []) {
     const { player } = this;
 
-    const subtitles = subtitles_.map(a => Object.assign({}, a));
-
-    if (subtitles && subtitles.length) {
+    if (subtitles_ && subtitles_.length) {
       this.remove();
 
-      subtitles.forEach(subtitle => {
-        if (this.flag) {
-          subtitle.default = this.flag === subtitle.label || -1;
-        }
-
+      let index = -1;
+      const trackEls = [];
+      const subtitles = subtitles_.map((s, i) => {
+        const subtitle = Object.assign({}, s);
         const manualCleanup = true;
 
         // set default to false, otherwise subtitle will reset to the default subtitle
@@ -76,13 +73,22 @@ class subtitles extends videojs.getPlugin('plugin') {
           manualCleanup
         );
 
-        if (subtitle.default) {
-          this.flag = subtitle.label;
-          this.track = trackEl.track;
+        trackEls.push(trackEl);
 
-          trackEl.track.mode = 'showing';
+        if (index === -1 && subtitle.default === true) {
+          index = i;
+        } else {
+          subtitle.default = false;
         }
+
+        return subtitle;
       });
+
+      if (index !== -1) {
+        this.flag = subtitles[index].label;
+        this.track = trackEls[index].track;
+        this.track.mode = 'showing';
+      }
 
       player.trigger('subtitles', subtitles);
     }
@@ -117,7 +123,8 @@ class subtitles extends videojs.getPlugin('plugin') {
 
 videojs.hook('setup', vjsPlayer => {
   vjsPlayer.ready(() => {
-    vjsPlayer.subtitles().load(vjsPlayer.options_.subtitles);
+    const { subtitles } = vjsPlayer.options_;
+    subtitles && subtitles.length && vjsPlayer.subtitles().load(subtitles);
   });
 });
 

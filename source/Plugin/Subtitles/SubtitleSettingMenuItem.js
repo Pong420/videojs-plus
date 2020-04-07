@@ -15,15 +15,23 @@ class SubtitleSettingMenuItem extends SettingOptionItem {
     this.addClass('vjs-setting-subtitles');
 
     player.on('subtitles', (_, subtitles) => {
-      this.setEntries([
-        ...subtitles.map((val, index) => ({
+      let close = true;
+
+      const entries = subtitles.map((val, index) => {
+        close = !close || !val.default;
+
+        return {
           ...val,
           value: index
-        })),
+        };
+      });
+
+      this.setEntries([
+        ...entries,
         {
           label: 'Close Subtitles',
           value: -1,
-          default: false
+          default: close
         }
       ]);
 
@@ -46,7 +54,9 @@ class SubtitleSettingMenuItem extends SettingOptionItem {
   }
 }
 
-videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('SubtitleSettingMenuItem');
+videojs
+  .getComponent('SettingMenuButton')
+  .prototype.options_.entries.push('SubtitleSettingMenuItem');
 
 videojs.registerComponent('SubtitleSettingMenuItem', SubtitleSettingMenuItem);
 
