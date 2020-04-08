@@ -31,11 +31,9 @@
 
     var player = videojs('example-video', {
       // same as videojs config
+      muted: true,
+      autoplay: true,
       aspectRatio: '16:9'
-    });
-
-    player.on('loadedmetadata', function() {
-      player.findChild('SettingMenu')[0].component.menuButton_.handleClick();
     });
 
     player.on('hls-quality', log);
