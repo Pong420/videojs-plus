@@ -73,6 +73,8 @@ class subtitles extends videojs.getPlugin('plugin') {
           manualCleanup
         );
 
+        trackEl.track.mode = 'hidden';
+
         trackEls.push(trackEl);
 
         if (index === -1 && subtitle.default === true) {
