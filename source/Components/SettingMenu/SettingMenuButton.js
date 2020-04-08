@@ -16,10 +16,6 @@ class SettingMenuButton extends MenuButton {
     player.addChild(this.menu);
     // remove videojs parent child relationship between button and menu
     this.removeChild(this.menu);
-
-    player.on('playerresize', () => {
-      this.menu.reset();
-    });
   }
 
   buildCSSClass() {
