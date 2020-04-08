@@ -123,9 +123,7 @@ class subtitles extends videojs.getPlugin('plugin') {
 
 videojs.hook('setup', vjsPlayer => {
   vjsPlayer.ready(() => {
-    console.log('object');
     const { subtitles } = vjsPlayer.options_;
-    console.log(subtitles);
     subtitles && subtitles.length && vjsPlayer.subtitles().load(subtitles);
   });
 });

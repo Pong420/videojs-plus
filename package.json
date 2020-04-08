@@ -25,7 +25,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "eslint --max-warnings=0",
+      "eslint --rule 'no-console: [\"error\", { allow: [\"warn\", \"error\"] }]'  --max-warnings=0",
       "prettier --ignore-path .eslintignore --write",
       "git add"
     ],
