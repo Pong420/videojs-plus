@@ -1,3 +1,11 @@
+# 1.6.0
+
+### Bug Fixes
+
+- Make sure only one subtitles shown on mobile device
+- Fix setting menu after resize
+- Remove unexpected console log
+
 # 1.5.9
 
 ### Bug Fixes
