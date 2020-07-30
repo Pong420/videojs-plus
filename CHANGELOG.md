@@ -1,3 +1,9 @@
+# 1.6.2
+
+### Bug Fixes
+
+- Fix subtitles change error if the default value is not defined
+
 # 1.6.0
 
 ### Bug Fixes

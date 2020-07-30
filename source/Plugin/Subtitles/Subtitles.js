@@ -113,11 +113,10 @@ class subtitles extends videojs.getPlugin('plugin') {
     if (newTrack) {
       if (this.track) {
         this.track.mode = 'disabled';
-        this.track = newTrack;
       }
-
-      newTrack.mode = 'showing';
-    } else {
+      this.track = newTrack;
+      this.track.mode = 'showing';
+    } else if (this.track) {
       this.track.mode = 'disabled';
     }
 
