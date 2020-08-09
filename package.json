@@ -26,16 +26,13 @@
   "lint-staged": {
     "*.{ts,tsx}": [
       "eslint --rule 'no-console: [\"error\", { allow: [\"warn\", \"error\"] }]'  --max-warnings=0",
-      "prettier --ignore-path .eslintignore --write",
-      "git add"
+      "prettier --ignore-path .eslintignore --write"
     ],
     "*.{css,scss}": [
-      "prettier --ignore-path .eslintignore --single-quote --write",
-      "git add"
+      "prettier --ignore-path .eslintignore --single-quote --write"
     ],
     "*.{yml,md}": [
-      "prettier --ignore-path .eslintignore --single-quote --write",
-      "git add"
+      "prettier --ignore-path .eslintignore --single-quote --write"
     ]
   },
   "peerDependencies": {
