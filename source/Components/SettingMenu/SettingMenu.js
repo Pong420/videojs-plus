@@ -13,23 +13,17 @@ class SettingMenu extends Menu {
 
     this.addClass('vjs-setting-menu');
 
-    setTimeout(this.reset.bind(this), 0);
+    setTimeout(this._ready.bind(this), 0);
   }
 
-  reset() {
+  _ready() {
     if (!this.contentEl_) {
       return;
     }
 
-    this.removeStyle();
-
     const { offsetWidth: width, offsetHeight: height } = this.contentEl_;
 
-    this.origin = {
-      children: this.children().slice(0),
-      width,
-      height
-    };
+    this.mainMenuItem = this.children().slice(0);
 
     this.resize({
       width,
@@ -74,10 +68,33 @@ class SettingMenu extends Menu {
     this.contentEl_.style.height = height + 'px';
   }
 
-  restore() {
-    this.resize(this.origin);
+  getMenuDimension(items) {
+    const player = this.player_;
+    const tempMenu = new SettingMenuTemp(player);
 
-    this.update(this.origin.children);
+    tempMenu.update(items);
+    player.addChild(tempMenu);
+
+    const rect = tempMenu.contentEl_.getBoundingClientRect();
+
+    // remove subMenuItem form tempMenu first, otherwise they will also be disposed
+    tempMenu.update();
+    tempMenu.dispose();
+
+    // remove tempMenu in `player.children`
+    player.removeChild(tempMenu);
+
+    return rect;
+  }
+
+  transform(items) {
+    const dimensions = this.getMenuDimension(items);
+    this.update(items);
+    this.resize(dimensions);
+  }
+
+  restore() {
+    this.transform(this.mainMenuItem);
   }
 
   removeStyle() {
@@ -87,6 +104,14 @@ class SettingMenu extends Menu {
   hide() {
     // Disable default hide function
     // As the default hide function violate the calculation of menu dimension
+  }
+}
+
+class SettingMenuTemp extends SettingMenu {
+  constructor(player) {
+    super(player, {
+      name: 'SettingMenuTemp'
+    });
   }
 }
 

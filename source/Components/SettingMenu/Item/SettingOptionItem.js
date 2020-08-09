@@ -3,7 +3,6 @@ import videojs from 'video.js';
 import SettingMenuItem from './SettingMenuItem.js';
 import SettingSubOptionTitle from './SettingSubOptionTitle.js';
 import SettingSubOptionItem from './SettingSubOptionItem.js';
-import getMenuDimension from '../MenuDimension';
 
 /**
  * @param {Array<Object|number|string>} entries
@@ -96,10 +95,7 @@ class SettingOptionItem extends SettingMenuItem {
   }
 
   handleClick() {
-    const dimensions = getMenuDimension(this.player_, this.subMenuItems);
-
-    this.menu.update(this.subMenuItems);
-    this.menu.resize(dimensions);
+    this.menu.transform(this.subMenuItems);
   }
 
   select(index) {
@@ -108,8 +104,7 @@ class SettingOptionItem extends SettingMenuItem {
 
   update() {
     this.updateSelectedValue();
-
-    this.subMenuItems.forEach(function(item) {
+    this.subMenuItems.forEach(item => {
       item.update && item.update();
     });
   }
@@ -123,11 +118,6 @@ class SettingOptionItem extends SettingMenuItem {
     if (this.selected) {
       this.selectedValueEl.innerHTML = this.localize(this.selected.label);
     }
-  }
-
-  show() {
-    super.show();
-    this.menu.reset();
   }
 }
 
