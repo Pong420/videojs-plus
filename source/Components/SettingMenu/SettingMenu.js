@@ -12,18 +12,16 @@ class SettingMenu extends Menu {
     });
 
     this.addClass('vjs-setting-menu');
-
-    setTimeout(this._ready.bind(this), 0);
   }
 
-  _ready() {
+  init() {
     if (!this.contentEl_) {
       return;
     }
 
     const { offsetWidth: width, offsetHeight: height } = this.contentEl_;
 
-    this.mainMenuItem = this.children().slice(0);
+    this.mainMenuItems = this.children().slice(0);
 
     this.resize({
       width,
@@ -94,7 +92,7 @@ class SettingMenu extends Menu {
   }
 
   restore() {
-    this.transform(this.mainMenuItem);
+    this.transform(this.mainMenuItems);
   }
 
   removeStyle() {

@@ -49,8 +49,9 @@ class SubtitleSettingMenuItem extends SettingOptionItem {
     });
   }
 
-  onChange({ value }) {
-    this.player_.subtitles().pick(value);
+  onChange(...args) {
+    super.onChange(...args);
+    this.player_.subtitles().pick(this.selected.value);
   }
 }
 

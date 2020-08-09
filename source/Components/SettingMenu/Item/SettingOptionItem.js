@@ -74,24 +74,21 @@ class SettingOptionItem extends SettingMenuItem {
     const SubOptionItem =
       videojs.getComponent(`${this.name_}Child`) || SettingSubOptionItem;
 
-    this.subMenuItems = this.entries.map(({ label, value }, index) => {
-      return new SubOptionItem(this.player_, {
-        index,
-        label,
-        value,
-        parent: this,
-        menu: this.menu
-      });
-    });
-
-    this.subMenuItems.splice(
-      0,
-      0,
+    this.subMenuItems = [
       new SettingSubOptionTitle(this.player_, {
         label: this.options_.label,
         menu: this.menu
+      }),
+      ...this.entries.map(({ label, value }, index) => {
+        return new SubOptionItem(this.player_, {
+          index,
+          label,
+          value,
+          parent: this,
+          menu: this.menu
+        });
       })
-    );
+    ];
   }
 
   handleClick() {
@@ -100,10 +97,10 @@ class SettingOptionItem extends SettingMenuItem {
 
   select(index) {
     this.selected = this.entries[index];
+    this.updateSelectedValue();
   }
 
   update() {
-    this.updateSelectedValue();
     this.subMenuItems.forEach(item => {
       item.update && item.update();
     });

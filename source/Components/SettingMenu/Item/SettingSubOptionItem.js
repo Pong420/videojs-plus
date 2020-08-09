@@ -22,10 +22,8 @@ class SettingSubOptionItem extends SettingMenuItem {
   }
 
   handleClick() {
-    this.parent.onChange(this.options_);
-    setTimeout(() => {
-      this.menu.restore();
-    }, 50);
+    this.parent.onChange({ index: this.options_.index });
+    this.menu.restore();
   }
 }
 

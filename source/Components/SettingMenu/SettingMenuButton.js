@@ -46,6 +46,12 @@ class SettingMenuButton extends MenuButton {
     this.el_.blur();
   }
 
+  pressButton() {
+    super.pressButton();
+
+    this.menu.init();
+  }
+
   unpressButton() {
     super.unpressButton();
 

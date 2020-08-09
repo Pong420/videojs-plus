@@ -168,7 +168,7 @@
 .vjs-menu .vjs-menu-content .vjs-menu-item {
   &.vjs-setting-onoff-item,
   &.vjs-setting-menu-item {
-    width: calc-menu-width(225/16);
+    min-width: 225px;
   }
 }
 

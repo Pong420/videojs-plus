@@ -33,7 +33,9 @@ class ToggleAnnotation extends SettingOnOffItem {
   }
 }
 
-videojs.getComponent('SettingMenuButton').prototype.options_.entries.splice(0, 0, 'ToggleAnnotation');
+videojs
+  .getComponent('SettingMenuButton')
+  .prototype.options_.entries.splice(0, 0, 'ToggleAnnotation');
 videojs.registerComponent('ToggleAnnotation', ToggleAnnotation);
 ```
 
@@ -70,13 +72,15 @@ class QualityMenuItem extends SettingOptionItem {
     this.addClass('vjs-setting-quality');
   }
 
-  onChange(val) {
-    super.onChange(val);
-    console.log(val);
+  onChange(...args) {
+    super.onChange(...args);
+    console.log(this.selected);
   }
 }
 
-videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityMenuItem');
+videojs
+  .getComponent('SettingMenuButton')
+  .prototype.options_.entries.push('QualityMenuItem');
 videojs.registerComponent('QualityMenuItem', QualityMenuItem);
 
 // If you want to change/customize the options item, you can register new a component.
@@ -112,20 +116,4 @@ SettingMenu.addChild(
     // optionsSettingMenu
   })
 );
-```
-
-- If your new menu item‘ dimension is large then default, you should overwrite the default width
-
-```css
-.vjs-menu .vjs-menu-content .vjs-menu-item.vjs-setting-menu-item {
-  width: 20em;
-}
-```
-
-or applied on your specific class
-
-```css
-.vjs-menu .vjs-menu-content .vjs-menu-item.vjs-setting-quality {
-  width: 20em;
-}
 ```

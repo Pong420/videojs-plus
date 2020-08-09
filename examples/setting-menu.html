@@ -12,7 +12,11 @@
   <body>
     <div class="flex">
       <div class="container">
-        <video id="example-video" class="vjs-fluid" poster="https://vjs.zencdn.net/v/oceans.png">
+        <video
+          id="example-video"
+          class="vjs-fluid"
+          poster="https://vjs.zencdn.net/v/oceans.png"
+        >
           <source src="https://vjs.zencdn.net/v/oceans.mp4" />
         </video>
       </div>
@@ -49,7 +53,9 @@
       }
     }
 
-    videojs.getComponent('SettingMenuButton').prototype.options_.entries.splice(0, 0, 'ToggleAnnotation');
+    videojs
+      .getComponent('SettingMenuButton')
+      .prototype.options_.entries.splice(0, 0, 'ToggleAnnotation');
     videojs.registerComponent('ToggleAnnotation', ToggleAnnotation);
 
     const SettingOptionItem = videojs.getComponent('SettingOptionItem');
@@ -84,9 +90,9 @@
         this.addClass('vjs-setting-quality');
       }
 
-      onChange(val) {
-        super.onChange(val);
-        console.log(val);
+      onChange(...args) {
+        super.onChange(...args);
+        console.log(this.selected);
       }
     }
 
@@ -101,7 +107,9 @@
       }
     }
 
-    videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualityMenuItem');
+    videojs
+      .getComponent('SettingMenuButton')
+      .prototype.options_.entries.push('QualityMenuItem');
     videojs.registerComponent('QualityMenuItem', QualityMenuItem);
     videojs.registerComponent('QualityMenuItemChild', QualityMenuItemChild);
 
