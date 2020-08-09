@@ -19,7 +19,11 @@ declare module 'video.js' {
       component: videojs.Component;
     }>;
 
-    on(target?: videojs.Component | Element, type?: string | string[], listener?: (...args: any[]) => void): void;
+    on(
+      target?: videojs.Component | Element,
+      type?: string | string[],
+      listener?: (...args: any[]) => void
+    ): void;
     on(type?: string | string[], listener?: (...args: any[]) => void): void;
   }
 }

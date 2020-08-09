@@ -25,7 +25,9 @@ class List {
     const newIndex = this.index_ + steps;
     const length = this.values.length;
 
-    return this.loop_ ? (length + newIndex) % length : Math.max(0, Math.min(newIndex, length - 1));
+    return this.loop_
+      ? (length + newIndex) % length
+      : Math.max(0, Math.min(newIndex, length - 1));
   }
 
   step(steps) {

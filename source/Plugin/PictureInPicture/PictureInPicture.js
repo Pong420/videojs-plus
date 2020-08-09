@@ -124,10 +124,16 @@ class pictureInPicture extends videojs.getPlugin('plugin') {
     const move = evt => {
       evt.preventDefault();
 
-      this.cache_.x = Math.max(0, Math.min(window.innerWidth - el.offsetWidth, evt.clientX - x));
+      this.cache_.x = Math.max(
+        0,
+        Math.min(window.innerWidth - el.offsetWidth, evt.clientX - x)
+      );
       this.cache_.y = Math.max(
         0,
-        Math.min(window.innerHeight - el.offsetHeight, window.innerHeight - evt.clientY - el.offsetHeight + y)
+        Math.min(
+          window.innerHeight - el.offsetHeight,
+          window.innerHeight - evt.clientY - el.offsetHeight + y
+        )
       );
 
       this.updatePosition(this.cache_);

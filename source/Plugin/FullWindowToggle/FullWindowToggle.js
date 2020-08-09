@@ -14,7 +14,7 @@ class FullWindowToggle extends videojs.getComponent('FullscreenToggle') {
       return !!player.isFullWindow;
     };
 
-    player.on(['enterFullWindow', 'exitFullWindow'], function() {
+    player.on(['enterFullWindow', 'exitFullWindow'], function () {
       player.toggleFullscreenClass_();
       player.trigger('fullscreenchange');
     });
@@ -38,7 +38,8 @@ class FullWindowToggle extends videojs.getComponent('FullscreenToggle') {
 
 videojs.registerComponent('FullWindowToggle', FullWindowToggle);
 
-const controlBarChildren = videojs.getComponent('ControlBar').prototype.options_.children;
+const controlBarChildren = videojs.getComponent('ControlBar').prototype.options_
+  .children;
 const fullScreenButtonIndex = controlBarChildren.indexOf('FullscreenToggle');
 
 controlBarChildren[fullScreenButtonIndex] = 'FullWindowToggle';

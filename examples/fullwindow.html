@@ -7,13 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../dist/videojs-plus.css" />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="../dist/plugins/full-window-toggle/style.css" />
+    <link
+      rel="stylesheet"
+      href="../dist/plugins/full-window-toggle/style.css"
+    />
   </head>
 
   <body>
     <div class="flex">
       <div class="container">
-        <video id="example-video" class="vjs-fluid" poster="https://vjs.zencdn.net/v/oceans.png">
+        <video
+          id="example-video"
+          class="vjs-fluid"
+          poster="https://vjs.zencdn.net/v/oceans.png"
+        >
           <source src="https://vjs.zencdn.net/v/oceans.mp4" />
         </video>
       </div>
@@ -28,8 +35,12 @@
       aspectRatio: '16:9'
     });
 
-    player.on('fullscreenchange', function(event) {
-      console.log('[fullscreenchange]', 'is fullscreen:', player.isFullscreen());
+    player.on('fullscreenchange', function (event) {
+      console.log(
+        '[fullscreenchange]',
+        'is fullscreen:',
+        player.isFullscreen()
+      );
     });
   </script>
 </html>

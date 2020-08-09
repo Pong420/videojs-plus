@@ -18,11 +18,11 @@ videojs.getComponent('ControlBar').prototype.options_.children = [
 ];
 
 videojs.hook('setup', vjsPlayer => {
-  vjsPlayer.on('mouseleave', function() {
+  vjsPlayer.on('mouseleave', function () {
     vjsPlayer.userActive(false);
   });
 
-  vjsPlayer.ready(function() {
+  vjsPlayer.ready(function () {
     vjsPlayer.controls(vjsPlayer.options_.controls !== false);
   });
 });

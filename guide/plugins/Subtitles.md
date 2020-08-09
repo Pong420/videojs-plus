@@ -46,10 +46,7 @@ player.subtitles().track;
 player.subtitles().values();
 
 // expect `values` and `track`, apis are chainable
-player
-  .subtitles()
-  .load(subtitles)
-  .pick(0);
+player.subtitles().load(subtitles).pick(0);
 
 player.on('subtitles', (event, subtitles) => {
   console.log('subtitles setup', subtitles);

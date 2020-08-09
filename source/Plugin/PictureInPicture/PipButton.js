@@ -6,7 +6,8 @@ class PipButton extends Button {
   constructor(player, options) {
     super(player, options);
 
-    this.el_.querySelector('.vjs-icon-placeholder').className += ' vjs-icon-picture-in-picture';
+    this.el_.querySelector('.vjs-icon-placeholder').className +=
+      ' vjs-icon-picture-in-picture';
   }
 
   buildCSSClass() {

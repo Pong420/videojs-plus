@@ -81,7 +81,7 @@ class PlayList extends List {
   }
 }
 
-videojs.registerPlugin('setPlayList', function(playlist, startIndex) {
+videojs.registerPlugin('setPlayList', function (playlist, startIndex) {
   const player = this.player_;
 
   player.playlist = new PlayList(player, playlist, startIndex);

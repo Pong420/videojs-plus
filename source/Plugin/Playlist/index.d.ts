@@ -22,7 +22,10 @@ declare module 'video.js' {
 
   export type PlayListListener = (event: Event, data: PlayList[]) => void;
 
-  export type PlayListChangeListener = (event: Event, data: PlayList & { index: number }) => void;
+  export type PlayListChangeListener = (
+    event: Event,
+    data: PlayList & { index: number }
+  ) => void;
 
   export type AutoplayNextListener = (event: Event, data: boolean) => void;
 

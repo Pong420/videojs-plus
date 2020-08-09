@@ -27,7 +27,7 @@ function findChild(parent, name, result) {
   };
 }
 
-videojs.getComponent('Component').prototype.findChild = function(name) {
+videojs.getComponent('Component').prototype.findChild = function (name) {
   const result = [];
 
   findChild(this, name, result);

@@ -6,7 +6,10 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../dist/videojs-plus.css" />
-    <link rel="stylesheet" href="../dist/plugins/picture-in-picture/style.css" />
+    <link
+      rel="stylesheet"
+      href="../dist/plugins/picture-in-picture/style.css"
+    />
     <link rel="stylesheet" href="style.css" />
     <style>
       body {
@@ -28,7 +31,11 @@
     <div class="custom-pip-player-wrapper"></div>
     <div class="flex">
       <div class="container">
-        <video id="example-video" class="vjs-fluid" poster="https://vjs.zencdn.net/v/oceans.png">
+        <video
+          id="example-video"
+          class="vjs-fluid"
+          poster="https://vjs.zencdn.net/v/oceans.png"
+        >
           <source src="https://vjs.zencdn.net/v/oceans.mp4" />
         </video>
       </div>
@@ -38,9 +45,9 @@
   <script src="../dist/videojs-plus.umd.js"></script>
   <script src="../dist/plugins/picture-in-picture/index.js"></script>
   <script>
-    var player = videojs("example-video", {
+    var player = videojs('example-video', {
       // same as videojs config
-      aspectRatio: "16:9",
+      aspectRatio: '16:9',
       autoplay: true
     });
   </script>

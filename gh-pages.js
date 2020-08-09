@@ -5,7 +5,8 @@ ghpages.publish(
   {
     src: ['examples/**/*', 'dist/**/*']
   },
-  function(err) {
+  function (err) {
+    // eslint-disable-next-line
     console.log(err);
   }
 );

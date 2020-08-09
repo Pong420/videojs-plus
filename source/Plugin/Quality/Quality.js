@@ -40,7 +40,7 @@ class Quality extends List {
   }
 }
 
-const setQualities = function(qualities, defaultQualityLevel) {
+const setQualities = function (qualities, defaultQualityLevel) {
   const player = this.player_;
 
   player.qualities = new Quality(player, qualities, defaultQualityLevel);

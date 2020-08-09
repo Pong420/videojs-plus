@@ -17,7 +17,10 @@ declare module 'video.js' {
 
   export type QualityListener = (event: Event, data: Quality[]) => void;
 
-  export type QualityChangeListener = (event: Event, data: Quality & { index: number }) => void;
+  export type QualityChangeListener = (
+    event: Event,
+    data: Quality & { index: number }
+  ) => void;
 
   interface VideoJSPlayerOptions {
     qualities?: Quality[];

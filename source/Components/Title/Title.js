@@ -39,7 +39,7 @@ class Title extends videojs.getComponent('Component') {
   }
 }
 
-const title = function(title_) {
+const title = function (title_) {
   const videoTitle = this.player_.getChild('VideoTitle');
 
   if (typeof title_ === 'undefined') {
@@ -52,4 +52,6 @@ const title = function(title_) {
 videojs.registerPlugin('title', title);
 videojs.registerComponent('VideoTitle', Title);
 
-videojs.getComponent('Player').prototype.options_.children.splice(2, 0, 'VideoTitle');
+videojs
+  .getComponent('Player')
+  .prototype.options_.children.splice(2, 0, 'VideoTitle');

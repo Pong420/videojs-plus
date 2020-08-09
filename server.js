@@ -4,10 +4,11 @@ const port = process.env.PORT || 3000;
 
 app.use('/', express.static('./'));
 
-app.get('/', function(_, res) {
+app.get('/', function (_, res) {
   res.redirect('/examples');
 });
 
-app.listen(port, function() {
+app.listen(port, function () {
+  // eslint-disable-next-line
   console.log('listening on port:', port);
 });

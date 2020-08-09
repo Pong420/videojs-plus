@@ -19,7 +19,9 @@ class ContextMenuItem extends MenuItem {
 
     el.insertAdjacentHTML(
       'afterbegin',
-      `<span aria-hidden="true" class="vjs-icon-placeholder ${this.options_.icon || ''}"></span>`
+      `<span aria-hidden="true" class="vjs-icon-placeholder ${
+        this.options_.icon || ''
+      }"></span>`
     );
 
     return el;

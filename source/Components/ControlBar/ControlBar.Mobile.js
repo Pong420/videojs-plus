@@ -47,7 +47,9 @@ videojs.hook('setup', vjsPlayer => {
   const enableMobileView = vjsPlayer.options_.mobileView !== false;
 
   const matchDimension = value => {
-    return window.matchMedia ? window.matchMedia(`(max-width: ${value}px)`).matches : window.innerWidth <= value;
+    return window.matchMedia
+      ? window.matchMedia(`(max-width: ${value}px)`).matches
+      : window.innerWidth <= value;
   };
 
   if (matchDimension(480) && enableMobileView) {

@@ -44,7 +44,12 @@ class ContextMenu extends Menu {
     const rect = this.player_.el().getBoundingClientRect();
     const { pageX, pageY } = event;
 
-    if (pageY > rect.y && pageY - rect.height < rect.y && pageX > rect.x && pageX - rect.width < rect.x) {
+    if (
+      pageY > rect.y &&
+      pageY - rect.height < rect.y &&
+      pageX > rect.x &&
+      pageX - rect.width < rect.x
+    ) {
       const x = pageX - rect.x;
       const y = pageY - rect.y;
 

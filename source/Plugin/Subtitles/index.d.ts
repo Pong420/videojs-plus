@@ -19,7 +19,10 @@ declare module 'video.js' {
 
   export type SubtitlesListener = (event: Event, data: Subtitle[]) => void;
 
-  export type SubtitleChangeListener = (event: Event, data: { index: number; label: string }) => void;
+  export type SubtitleChangeListener = (
+    event: Event,
+    data: { index: number; label: string }
+  ) => void;
 
   interface VideoJSPlayerOptions {
     subtitles?: Subtitle[];

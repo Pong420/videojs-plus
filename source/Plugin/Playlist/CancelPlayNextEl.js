@@ -6,7 +6,9 @@ class CancelPlayNextEl extends ClickableComponent {
   constructor(player, options) {
     super(player, options);
 
-    this.el_.querySelector('.vjs-icon-placeholder').innerHTML = this.localize(options.text);
+    this.el_.querySelector('.vjs-icon-placeholder').innerHTML = this.localize(
+      options.text
+    );
   }
 
   buildCSSClass() {
@@ -14,10 +16,7 @@ class CancelPlayNextEl extends ClickableComponent {
   }
 
   handleClick() {
-    this.player_
-      .getChild('BeforePlayNextLayer')
-      .cancel()
-      .dispose();
+    this.player_.getChild('BeforePlayNextLayer').cancel().dispose();
   }
 }
 

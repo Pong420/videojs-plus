@@ -6,12 +6,12 @@
 
 ```js
 // set title using options
-const player = videojs("example-video", {
-  title: "Title"
+const player = videojs('example-video', {
+  title: 'Title'
 });
 
 // or
-player.title("Set Titlte");
+player.title('Set Titlte');
 
 // return current title
 player.title();

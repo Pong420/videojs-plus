@@ -122,11 +122,16 @@
 
   <body>
     <div class="flex">
-      <div class="container ">
+      <div class="container">
         <div class="video-container"><video id="example-video"></video></div>
         <div class="playlist-ui">
           <div class="item-header">
-            <a href="https://gist.github.com/jsturgis/3b19447b304616f18657" target="_blank"> Video sources </a>
+            <a
+              href="https://gist.github.com/jsturgis/3b19447b304616f18657"
+              target="_blank"
+            >
+              Video sources
+            </a>
           </div>
           <div class="wrapper"><div class="list"></div></div>
         </div>
@@ -142,80 +147,96 @@
     var playList = [
       {
         title: 'Big Buck Bunny',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'Elephant Dream',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'For Bigger Blazes',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'For Bigger Escape',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'For Bigger Fun',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'For Bigger Joyrides',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'For Bigger Meltdowns',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerMeltdowns.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerMeltdowns.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'Sintel',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/Sintel.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/Sintel.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4',
             type: 'video/mp4'
           }
         ]
@@ -226,37 +247,44 @@
           'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/SubaruOutbackOnStreetAndDirt.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'Tears of Steel',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/TearsOfSteel.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/TearsOfSteel.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'Volkswagen GTI Review',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/VolkswagenGTIReview.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/VolkswagenGTIReview.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/VolkswagenGTIReview.mp4',
             type: 'video/mp4'
           }
         ]
       },
       {
         title: 'We Are Going On Bullrun',
-        poster: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/WeAreGoingOnBullrun.jpg',
+        poster:
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/WeAreGoingOnBullrun.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4',
             type: 'video/mp4'
           }
         ]
@@ -267,7 +295,8 @@
           'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/WhatCarCanYouGetForAGrand.jpg',
         sources: [
           {
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4',
             type: 'video/mp4'
           }
         ]
@@ -302,18 +331,22 @@
         videojs.dom.addClass($selected, 'selected');
       }
 
-      $el.addEventListener('click', function() {
+      $el.addEventListener('click', function () {
         player.playlist.play(index);
       });
 
       $list.appendChild($el);
     });
 
-    player.on('playlistchange', function(_, selected) {
+    player.on('playlistchange', function (_, selected) {
       videojs.dom.removeClass($selected, 'selected');
       $selected = $list.children[selected.index];
       videojs.dom.addClass($selected, 'selected');
-      $wrapper.scrollTo(0, $selected.offsetTop - ($wrapper.offsetHeight - $selected.offsetHeight) / 2);
+      $wrapper.scrollTo(
+        0,
+        $selected.offsetTop -
+          ($wrapper.offsetHeight - $selected.offsetHeight) / 2
+      );
     });
   </script>
 </html>

@@ -13,7 +13,8 @@
     <div class="flex">
       <div class="container">
         This demo simulates transition between video in SPA. <br />
-        The video will unload when video time more than 5 seconds and a new video load after 2 seconds
+        The video will unload when video time more than 5 seconds and a new
+        video load after 2 seconds
         <video id="example-video" class="vjs-fluid">
           <source src="https://vjs.zencdn.net/v/oceans.mp4" />
         </video>
@@ -40,9 +41,10 @@
         player.off('timeupdate', unload);
         player.unload({ loading: true });
 
-        setTimeout(function() {
+        setTimeout(function () {
           player.src({
-            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+            src:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
             type: 'video/mp4'
           });
         }, 2000);
