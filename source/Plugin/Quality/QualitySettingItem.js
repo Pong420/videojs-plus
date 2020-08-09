@@ -31,12 +31,15 @@ class QualitySettingItem extends SettingOptionItem {
     });
   }
 
-  onChange({ value }) {
-    this.player_.qualities.pick(value);
+  onChange(...args) {
+    super.onChange(...args);
+    this.player_.qualities.pick(this.selected.value);
   }
 }
 
-videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('QualitySettingItem');
+videojs
+  .getComponent('SettingMenuButton')
+  .prototype.options_.entries.push('QualitySettingItem');
 
 videojs.registerComponent('QualitySettingItem', QualitySettingItem);
 

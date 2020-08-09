@@ -85,10 +85,10 @@ class QualityHlsSettingItem extends SettingOptionItem {
     }
   }
 
-  onChange(selected) {
-    const { value } = selected;
+  onChange(...args) {
+    super.onChange(...args);
 
-    super.onChange(selected);
+    const { value } = this.selected;
 
     this.levels.forEach(lv => {
       lv.enabled = lv.height === value || value === 'auto';

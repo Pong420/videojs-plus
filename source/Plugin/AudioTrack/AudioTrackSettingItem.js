@@ -45,8 +45,9 @@ class AudioTrackSettingItem extends SettingOptionItem {
     });
   }
 
-  onChange({ value }) {
-    this.player_.audio().pick(value);
+  onChange(...args) {
+    super.onChange(...args);
+    this.player_.audio().pick(this.selected.value);
   }
 
   onAlternateAudio() {
@@ -90,7 +91,9 @@ class AudioTrackSettingItem extends SettingOptionItem {
   }
 }
 
-videojs.getComponent('SettingMenuButton').prototype.options_.entries.push('AudioTrackSettingItem');
+videojs
+  .getComponent('SettingMenuButton')
+  .prototype.options_.entries.push('AudioTrackSettingItem');
 
 videojs.registerComponent('AudioTrackSettingItem', AudioTrackSettingItem);
 

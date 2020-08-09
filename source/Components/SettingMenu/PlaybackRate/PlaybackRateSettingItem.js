@@ -39,8 +39,9 @@ class PlaybackRateSettingItem extends SettingOptionItem {
     });
   }
 
-  onChange({ value }) {
-    this.player_.playbackRate(value);
+  onChange(...args) {
+    super.onChange(...args);
+    this.player_.playbackRate(this.selected.value);
   }
 }
 
