@@ -1,3 +1,9 @@
+# 1.6.3
+
+### Bug Fixes
+
+- Make setting menu auto-responsive
+
 # 1.6.2
 
 ### Bug Fixes
