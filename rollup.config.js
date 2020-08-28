@@ -81,7 +81,7 @@ export default [
     const srcDir = `${pluginsDir}/${pluginName}/`;
     const outDir = path.join(distDir, `/plugins/${kebabCaseName}`);
     return createEntry(
-      `${srcDir}/${pluginName}.js`,
+      path.join(srcDir, `${pluginName}.js`),
       output(format => {
         const name = format === 'umd' ? 'index' : `${kebabCaseName}.${format}`;
         return `${outDir}/${name}.js`;
