@@ -1,3 +1,9 @@
+# 1.6.4
+
+### Bug Fixes
+
+- Remove control of `vjs-workinghover` classname. Let users handle themself
+
 # 1.6.3
 
 ### Bug Fixes

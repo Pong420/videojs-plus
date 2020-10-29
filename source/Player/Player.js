@@ -1,7 +1,7 @@
 import videojs from 'video.js';
 import './Player.scss';
 
-const { IS_IPHONE, IOS_VERSION, TOUCH_ENABLED } = videojs.browser;
+const { IS_IPHONE, IOS_VERSION } = videojs.browser;
 
 videojs.hook('setup', vjsPlayer => {
   vjsPlayer.playsinline(vjsPlayer.options_.playsinline !== false);
@@ -14,6 +14,4 @@ videojs.hook('setup', vjsPlayer => {
       vjsPlayer.addClass('vjs-iphone-below-11');
     }
   }
-
-  TOUCH_ENABLED && vjsPlayer.removeClass('vjs-workinghover');
 });
