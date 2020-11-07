@@ -19,14 +19,9 @@ class SettingMenu extends Menu {
       return;
     }
 
-    const { offsetWidth: width, offsetHeight: height } = this.contentEl_;
-
     this.mainMenuItems = this.children().slice(0);
 
-    this.resize({
-      width,
-      height
-    });
+    this.transform(this.mainMenuItems);
 
     /**
      *  Since the width of setting menu depends on screen width.
