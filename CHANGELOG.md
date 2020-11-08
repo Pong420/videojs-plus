@@ -1,3 +1,9 @@
+# 1.6.6
+
+### Bug Fixes
+
+- Make the setting menu auto resize from the init #22
+
 # 1.6.5
 
 same as 1.6.4
