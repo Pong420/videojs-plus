@@ -14,6 +14,8 @@ class SettingMenuButton extends MenuButton {
 
     // move menu to player
     player.addChild(this.menu);
+    player.SettingMenu = this.menu;
+
     // remove videojs parent child relationship between button and menu
     this.removeChild(this.menu);
   }
@@ -32,10 +34,11 @@ class SettingMenuButton extends MenuButton {
     });
     const entries = this.options_.entries || [];
 
-    entries.forEach(component => {
-      menu.addChild(component, {
+    entries.forEach(componentName => {
+      const component = menu.addChild(componentName, {
         menu
       });
+      menu[componentName] = component;
     });
 
     return menu;

@@ -1,3 +1,13 @@
+# 1.6.7
+
+### Features
+
+- Allow to access `SettingMenu` and `SettingMenuItem` through player directly
+
+```js
+player.SettingMenu.PlaybackRateSettingItem;
+```
+
 # 1.6.6
 
 ### Bug Fixes
