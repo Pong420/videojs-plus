@@ -1,10 +1,11 @@
-## Setting Menu
+## Setting Menu <!-- {docsify-ignore-all} -->
 
 <img src="../screenshot/setting-menu.png">
 
-[Demo](https://pong420.github.io/videojs-plus/examples/setting-menu.html)
+# TODO: demo
 
-If you got an error from below example script, visit [the example source code](examples/setting-menu.html)
+<!-- [Demo](https://pong420.github.io/videojs-plus/examples/setting-menu.html)
+If you got an error from below example script, visit [the example source code](examples/setting-menu.html) -->
 
 #### Create an on off menu item
 

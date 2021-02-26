@@ -1,8 +1,8 @@
-## Title
+## Title <!-- {docsify-ignore-all} -->
 
 <img src="../screenshot/video-title.png">
 
-#### Usage
+### Usage
 
 ```js
 // set title using options

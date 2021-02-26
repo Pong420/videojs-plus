@@ -141,12 +141,9 @@ ul.app-sub-sidebar li {
   z-index: 1;
 
   min-width: 100%;
-  overflow: hidden;
-  display: inline-block;
 
-  /* padding-y make highlight-line plugin position incorrectly */
-  padding: 0 1.5em;
-  margin: 1.5em 0;
+  padding: 1.5em;
+  margin: 0;
 }
 
 .line-highlight {
@@ -156,9 +153,9 @@ ul.app-sub-sidebar li {
   z-index: -1;
 
   background-color: var(--lineHightLight);
-  margin-top: 1px;
-
   border-left: 2px solid var(--highlightColor);
+
+  transform: translateY(1.5em);
 }
 
 .file,
@@ -175,4 +172,23 @@ pre.with-file:after {
 .file {
   background: var(--lineHightLight);
   font-size: 12px;
+}
+
+/* html */
+.token.tag {
+  color: var(--highlightColor);
+}
+
+.token.attr-name {
+  color: var(--textColor);
+}
+
+/* css */
+.token.selector {
+  color: var(--highlightColor);
+}
+
+.token.rule,
+.token.atrule {
+  color: var(--textColor);
 }

@@ -52,6 +52,10 @@
     var [lang, ...rest] = _lang.split(' ');
     var metadata = parseMetadata(rest);
 
+    if (lang === 'html' && metadata.video) {
+      return code;
+    }
+
     var file = metadata.file;
     var highlight = metadata.highlight || '';
 
@@ -78,7 +82,13 @@
       }
     }
 
-    return div.innerHTML;
+    let output = div.innerHTML;
+
+    if (lang === 'js' && metadata.run) {
+      output += '<script>' + code + '</script>';
+    }
+
+    return output;
   }
 
   window.$docsify.markdown = window.$docsify.markdown || {};

@@ -1,10 +1,10 @@
-## VideoJS Plus
+## VideoJS Plus <!-- {docsify-ignore-all} -->
 
 VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/video.js). <br>
 
 <img src="./screenshot/electron-frameless-player.png">
 
-### Installation <!-- {docsify-ignore} -->
+### Installation
 
 ```bash
 npm install videojs-plus
@@ -12,7 +12,7 @@ npm install videojs-plus
 yarn add videojs-plus
 ```
 
-### Usage <!-- {docsify-ignore} -->
+### Usage
 
 - Just include the JS and CSS and use videojs normally
 
@@ -40,14 +40,13 @@ yarn add videojs-plus
 
 - [React Hooks](https://codesandbox.io/s/71z2lm4ko6)
 
-## Features
+### Features
 
 - [Title](./Title.md)
 - [Context Menu](./docs/ContextMenu.md)
 - [Setting Menu](./docs/SettingMenu.md)
 - [Mobile UI](./docs/Mobile.md)
-
-<img src="./screenshot/mobileui.control.small.png" width="300">
+  <img src="./screenshot/mobileui.control.small.png" width="300">
 
 - **Dimensions of controls**<br>
   You can change the dimensions of controls/menu by changing the `font-size` of `.video-js`. For example,
@@ -87,7 +86,7 @@ videojs.getComponent('ControlBar').prototype.options_.children = [
 
 <br>
 
-## Plugins
+### Plugins
 
 - [Autoplay](./docs/plugins/Autoplay.md)
 - [Playlist](./docs/plugins/Playlist.md)

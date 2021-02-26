@@ -1,4 +1,4 @@
-## Context Menu
+## Context Menu <!-- {docsify-ignore-all} -->
 
 <img src="../screenshot/contextmenu.png" style="max-width: 960px;">
 

@@ -1,0 +1,33 @@
+## Autoplay <!-- {docsify-ignore-all} -->
+
+If autoplay with sound is not allowed by the browser, the player will try to mute and play again.<br>
+Some mobile device does not support autoplay start even player is muted.
+
+:warning: Autoplay already handled in **VideoJS 7**, you may not need this plugin
+
+```html video=autoplay
+<video id="example-video" poster="https://vjs.zencdn.net/v/oceans.png">
+  <source src="https://vjs.zencdn.net/v/oceans.mp4" />
+</video>
+```
+
+### Usage
+
+```js run=true
+const player = videojs('example-video', {
+  autoplay: true,
+  aspectRatio: '16:9'
+});
+```
+
+### Event
+
+```js
+player.on('autoplay-success', () => {
+  console.log('autoplay success');
+});
+
+player.on('autoplay-failure', () => {
+  console.log('autoplay failure');
+});
+```
