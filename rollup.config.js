@@ -35,6 +35,7 @@ function createEntry(input, output, css, plugins = []) {
       // Resolve source maps to the original source
       sourceMaps(),
       scss({
+        sass: require('sass'),
         output: styles => {
           if (styles && styles.length) {
             const cssOutput =
