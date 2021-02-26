@@ -7,3 +7,4 @@
 - **Plugins**
   - [Audio](./demo/audio.md)
   - [Autoplay](./demo/autoplay.md)
+  - [Playlist](./demo/playlist.md)
