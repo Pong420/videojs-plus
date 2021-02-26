@@ -53,7 +53,7 @@
     var metadata = parseMetadata(rest);
 
     if (lang === 'html' && metadata.video) {
-      return code;
+      return '<div class="demo">' + code + '</div>';
     }
 
     var file = metadata.file;
@@ -113,6 +113,11 @@
           Prism.highlightAll();
         }
       );
+
+      hook.beforeEach(function () {
+        // @ts-ignore
+        videojs.getAllPlayers().map(p => p.dispose());
+      });
     }
   ];
 })();
