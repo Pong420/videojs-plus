@@ -5,6 +5,8 @@
   - [Setting Menu](./features/setting-menu.md)
   - [Mobile UI](./features/mobile-ui.md)
 - **Plugins**
-  - [Audio](./demo/audio.md)
-  - [Autoplay](./demo/autoplay.md)
-  - [Playlist](./demo/playlist.md)
+  - [Audio](./plugins/audio.md)
+  - [Autoplay](./plugins/autoplay.md)
+  - [Electron Fullscreen Toggle](./plugins/electron-fullscreen-toggle.md)
+  - [Full Window Toggle](./plugins/full-window-toggle.md)
+  - [Playlist](./plugins/playlist.md)
