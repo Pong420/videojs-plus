@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext", "dom"],
+    "module": "none",
+    "skipLibCheck": true,
+    "strict": true,
+    "checkJs": true
+  },
+  "include": ["**/*"]
+}
