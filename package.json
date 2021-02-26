@@ -15,7 +15,8 @@
     "build": "rollup -c rollup.config.js",
     "lint": "eslint 'source/**/*.js'",
     "prebuild": "rimraf dist",
-    "prepublishOnly": "yarn build && node gh-pages.js"
+    "prepublishOnly": "yarn build && node gh-pages.js",
+    "docs": "yarn docsify serve docs"
   },
   "license": "Apache-2.0",
   "husky": {

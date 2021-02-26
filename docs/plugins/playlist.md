@@ -15,7 +15,7 @@ include the plugin js and css
 
 The playlist UI at the right-hand side need to create by yourself
 
-```html video=true
+```html inject
 <div class="container">
   <div class="video-container"><video id="example-video"></video></div>
   <div class="playlist-ui">
@@ -32,7 +32,7 @@ The playlist UI at the right-hand side need to create by yourself
 </div>
 ```
 
-```js run=true
+```js run
 var playList = [
   {
     title: 'For Bigger Meltdowns',

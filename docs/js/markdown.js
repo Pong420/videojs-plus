@@ -22,7 +22,10 @@
        */
       (metadata, str) => {
         var [key, value] = str.split('=');
-        return { ...metadata, [key]: value };
+        return {
+          ...metadata,
+          [key]: typeof value === 'undefined' ? 'true' : value
+        };
       },
       {}
     );
@@ -52,7 +55,7 @@
     var [lang, ...rest] = _lang.split(' ');
     var metadata = parseMetadata(rest);
 
-    if (lang === 'html' && metadata.video) {
+    if (lang === 'html' && metadata.inject) {
       return '<div class="demo">' + code + '</div>';
     }
 

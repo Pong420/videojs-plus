@@ -6,7 +6,7 @@ If autoplay with sound is not allowed by the browser, the player will try to mut
 
 <br />
 
-```html video=true
+```html inject
 <video id="autoplay-video" poster="https://vjs.zencdn.net/v/oceans.png">
   <source src="https://vjs.zencdn.net/v/oceans.mp4" />
 </video>
@@ -14,7 +14,7 @@ If autoplay with sound is not allowed by the browser, the player will try to mut
 
 ### Usage
 
-```js run=true
+```js run
 const player = videojs('autoplay-video', {
   autoplay: true, // highlight-line
   aspectRatio: '16:9'

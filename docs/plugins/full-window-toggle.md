@@ -7,13 +7,10 @@ Remember to include the CSS file
 
 `player.isFullscreen()` and `fullscreenchange` event will also work
 
-<link
-  rel="stylesheet"
-  href="https://pong420.github.io/videojs-plus/dist/plugins/full-window-toggle/style.css"
-/>
-<script src="https://pong420.github.io/videojs-plus/dist/plugins/full-window-toggle/index.js"></script>
+<link rel="stylesheet" href="../dist/plugins/full-window-toggle/style.css" />
+<script src="../dist/plugins/full-window-toggle/index.js"></script>
 
-```html video=true
+```html inject
 <video
   id="example-video"
   class="vjs-fluid"
@@ -23,7 +20,7 @@ Remember to include the CSS file
 </video>
 ```
 
-```js run=true
+```js run
 var player = videojs('example-video', {
   // same as videojs config
   aspectRatio: '16:9'
@@ -33,5 +30,3 @@ player.on('fullscreenchange', function (event) {
   console.log('[fullscreenchange]', 'is fullscreen:', player.isFullscreen());
 });
 ```
-
-[Demo](https://pong420.github.io/videojs-plus/examples/fullwindow.html)
