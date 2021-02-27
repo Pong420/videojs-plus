@@ -3,3 +3,4 @@ declare interface Window {
 }
 
 declare const Prism: any;
+declare const Docsify: any;

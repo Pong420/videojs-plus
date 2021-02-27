@@ -1,19 +1,17 @@
 ## Playlist <!-- {docsify-ignore-all} -->
 
-<link rel="stylesheet" href="../assets/playlist.css" />
+<link rel="stylesheet" href="/docs/assets/playlist.css" />
 
 ### Usage
 
-include the plugin js and css
+Include the plugin js and css
 
-```html
-<link rel="stylesheet" href="/videojs-plus/plugins/playlist/style.css" />
-<script src="/videojs-plus/dist/plugins/playlist/index.js"></script>
+```html inject keep
+<link rel="stylesheet" href="../dist/plugins/playlist/style.css" />
+<script src="../dist/plugins/playlist/index.js"></script>
 ```
 
-### Demo
-
-The playlist UI at the right-hand side need to create by yourself
+> The playlist UI at the right-hand side need to create by yourself
 
 ```html inject
 <div class="container">

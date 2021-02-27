@@ -15,7 +15,7 @@ If autoplay with sound is not allowed by the browser, the player will try to mut
 ### Usage
 
 ```js run
-const player = videojs('autoplay-video', {
+var player = videojs('autoplay-video', {
   autoplay: true, // highlight-line
   aspectRatio: '16:9'
 });

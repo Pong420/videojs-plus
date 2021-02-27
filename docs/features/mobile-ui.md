@@ -11,7 +11,7 @@ This class will be added if the player initializes at screen smaller or equal 48
 #### Disable mobile view
 
 ```js
-const player = videojs("example-video", {
+var player = videojs("example-video", {
   // ...
   mobileView: false;
 })

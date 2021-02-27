@@ -55,10 +55,6 @@
     var [lang, ...rest] = _lang.split(' ');
     var metadata = parseMetadata(rest);
 
-    if (lang === 'html' && metadata.inject) {
-      return '<div class="demo">' + code + '</div>';
-    }
-
     var file = metadata.file;
     var highlight = metadata.highlight || '';
 
@@ -89,6 +85,14 @@
 
     if (lang === 'js' && metadata.run) {
       output += '<script>' + code + '</script>';
+    }
+
+    if (lang === 'html' && metadata.inject) {
+      if (metadata.keep) {
+        output += code;
+      } else {
+        return '<div class="demo">' + code + '</div>';
+      }
     }
 
     return output;

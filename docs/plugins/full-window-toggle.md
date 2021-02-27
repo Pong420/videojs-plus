@@ -3,12 +3,16 @@
 Since iOS native fullscreen cannot be overridden and you may want to use a full window instead.<br>
 Just include the plugin then the fullscreen button will replace by full window button.
 
-Remember to include the CSS file
+### Usage
 
-`player.isFullscreen()` and `fullscreenchange` event will also work
+Include the plugin js and css
 
+```html inject keep
 <link rel="stylesheet" href="../dist/plugins/full-window-toggle/style.css" />
 <script src="../dist/plugins/full-window-toggle/index.js"></script>
+```
+
+<br />
 
 ```html inject
 <video
