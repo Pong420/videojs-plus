@@ -1,0 +1,18 @@
+/* Control bar is hidden */
+.vjs-user-inactive.vjs-playing:not(.vjs-keep-control-showing) .vjs-text-track-display div {
+  margin-bottom: 0.5em !important;
+}
+.vjs-user-inactive.vjs-playing:not(.vjs-keep-control-showing) .vjs-text-track-display div > div {
+  bottom: 0 !important;
+}
+.vjs-user-inactive.vjs-playing:not(.vjs-keep-control-showing) .vjs-text-track-display .vjs-iphone-below-11 video::-webkit-media-text-track-container {
+  margin-top: 0px !important;
+}
+
+.vjs-text-track-display > div {
+  margin: calc(2.5em) 1.5% !important;
+}
+.vjs-text-track-display > div > div {
+  top: auto !important;
+  bottom: 15px !important;
+}

@@ -1,0 +1,194 @@
+html,
+body {
+  /* disable scroll bounce, only works on some browsers */
+  overscroll-behavior: none;
+}
+
+/****** Custom scroll bar  ******/
+
+html[custom-scrollbar] ::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+html[custom-scrollbar] ::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  background-color: rgba(128, 128, 128, 0.4);
+  border: 2px solid transparent;
+  border-radius: 0.8rem;
+  box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.05),
+    inset 1px 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/****** Expand pagination plugin ******/
+
+.markdown-section {
+  padding-top: 10px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.markdown-section .docsify-pagination-container {
+  margin-top: auto;
+  padding-top: 60px;
+}
+
+/****** Custom styles  ******/
+
+.markdown-section > h2:nth-child(1),
+.markdown-section > #docsify-darklight-theme + h2 {
+  margin-top: 0;
+}
+
+.markdown-section p {
+  margin: 0.5em 0px;
+}
+
+.sidebar {
+  border: none;
+}
+
+.mermaid,
+.sidebar,
+.search input,
+.markdown-section pre {
+  /* prettier-ignore */
+  box-shadow: 
+    0 0 0 1px var(--shadowBorderColor), 
+    0 0 0 rgb(16 22 26 / 0%),
+    0 0 0 rgb(16 22 26 / 0%);
+}
+
+.mermaid {
+  background-color: #f8f8f8;
+  padding: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search input {
+  border: none !important;
+}
+
+.sidebar.sidebar ul li > a {
+  border: 3px solid transparent;
+  width: 100%;
+  line-height: 1.8rem;
+}
+
+.sidebar ul li.active > a {
+  border-right-color: var(--accent);
+}
+
+ul.app-sub-sidebar li {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.markdown-section pre {
+  margin: 0;
+}
+
+.markdown-section pre + pre {
+  margin-top: 1.5em;
+}
+
+.markdown-section pre > code {
+  font-weight: normal;
+}
+
+.markdown-section p + p,
+.markdown-section p + ul,
+.markdown-section h3 + ul {
+  margin-top: 0;
+}
+
+.token.punctuation {
+  color: var(--punctuation);
+}
+
+.language-env .token.important,
+.language-env .token.punctuation {
+  color: #858585;
+}
+
+.token.property,
+.token.keyword {
+  color: var(--highlightColor);
+}
+
+.token.function {
+  color: inherit;
+}
+
+.token.boolean,
+.token.number {
+  color: var(--accent);
+}
+
+.markdown-section pre {
+  padding: 0;
+  overflow: auto;
+}
+
+.markdown-section pre > code {
+  background: transparent;
+
+  position: relative;
+  z-index: 1;
+
+  min-width: 100%;
+
+  padding: 1.5em;
+  margin: 0;
+}
+
+.line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  background-color: var(--lineHightLight);
+  border-left: 2px solid var(--highlightColor);
+
+  transform: translateY(1.5em);
+}
+
+.file,
+pre.with-file:after {
+  line-height: 2rem;
+  padding: 0 1.2rem;
+}
+
+pre.with-file:after {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.file {
+  background: var(--lineHightLight);
+  font-size: 12px;
+}
+
+/* html */
+.token.tag {
+  color: var(--highlightColor);
+}
+
+.token.attr-name {
+  color: var(--textColor);
+}
+
+/* css */
+.token.selector {
+  color: var(--highlightColor);
+}
+
+.token.rule,
+.token.atrule {
+  color: var(--textColor);
+}

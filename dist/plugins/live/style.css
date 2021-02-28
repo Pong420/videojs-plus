@@ -1,0 +1,22 @@
+.vjs-live-streaming .vjs-progress-control,
+.vjs-live-streaming .vjs-time-control {
+  display: none !important;
+}
+.vjs-live-streaming .vjs-live-notice {
+  display: flex;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.vjs-live-notice {
+  display: none;
+}
+
+.vjs-live-notice-spot {
+  font-size: 0.65em;
+  margin-right: 0.4em;
+  color: #ccc;
+}
+.vjs-live-streaming.vjs-live .vjs-live-notice-spot {
+  color: #e91e63;
+}

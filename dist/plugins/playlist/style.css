@@ -1,0 +1,122 @@
+.vjs-before-playnext {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: table;
+  text-align: center;
+}
+
+.vjs-before-playnext-content {
+  display: table-cell;
+  vertical-align: middle;
+  padding-bottom: 1em;
+}
+
+.vjs-cancel-playnext {
+  outline: none;
+  cursor: pointer;
+}
+
+.vjs-cancel-playnext-cross {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 1em;
+  line-height: 1em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.vjs-cancel-playnext-button {
+  display: table;
+  margin: auto;
+  padding: 0.5em 0.8em;
+  border-radius: 3px;
+}
+.vjs-cancel-playnext-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.vjs-playnext-spinner {
+  width: 60px;
+  height: 60px;
+  margin: 10px auto;
+  cursor: pointer;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  outline: none;
+}
+.vjs-playnext-spinner .vjs-icon-play {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  line-height: 60px;
+  text-align: center;
+  font-size: 30px;
+}
+.vjs-playnext-spinner svg {
+  border-radius: 50%;
+}
+
+.vjs-upnext-text {
+  margin-bottom: 0.5em;
+  font-size: 0.9em;
+  line-height: 1.5em;
+  color: #ccc;
+}
+
+.vjs-playnext-title {
+  font-size: 1.2em;
+  height: 1.5em;
+  line-height: 1.5em;
+  overflow: hidden;
+  max-width: 90%;
+  position: relative;
+  margin: auto;
+}
+.vjs-playnext-title > div {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vjs-workinghover .vjs-control-bar .vjs-prev-control.vjs-hidden + .vjs-play-control > .vjs-control-text {
+  margin-left: 0 !important;
+  transform: translateX(0%) !important;
+}
+
+.vjs-setting-autoplay {
+  min-width: 200px;
+}
+
+.vjs-mobile-view .vjs-control-bar .vjs-icon-next-item,
+.vjs-mobile-view .vjs-control-bar .vjs-icon-previous-item {
+  font-size: 3em;
+  line-height: 1em;
+}
+.vjs-mobile-view .vjs-cancel-playnext.vjs-cancel-playnext-button {
+  display: none;
+}
+.vjs-mobile-view.vjs-play-next-ready .vjs-title {
+  display: none;
+}
+.vjs-mobile-view.vjs-play-next-ready .vjs-control-bar {
+  background: transparent;
+  height: auto;
+}
+.vjs-mobile-view.vjs-play-next-ready .vjs-control-bar .vjs-control-separator:not(.bottom) {
+  display: none;
+}
