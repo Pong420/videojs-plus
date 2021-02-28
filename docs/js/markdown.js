@@ -84,7 +84,7 @@
       }
     }
 
-    let output = div.innerHTML;
+    var output = div.innerHTML;
 
     if (lang === 'js' && metadata.run) {
       output += '<script>' + code + '</script>';
