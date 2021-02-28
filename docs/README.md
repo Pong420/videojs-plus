@@ -42,25 +42,12 @@ yarn add videojs-plus
 
 <br>
 
-- language <br>
-  You can change the language of setting/context by [VideoJS language feature](https://docs.videojs.com/docs/guides/languages.html). For example
-
-````js
-const language = "zh-hk";
-
-videojs("example-video". {
-  language
-})
-
-videojs.addLanguage(language, {
-  Speed: "速度",
-  Normal: "正常"
-});
-```
-
 <br>
 
-## License <!-- {docsify-ignore} -->
+## License
 
 See [Apache 2.0](LICENSE).
-````
+
+```
+
+```

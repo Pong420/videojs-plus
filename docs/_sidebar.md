@@ -16,3 +16,5 @@
   - [Quality HLS](./plugins/quality-hls.md)
   - [Subtitles](./plugins/subtitles.md)
   - [Unload](./plugins/unload.md)
+- Others
+  - [Change log](./CHANGELOG.md)

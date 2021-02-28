@@ -22,3 +22,13 @@ main {
   max-width: 1440px;
   margin: auto;
 }
+
+[id*='update'],
+[id*='bug-fixes'] {
+  margin: 0;
+}
+
+[id*='update'] + ul,
+[id*='bug-fixes'] + ul {
+  margin-top: 0.5em;
+}
