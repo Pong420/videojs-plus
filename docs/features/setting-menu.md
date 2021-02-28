@@ -1,15 +1,18 @@
 ## Setting Menu <!-- {docsify-ignore-all} -->
 
-<img src="../screenshot/setting-menu.png">
+```html inject
+<video
+  id="example-video"
+  class="vjs-fluid"
+  poster="https://vjs.zencdn.net/v/oceans.png"
+>
+  <source src="https://vjs.zencdn.net/v/oceans.mp4" />
+</video>
+```
 
-# TODO: demo
+> Example for adding on-off menu item
 
-<!-- [Demo](https://pong420.github.io/videojs-plus/examples/setting-menu.html)
-If you got an error from below example script, visit [the example source code](examples/setting-menu.html) -->
-
-#### Create an on off menu item
-
-```js
+```js run
 const SettingOnOffItem = videojs.getComponent('SettingOnOffItem');
 
 class ToggleAnnotation extends SettingOnOffItem {
@@ -27,6 +30,9 @@ class ToggleAnnotation extends SettingOnOffItem {
     this.update(true);
   }
 
+  /**
+   *  @param {Boolean} active
+   */
   update(active) {
     super.update(active);
 
@@ -40,16 +46,18 @@ videojs
 videojs.registerComponent('ToggleAnnotation', ToggleAnnotation);
 ```
 
-#### Create an optional menu item
+> Example for adding an optional menu item
 
-```js
+```js run
 const SettingOptionItem = videojs.getComponent('SettingOptionItem');
+const SettingSubOptionItem = videojs.getComponent('SettingSubOptionItem');
+const authorised = false;
 
 class QualityMenuItem extends SettingOptionItem {
   constructor(player, options) {
     super(player, {
       ...options, // you must assgin the options
-      name: 'QualityMenuItem', // component name, optionsal
+      name: 'QualityMenuItem', // component name, optional
       label: 'Quality',
       icon: 'vjs-icon-hd', // videojs icon classname, optional, for small screen
       entries: [
@@ -79,17 +87,6 @@ class QualityMenuItem extends SettingOptionItem {
   }
 }
 
-videojs
-  .getComponent('SettingMenuButton')
-  .prototype.options_.entries.push('QualityMenuItem');
-videojs.registerComponent('QualityMenuItem', QualityMenuItem);
-
-// If you want to change/customize the options item, you can register new a component.
-// For example, HD quality only allow authorised user.
-const SettingSubOptionItem = videojs.getComponent('SettingSubOptionItem');
-const authorised = false;
-
-// The classname must be the name of your `SettingOptionItem` suffix `Child`
 class QualityMenuItemChild extends SettingSubOptionItem {
   handleClick() {
     if (authorised || this.value === 'Auto' || this.value < 720) {
@@ -101,8 +98,23 @@ class QualityMenuItemChild extends SettingSubOptionItem {
   }
 }
 
-// remember to register your component
+videojs
+  .getComponent('SettingMenuButton')
+  .prototype.options_.entries.push('QualityMenuItem');
+videojs.registerComponent('QualityMenuItem', QualityMenuItem);
 videojs.registerComponent('QualityMenuItemChild', QualityMenuItemChild);
+```
+
+<br />
+
+```js run
+var player = videojs('example-video', {
+  // same as videojs config
+  aspectRatio: '16:9',
+  muted: true
+});
+
+player.findChild('SettingMenuButton')[0].component.handleClick();
 ```
 
 #### Note

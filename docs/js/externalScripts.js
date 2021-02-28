@@ -11,6 +11,8 @@
     if (parent) {
       parent.insertBefore(newScript, script);
       parent.removeChild(script);
+    } else {
+      throw new Error(`parent not found`);
     }
   }
 
@@ -55,11 +57,14 @@
     );
 
     waitForExternals.then(function () {
-      localScripts.forEach(script => {
-        var newScript = document.createElement('script');
-        newScript.innerHTML = script.innerHTML;
-        replaceNode(script, newScript);
-      });
+      localScripts
+        .slice()
+        .reverse()
+        .forEach(script => {
+          var newScript = document.createElement('script');
+          newScript.innerHTML = '(function() {' + script.innerHTML + '})()';
+          replaceNode(script, newScript);
+        });
     });
   }
 

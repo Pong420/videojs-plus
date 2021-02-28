@@ -27,13 +27,23 @@
     <div id="app"></div>
     <!-- Docsify v4 -->
 
+    <script src="https://vjs.zencdn.net/7.6.5/video.js"></script>
+    <script src="../dist/videojs-plus.umd.js"></script>
+    <script src="../dist/plugins/autoplay/index.js"></script>
     <script>
+      const settingEntries = videojs
+        .getComponent('SettingMenuButton')
+        .prototype.options_.entries.slice();
+
+      const controlBarChildren = videojs
+        .getComponent('ControlBar')
+        .prototype.options_.children.slice();
+
       window.$docsify = {
         loadSidebar: true,
         auto2top: true,
         subMaxLevel: 3,
         maxLevel: 4,
-        executeScript: true,
         alias: {
           '/.*/_sidebar.md': '/_sidebar.md'
         },
@@ -42,12 +52,22 @@
           placeholder: 'Type to search',
           noData: 'No Results',
           depth: 3
-        }
+        },
+        plugins: [
+          function (hook) {
+            hook.beforeEach(function () {
+              videojs.getComponent(
+                'SettingMenuButton'
+              ).prototype.options_.entries = settingEntries.slice();
+
+              videojs.getComponent(
+                'ControlBar'
+              ).prototype.options_.children = controlBarChildren.slice();
+            });
+          }
+        ]
       };
     </script>
-    <script src="https://vjs.zencdn.net/7.6.5/video.js"></script>
-    <script src="../dist/videojs-plus.umd.js"></script>
-    <script src="../dist/plugins/autoplay/index.js"></script>
     <script src="./js/markdown.js"></script>
     <script src="./js/darklightTheme.js"></script>
     <script src="./js/externalScripts.js"></script>
