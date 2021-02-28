@@ -27,7 +27,7 @@
     /** @type {HTMLScriptElement[]} */
     var localScripts = [];
 
-    for (let i = scripts.length; i--; ) {
+    for (var i = scripts.length; i--; ) {
       var script = scripts[i];
 
       if (script && script.src) {
