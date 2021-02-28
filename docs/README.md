@@ -4,6 +4,8 @@ VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/
 
 <img src="./assets/screenshot/electron-frameless-player.png">
 
+[Documentation](https://pong420.github.io/videojs-plus/docs/)
+
 ### Installation
 
 ```bash
@@ -47,7 +49,3 @@ yarn add videojs-plus
 ## License
 
 See [Apache 2.0](LICENSE).
-
-```
-
-```
