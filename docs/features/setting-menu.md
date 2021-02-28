@@ -108,7 +108,7 @@ videojs.registerComponent('QualityMenuItemChild', QualityMenuItemChild);
 <br />
 
 ```js run
-var player = videojs('example-video', {
+const player = videojs('example-video', {
   // same as videojs config
   aspectRatio: '16:9',
   muted: true

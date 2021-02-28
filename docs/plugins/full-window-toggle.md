@@ -25,8 +25,7 @@ Include the plugin js and css
 ```
 
 ```js run
-var player = videojs('example-video', {
-  // same as videojs config
+const player = videojs('example-video', {
   aspectRatio: '16:9'
 });
 

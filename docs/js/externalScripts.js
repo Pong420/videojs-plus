@@ -1,7 +1,7 @@
 // https://github.com/docsifyjs/docsify/blob/develop/src/plugins/external-script.js
 // extends docsify/plugins/external-script.js
 
-(() => {
+(function () {
   /**
    * @param {HTMLElement} script
    * @param {HTMLElement} newScript
@@ -12,7 +12,7 @@
       parent.insertBefore(newScript, script);
       parent.removeChild(script);
     } else {
-      throw new Error(`parent not found`);
+      throw new Error('parent not found');
     }
   }
 
@@ -48,24 +48,37 @@
       }
     }
 
-    const waitForExternals = Promise.all(
-      externals.map(function (script) {
-        return new Promise(function (resolve) {
-          script.onload = resolve;
-        });
-      })
-    );
+    var count = 0;
+    /**
+     * @param {() => void} done
+     */
+    function callback(done) {
+      return function onLoad() {
+        count++;
+        if (count >= externals.length) {
+          done();
+        }
+      };
+    }
 
-    waitForExternals.then(function () {
+    var onLoad = callback(function () {
       localScripts
         .slice()
         .reverse()
-        .forEach(script => {
+        .forEach(function (script) {
           var newScript = document.createElement('script');
           newScript.innerHTML = '(function() {' + script.innerHTML + '})()';
           replaceNode(script, newScript);
         });
     });
+
+    if (externals.length) {
+      for (var i = 0; i < externals.length; i++) {
+        externals[i].onload = onLoad;
+      }
+    } else {
+      onLoad();
+    }
   }
 
   window.$docsify.plugins = [

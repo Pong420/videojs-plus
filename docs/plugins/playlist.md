@@ -31,7 +31,7 @@ Include the plugin js and css
 ```
 
 ```js run
-var playList = [
+const playList = [
   {
     title: 'For Bigger Meltdowns',
     poster:
@@ -70,7 +70,7 @@ var playList = [
   }
 ];
 
-var player = videojs('example-video', {
+const player = videojs('example-video', {
   autoplay: true,
   muted: true,
   playlist: playList // highlight-line
@@ -82,20 +82,19 @@ var player = videojs('example-video', {
 /**
  *  player list ui handler
  */
-var $list = document.querySelector('.playlist-ui .list');
-var $wrapper = document.querySelector('.wrapper');
-var $selected;
+const $list = document.querySelector('.playlist-ui .list');
+const $wrapper = document.querySelector('.wrapper');
+const $selected;
 
 playList.forEach((item, index) => {
-  var $div = document.createElement('div');
-
+  const $div = document.createElement('div');
   $div.innerHTML += `
         <div class="list-item">
             <div class="thumbnail" style="background-image:url(${item.poster})"></div>
             <div class="title">${item.title}</div>
         </div>`;
 
-  var $el = $div.children[0];
+  const $el = $div.children[0];
 
   if (!$selected) {
     $selected = $el;

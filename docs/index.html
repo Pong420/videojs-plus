@@ -56,6 +56,11 @@
         plugins: [
           function (hook) {
             hook.beforeEach(function () {
+              // @ts-ignore
+              videojs.getAllPlayers().map(function (p) {
+                p.dispose();
+              });
+
               videojs.getComponent(
                 'SettingMenuButton'
               ).prototype.options_.entries = settingEntries.slice();

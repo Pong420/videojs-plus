@@ -6,7 +6,7 @@
 
 ```js
 // set title using options
-var player = videojs('example-video', {
+const player = videojs('example-video', {
   title: 'Title'
 });
 

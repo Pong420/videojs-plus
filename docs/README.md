@@ -33,7 +33,7 @@ yarn add videojs-plus
   <script src="http://vjs.zencdn.net/7.4.1/video.js"></script>
   <script src="videojs-plus.umd.js"></script>
   <script>
-    var player = videojs('example-video');
+    const player = videojs('example-video');
   </script>
 </html>
 ```
