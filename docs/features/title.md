@@ -1,6 +1,6 @@
 ## Title <!-- {docsify-ignore-all} -->
 
-<img src="../screenshot/video-title.png">
+<img src="./assets/screenshot/video-title.png">
 
 ### Usage
 

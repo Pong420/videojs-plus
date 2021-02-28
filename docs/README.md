@@ -2,7 +2,7 @@
 
 VideoJS Plus is an extension and skin for [video.js](https://github.com/videojs/video.js). <br>
 
-<img src="./screenshot/electron-frameless-player.png">
+<img src="./assets/screenshot/electron-frameless-player.png">
 
 ### Installation
 
