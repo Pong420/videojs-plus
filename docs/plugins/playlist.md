@@ -84,7 +84,7 @@ const player = videojs('example-video', {
  */
 const $list = document.querySelector('.playlist-ui .list');
 const $wrapper = document.querySelector('.wrapper');
-const $selected;
+let $selected = null;
 
 playList.forEach((item, index) => {
   const $div = document.createElement('div');

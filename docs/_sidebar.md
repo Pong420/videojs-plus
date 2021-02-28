@@ -1,9 +1,10 @@
-- [VIdeoJS Plus](./README.md)
 - **Features**
   - [Title](./features/title.md)
   - [Context Menu](./features/context-menu.md)
   - [Setting Menu](./features/setting-menu.md)
   - [Mobile UI](./features/mobile-ui.md)
+  - [Contorls Dimension](./features/controls-dimension.md)
+  - [Find Child](./features/find-child.md)
 - **Plugins**
   - [Audio](./plugins/audio.md)
   - [Autoplay](./plugins/autoplay.md)
