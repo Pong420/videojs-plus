@@ -67,7 +67,7 @@
         .reverse()
         .forEach(function (script) {
           var newScript = document.createElement('script');
-          newScript.innerHTML = '(function() {' + script.innerHTML + '})()';
+          newScript.innerHTML = '(function() {\n' + script.innerHTML + '\n})()';
           replaceNode(script, newScript);
         });
     });

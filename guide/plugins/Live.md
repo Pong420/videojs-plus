@@ -1,4 +1,4 @@
-## Live Streaming
+## Live Streaming <!-- {docsify-ignore-all} -->
 
 Just a simple style plugin that creates a live streaming notice on the control bar and hides the progress bar
 
