@@ -56,7 +56,11 @@ class QualityHlsSettingItem extends SettingOptionItem {
   onAllLevelsAdded() {
     const entries = [
       ...this.levels
-        .map(({ height }) => {
+        .map(({ height, width }) => {
+          if (width < height) {
+            height = width;
+          }
+
           return {
             label: this.localize(`${height}p`),
             value: height,
