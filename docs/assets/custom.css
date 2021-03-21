@@ -1,0 +1,34 @@
+.demo {
+  width: 100%;
+  margin-bottom: 20px;
+
+  /* prettier-ignore */
+  box-shadow: 
+    0 0 0 1px var(--shadowBorderColor), 
+    0 0 0 rgb(16 22 26 / 0%),
+    0 0 0 rgb(16 22 26 / 0%);
+}
+
+.demo > video.vjs-fluid {
+  width: 100%;
+  height: 0;
+}
+
+.sidebar ul {
+  margin-left: 25px;
+}
+
+main {
+  max-width: 1440px;
+  margin: auto;
+}
+
+[id*='update'],
+[id*='bug-fixes'] {
+  margin: 0;
+}
+
+[id*='update'] + ul,
+[id*='bug-fixes'] + ul {
+  margin-top: 0.5em;
+}

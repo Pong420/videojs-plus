@@ -15,7 +15,8 @@
     "build": "rollup -c rollup.config.js",
     "lint": "eslint 'source/**/*.js'",
     "prebuild": "rimraf dist",
-    "prepublishOnly": "yarn build && node gh-pages.js"
+    "prepublishOnly": "yarn build && node gh-pages.js",
+    "docs": "yarn docsify serve docs"
   },
   "license": "Apache-2.0",
   "husky": {
@@ -24,7 +25,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{js,ts,tsx}": [
       "eslint --rule 'no-console: [\"error\", { allow: [\"warn\", \"error\"] }]'  --max-warnings=0",
       "prettier --ignore-path .eslintignore --write"
     ],
@@ -36,28 +37,29 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.6",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/core": "^7.13.1",
+    "@babel/node": "^7.13.0",
+    "@babel/preset-env": "^7.13.5",
     "@types/videojs": "^5.16.2",
-    "eslint": "^7.13.0",
+    "docsify-cli": "^4.4.2",
+    "eslint": "^7.20.0",
     "express": "^4.17.1",
     "gh-pages": "^3.1.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.1",
-    "lodash": "^4.17.20",
-    "node-sass": "^5.0.0",
-    "prettier": "^2.1.2",
+    "husky": "^5.1.1",
+    "lint-staged": "^10.5.4",
+    "lodash": "^4.17.21",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.33.1",
+    "rollup": "^2.39.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-copy": "^3.3.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "video.js": "^7.7.5",
+    "sass": "^1.32.8",
+    "video.js": "7.11.4",
     "videojs-contrib-quality-levels": "^2.0.9",
     "videojs-plus-font": "Pong420/font#af50d0e"
   }
