@@ -1,5 +1,11 @@
 ## Change Log <!-- {docsify-ignore-all} -->
 
+### 1.6.8
+
+#### Bug Fixes
+
+- Correct display vertical resolution on hls plugin. #25
+
 ### 1.6.7
 
 #### Update
