@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.8 */
+/* VERSION: 1.6.9 */
 import videojs from 'video.js';
 
 var unloaded = false;

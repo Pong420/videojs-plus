@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.8 */
+/* VERSION: 1.6.9 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
@@ -126,13 +126,9 @@
       var entries = [].concat(this.levels.map(function (_ref2) {
         var height = _ref2.height,
             width = _ref2.width;
-
-        if (width < height) {
-          height = width;
-        }
-
+        var quality = width < height ? width : height;
         return {
-          label: _this3.localize(height + "p"),
+          label: _this3.localize(quality + "p"),
           value: height,
           "default": false
         };

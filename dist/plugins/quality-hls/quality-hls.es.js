@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.8 */
+/* VERSION: 1.6.9 */
 import videojs from 'video.js';
 
 function _extends() {
@@ -118,13 +118,9 @@ var QualityHlsSettingItem = /*#__PURE__*/function (_SettingOptionItem) {
     var entries = [].concat(this.levels.map(function (_ref2) {
       var height = _ref2.height,
           width = _ref2.width;
-
-      if (width < height) {
-        height = width;
-      }
-
+      var quality = width < height ? width : height;
       return {
-        label: _this3.localize(height + "p"),
+        label: _this3.localize(quality + "p"),
         value: height,
         "default": false
       };

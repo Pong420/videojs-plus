@@ -1,5 +1,11 @@
 ## Change Log <!-- {docsify-ignore-all} -->
 
+### 1.6.9
+
+#### Bug Fixes
+
+- Fix hls plugin var name overlapping. #26
+
 ### 1.6.8
 
 #### Bug Fixes
