@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.7 */
+/* VERSION: 1.6.8 */
 import videojs from 'video.js';
 
 var logType = '';

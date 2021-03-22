@@ -1,5 +1,5 @@
 /* eslint-disable */
-/* VERSION: 1.6.7 */
+/* VERSION: 1.6.8 */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(require('video.js')) :
   typeof define === 'function' && define.amd ? define(['video.js'], factory) :
