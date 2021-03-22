@@ -57,12 +57,10 @@ class QualityHlsSettingItem extends SettingOptionItem {
     const entries = [
       ...this.levels
         .map(({ height, width }) => {
-          if (width < height) {
-            height = width;
-          }
+          const quality = (width < height) ? width : height;
 
           return {
-            label: this.localize(`${height}p`),
+            label: this.localize(`${quality}p`),
             value: height,
             default: false
           };
