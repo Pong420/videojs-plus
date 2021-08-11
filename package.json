@@ -59,7 +59,7 @@
     "rollup-plugin-scss": "^2.6.1",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "sass": "^1.32.8",
-    "video.js": "7.11.4",
+    "video.js": "7.14.3",
     "videojs-contrib-quality-levels": "^2.0.9",
     "videojs-plus-font": "Pong420/font#af50d0e"
   }
